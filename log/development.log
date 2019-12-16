@@ -1,0 +1,330 @@
+Started GET "/" for ::1 at 2019-12-16 16:56:32 -0500
+
+PG::ConnectionBad - FATAL:  database "Remember-the-Milk_development" does not exist
+:
+
+Started POST "/__better_errors/30a291045035c932/variables" for ::1 at 2019-12-16 16:56:32 -0500
+Started GET "/" for ::1 at 2019-12-16 16:57:13 -0500
+
+PG::ConnectionBad - FATAL:  database "Remember-the-Milk_development" does not exist
+:
+
+Started POST "/__better_errors/3882f5127b389a0c/variables" for ::1 at 2019-12-16 16:57:13 -0500
+  [1m[35m (269.0ms)[0m  [1m[35mCREATE DATABASE "Remember-the-Milk_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (117.5ms)[0m  [1m[35mCREATE DATABASE "Remember-the-Milk_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "All-the-Things_development"[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "All-the-Things_test"[0m
+  ↳ bin/rails:9
+  [1m[35m (272.5ms)[0m  [1m[35mCREATE DATABASE "All-the-Things_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (98.1ms)[0m  [1m[35mCREATE DATABASE "All-the-Things_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+Started GET "/" for ::1 at 2019-12-16 17:08:15 -0500
+
+ActiveRecord::PendingMigrationError - Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+:
+
+Started POST "/__better_errors/a734e0381f5c35e1/variables" for ::1 at 2019-12-16 17:08:16 -0500
+  [1m[35m (27.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (23.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(138513761167067370)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateUsers (20191216193109)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (28.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying NOT NULL, "email" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20191216193109_create_users.rb:3
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_username_and_email_and_session_token" ON "users"  ("username", "email", "session_token")[0m
+  ↳ db/migrate/20191216193109_create_users.rb:11
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191216193109"]]
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-12-16 22:09:36.145140"], ["updated_at", "2019-12-16 22:09:36.145140"]]
+  ↳ bin/rails:9
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(138513761167067370)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/" for ::1 at 2019-12-16 17:09:42 -0500
+
+ActiveRecord::PendingMigrationError - Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+:
+
+Started POST "/__better_errors/77886db9858d267e/variables" for ::1 at 2019-12-16 17:09:42 -0500
+Started GET "/" for ::1 at 2019-12-16 17:09:44 -0500
+
+ActiveRecord::PendingMigrationError - Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+:
+
+Started POST "/__better_errors/3c4b4562a7915ddf/variables" for ::1 at 2019-12-16 17:09:44 -0500
+Started GET "/" for ::1 at 2019-12-16 17:10:06 -0500
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Library/Ruby/Gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+
+NameError - uninitialized constant StaticPagesController:
+
+Started POST "/__better_errors/760a531a930e4383/variables" for ::1 at 2019-12-16 17:10:06 -0500
+Started GET "/" for ::1 at 2019-12-16 17:12:32 -0500
+
+NameError - uninitialized constant StaticPagesController:
+
+Started POST "/__better_errors/98347ad4b6bd6f63/variables" for ::1 at 2019-12-16 17:12:33 -0500
+Started GET "/" for ::1 at 2019-12-16 17:12:34 -0500
+
+NameError - uninitialized constant StaticPagesController:
+
+Started POST "/__better_errors/2460d6cc759a17b4/variables" for ::1 at 2019-12-16 17:12:34 -0500
+Started GET "/" for ::1 at 2019-12-16 17:14:22 -0500
+
+NameError - uninitialized constant StaticPagesController:
+
+Started POST "/__better_errors/1619da08e7e51c53/variables" for ::1 at 2019-12-16 17:14:22 -0500
+Started GET "/" for ::1 at 2019-12-16 17:14:24 -0500
+
+NameError - uninitialized constant StaticPagesController:
+
+Started POST "/__better_errors/0d0bd2ce8895d58e/variables" for ::1 at 2019-12-16 17:14:24 -0500
+Started GET "/" for ::1 at 2019-12-16 17:15:18 -0500
+Processing by StaticPagesController#root as HTML
+Completed 406 Not Acceptable in 4ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::UnknownFormat - StaticPagesController#root is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.:
+
+Started POST "/__better_errors/2ec82cde8d4c57b0/variables" for ::1 at 2019-12-16 17:15:18 -0500
+Started GET "/" for ::1 at 2019-12-16 17:17:00 -0500
+Processing by StaticPagesController#root as HTML
+Completed 406 Not Acceptable in 5ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::UnknownFormat - StaticPagesController#root is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.:
+
+Started POST "/__better_errors/62cf001b1f929db5/variables" for ::1 at 2019-12-16 17:17:00 -0500
+Started GET "/" for ::1 at 2019-12-16 17:17:30 -0500
+Processing by StaticPagesController#root as HTML
+Completed 406 Not Acceptable in 7ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::UnknownFormat - StaticPagesController#root is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.:
+
+Started POST "/__better_errors/ebe722fc7dd1f814/variables" for ::1 at 2019-12-16 17:17:30 -0500
+Started GET "/" for ::1 at 2019-12-16 17:20:51 -0500
+Processing by StaticPagesController#root as HTML
+Completed 406 Not Acceptable in 5ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::UnknownFormat - StaticPagesController#root is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.:
+
+Started POST "/__better_errors/d6c4476a294934ad/variables" for ::1 at 2019-12-16 17:20:52 -0500
+Started GET "/" for ::1 at 2019-12-16 17:32:02 -0500
+Processing by StaticPagesController#root as HTML
+Completed 406 Not Acceptable in 12ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::UnknownFormat - StaticPagesController#root is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.:
+
+Started POST "/__better_errors/03ef135eef233ecf/variables" for ::1 at 2019-12-16 17:32:02 -0500
+Started GET "/" for ::1 at 2019-12-16 17:32:35 -0500
+Processing by StaticPagesController#root as HTML
+Completed 406 Not Acceptable in 5ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::UnknownFormat - StaticPagesController#root is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.:
+
+Started POST "/__better_errors/dbad427d60a38eb7/variables" for ::1 at 2019-12-16 17:32:35 -0500
+Started GET "/" for ::1 at 2019-12-16 17:35:08 -0500
+Processing by StaticPagesController#root as HTML
+Completed 406 Not Acceptable in 4ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::UnknownFormat - StaticPagesController#root is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.:
+
+Started POST "/__better_errors/90bfb2185b1bbc6e/variables" for ::1 at 2019-12-16 17:35:08 -0500
+Started GET "/" for ::1 at 2019-12-16 17:35:30 -0500
+Processing by StaticPagesController#root as HTML
+Completed 406 Not Acceptable in 8ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::UnknownFormat - StaticPagesController#root is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.:
+
+Started POST "/__better_errors/d7bbb3feb4b20d98/variables" for ::1 at 2019-12-16 17:35:30 -0500
+Started GET "/" for ::1 at 2019-12-16 17:37:01 -0500
+Processing by StaticPagesController#root as HTML
+Completed 406 Not Acceptable in 5ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::UnknownFormat - StaticPagesController#root is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.:
+
+Started POST "/__better_errors/e75bda69e83dd794/variables" for ::1 at 2019-12-16 17:37:01 -0500
+Started GET "/" for ::1 at 2019-12-16 17:40:24 -0500
+
+SyntaxError - syntax error, unexpected end-of-input, expecting end:
+  config/routes.rb:10:in `'
+
+Started POST "/__better_errors/063f2db52bb06017/variables" for ::1 at 2019-12-16 17:40:24 -0500
+Started GET "/" for ::1 at 2019-12-16 17:40:37 -0500
+Processing by StaticPagesController#root as HTML
+Completed 406 Not Acceptable in 4ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::UnknownFormat - StaticPagesController#root is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.:
+
+Started POST "/__better_errors/197e2656fa756fa1/variables" for ::1 at 2019-12-16 17:40:37 -0500
+Started GET "/" for ::1 at 2019-12-16 17:42:28 -0500
+Processing by StaticPagesController#root as HTML
+Completed 406 Not Acceptable in 10ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::UnknownFormat - StaticPagesController#root is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.:
+
+Started POST "/__better_errors/596d12571092efbc/variables" for ::1 at 2019-12-16 17:42:29 -0500
+Started GET "/" for ::1 at 2019-12-16 17:54:41 -0500
+Processing by StaticPagesController#root as HTML
+Completed 406 Not Acceptable in 8ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::UnknownFormat - StaticPagesController#root is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.:
+
+Started POST "/__better_errors/e6518c3fd97c63a4/variables" for ::1 at 2019-12-16 17:54:41 -0500
+Started GET "/" for ::1 at 2019-12-16 17:57:12 -0500
+Processing by StaticPagesController#root as HTML
+Completed 406 Not Acceptable in 4ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::UnknownFormat - StaticPagesController#root is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.:
+
+Started POST "/__better_errors/27944d0882ab17c6/variables" for ::1 at 2019-12-16 17:57:12 -0500
+Started GET "/" for ::1 at 2019-12-16 17:57:28 -0500
+Processing by StaticPagesController#root as HTML
+Completed 406 Not Acceptable in 5ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::UnknownFormat - StaticPagesController#root is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.:
+
+Started POST "/__better_errors/bcbf6b159402155a/variables" for ::1 at 2019-12-16 17:57:28 -0500
+Started POST "/__better_errors/bcbf6b159402155a/variables" for ::1 at 2019-12-16 17:57:43 -0500
+Started POST "/__better_errors/bcbf6b159402155a/variables" for ::1 at 2019-12-16 17:57:50 -0500
+Started POST "/__better_errors/bcbf6b159402155a/variables" for ::1 at 2019-12-16 17:57:52 -0500
+Started POST "/__better_errors/bcbf6b159402155a/variables" for ::1 at 2019-12-16 17:57:57 -0500
+Started POST "/__better_errors/bcbf6b159402155a/variables" for ::1 at 2019-12-16 17:57:59 -0500
+Started GET "/" for ::1 at 2019-12-16 17:58:46 -0500
+Processing by StaticPagesController#root as HTML
+Completed 406 Not Acceptable in 4ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::UnknownFormat - StaticPagesController#root is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.:
+
+Started POST "/__better_errors/c164688839325ef9/variables" for ::1 at 2019-12-16 17:58:46 -0500
