@@ -1,13 +1,17 @@
-import { connect } from 'react-redux';
-import { logout } from '../../actions/session_actions';
-import Greeting from './greeting';
+import { connect } from "react-redux";
 
-const mstp = ({ session, entities: { users }}) => ({
-    currentUser: user[session.id]
-});
+import { logout } from "../../actions/session_actions";
+import Greeting from "./greeting";
 
-const mdtp = dispatch => ({
+const mapStateToProps = ({ session, entities: { users } }) => {
+  return {
+    currentUser: users[session.id]
+  };
+};
+
+const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout())
 });
 
-export default connect(mstp, mdtp)(Greeting);
+export default connect(mapStateToProps, mapDispatchToProps)(Greeting);
+
