@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
       render 'api/user/show'
     else
       render json: ['Invalid Username/Password'], status: 401
+    end
   end
 
   def destroy
