@@ -431,7 +431,7 @@ function (_React$Component) {
         type: "text",
         value: this.state.username,
         onChange: this.update("username")
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "email:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "login-input",
         type: "email",
         value: this.state.email,
