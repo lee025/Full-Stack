@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: All-the-Things_production
-  username: v
-  password: <%= ENV['ALL-THE-THINGS_DATABASE_PASSWORD'] %>
+  database: all_the_things_production
+  username: all_the_things
+  password: <%= ENV['ALL_THE_THINGS_DATABASE_PASSWORD'] %>

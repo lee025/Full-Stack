@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RememberTheMilk</title>
+    <title>All the Things</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <script type="text/javascript">
+      window.calvin_and_hobbsURL = "<%= image_url('calvin_and_hobbs.png') %>";
+    </script>
   </head>
+
 
   <body>
     <%= yield %>

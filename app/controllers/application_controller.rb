@@ -11,11 +11,11 @@ helper_method :current_user, :logged_in?
   end
 
   def login(user)
-    session[:session_token] = user.session_token
+    session[:session_token] = user.reset_token!
     @current_user = user
   end
 
-  def logout
+  def logout!
     current_user.try(:reset_token!)
     session[:session_token] = nil
     @current_user = nil

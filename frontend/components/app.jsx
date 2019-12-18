@@ -1,21 +1,114 @@
-import React from "react";
-import GreetingContainer from "./greeting/greeting_container";
-import { Route } from "react-router-dom";
+import React from 'react';
+import GreetingContainer from './greeting/greeting_container';
+import { Route, Switch } from 'react-router-dom';
 
-import LoginFormContainer from "../components/session_form/login_form_container";
-import SignupFormContainer from "../components/session_form/signup_form_container";
+import LogInFormContainer from '../components/session_form/login_form_container';
+import SignUpFormContainer from '../components/session_form/signup_form_container';
 
 import { AuthRoute } from "../util/route_util";
 
-const App = () => (
-  <div>
-    <header>
-      <h1>ALL THE THINGSSSSSSS</h1>
-      <GreetingContainer />
-    </header>
-    <AuthRoute path="/login" component={LoginFormContainer} />
-    <AuthRoute path="/signup" component={SignupFormContainer} />
-  </div>
-);
+class App extends React.Component {
+  constructor(props){
+    super(props);
+  }
+
+  render() {
+    return (
+
+      <div className='greeting-container'>
+        {/* <header className={this.props.formType === 'Login' || 'Sign Up' ? 'hidden' : ''}> */}
+        <header>
+          <GreetingContainer />
+        </header>
+      
+
+      <div className='greeting-main rotate'>
+          <img className='calvin-hobbs split' src={window.calvin_and_hobbsURL} />
+      </div>
+
+
+      {/* <footer className={this.props.formType === 'Login' || 'Sign Up' ? 'hidden' : ''}> */}
+      <footer>  
+        <div className='footer-container'>
+          <div className='footer-img'>
+            {/* insert image */}
+          </div>
+          <div className='footer-input'>
+            <ul className='footer-list'>
+              <li><a href='https://github.com/lee025/All-the-Things/wiki/MVP-List'>MVP List</a></li>
+              <li><a href='https://github.com/lee025/All-the-Things/wiki/Schema'>Schema</a></li>
+              <li><a href='https://github.com/lee025/All-the-Things/wiki/Sample-State'>Sample State</a></li>
+              <li><a href='https://github.com/lee025/All-the-Things/wiki/Frontend-Routes'>Frontend Routes</a></li>
+              <li><a href='https://github.com/lee025/All-the-Things/wiki/Backend-Routes'>Backend Routes</a></li>
+            </ul>
+          </div>
+          <small className="footer-copy">
+            &copy; 2019 All the Things. All rights reserved.
+          </small>
+        </div>
+      </footer> 
+        
+        <Switch>
+
+          <AuthRoute exact path="/login" component={LogInFormContainer} />
+          <AuthRoute exact path="/signup" component={SignUpFormContainer} />
+
+        </Switch>
+
+
+      </div>
+    );
+  }
+
+
+};
 
 export default App;
+
+
+
+// const App = () => (
+//   <div className='greeting-container'>
+//     <header>
+//       <GreetingContainer />
+//     </header>
+  
+
+//   <div className='greeting-main rotate'>
+//       <img className='calvin-hobbs' src={window.calvin_and_hobbsURL} />
+//   </div>
+
+
+//       {/* <footer className={this.props.formType === 'Sign Up' ? '' : 'hidden'}> */}
+//     <footer>
+//       <div className='footer-container'>
+//         <div className='footer-img'>
+//           {/* insert image */}
+//         </div>
+//         <div className='footer-input'>
+//           <ul className='footer-list'>
+//             <li><a href='https://github.com/lee025/All-the-Things/wiki/MVP-List'>MVP List</a></li>
+//             <li><a href='https://github.com/lee025/All-the-Things/wiki/Schema'>Schema</a></li>
+//             <li><a href='https://github.com/lee025/All-the-Things/wiki/Sample-State'>Sample State</a></li>
+//             <li><a href='https://github.com/lee025/All-the-Things/wiki/Frontend-Routes'>Frontend Routes</a></li>
+//             <li><a href='https://github.com/lee025/All-the-Things/wiki/Backend-Routes'>Backend Routes</a></li>
+//           </ul>
+//         </div>
+//         <small class="footer-copy">
+//           &copy; 2019 All the Things. All rights reserved.
+//         </small>
+//       </div>
+//     </footer> 
+    
+//     <Switch>
+
+//       <AuthRoute exact path="/login" component={LogInFormContainer} />
+//       <AuthRoute exact path="/signup" component={SignUpFormContainer} />
+
+//     </Switch>
+
+
+//   </div>
+// );
+
+// export default App;

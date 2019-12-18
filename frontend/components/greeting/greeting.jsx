@@ -3,12 +3,17 @@ import { Link } from "react-router-dom";
 
 const Greeting = ({ currentUser, logout }) => {
   const sessionLinks = () => (
-    <nav className="login-signup">
-      <Link to="/login">Login</Link>
-      &nbsp;or&nbsp;
-      <Link to="/signup">Sign up!</Link>
-    </nav>
+    <div>
+      <nav className='greeting-navbar'>
+        <h1 className='greeting-header-logo'>All the Things!</h1>
+          <ul className='greeting-header-list'>
+            <li><Link to="/login">Login</Link></li>
+          <li><Link to="/signup">Sign up!</Link></li>
+          </ul>
+      </nav>
+    </div>
   );
+
   const personalGreeting = () => (
     <hgroup className="header-group">
       <h2 className="header-name">Hi, {currentUser.username}!</h2>
@@ -18,7 +23,7 @@ const Greeting = ({ currentUser, logout }) => {
     </hgroup>
   );
 
-  return currentUser ? personalGreeting() : sessionLinks();
+  return currentUser ? personalGreeting() : sessionLinks()
 };
 
 export default Greeting;
