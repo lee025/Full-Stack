@@ -28,8 +28,9 @@ class SessionForm extends React.Component {
   renderErrors() {
     return (
       <ul>
+        
         {this.props.errors.map((error, idx) => (
-          <li key={`error-${idx}`}>{error}</li>
+          <center><li key={`error-${idx}`}>{error}</li></center>
         ))}
       </ul>
     );
