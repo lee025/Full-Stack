@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Greeting = ({ currentUser, logout }) => {
   const sessionLinks = () => (
-    <div>
+    <div className={currentUser ? 'hidden' : ''}>
       <nav className='greeting-navbar'>
         <h1 className='greeting-header-logo'>All the Things!</h1>
           <ul className='greeting-header-list'>
@@ -11,6 +11,11 @@ const Greeting = ({ currentUser, logout }) => {
           <li><Link to="/signup">Sign up!</Link></li>
           </ul>
       </nav>
+
+      <div>
+        <img className='calvin-hobbs rotate split' src={window.calvin_and_hobbsURL} />
+      </div>
+
     </div>
   );
 

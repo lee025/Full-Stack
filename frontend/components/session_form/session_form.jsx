@@ -36,19 +36,19 @@ class SessionForm extends React.Component {
   }
 
   render() {
+
     return (
+
       <div>
-        
-        <form onSubmit={this.handleSubmit} className="login-form-box split">
-          Welcome to All the Things!
-          <br />
+        <form onSubmit={this.handleSubmit} className="login-form-box split group">
+          <h3 className='welcome'>Welcome to All the Things!</h3>
  
           {this.renderErrors()}
           <div className="login-form">
       
             <label>
               <input
-                className="login-input"
+                className="login-input "
                 type="text"
                 value={this.state.username}
                 onChange={this.update("username")}
@@ -84,6 +84,9 @@ class SessionForm extends React.Component {
             </button>
           </div>
         </form>
+
+
+
       </div>
     );
   }

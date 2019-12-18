@@ -210,13 +210,18 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "greeting-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "greeting-main rotate"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "calvin-hobbs split",
-        src: window.calvin_and_hobbsURL
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "greeting-container group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
+        exact: true,
+        path: "/login",
+        component: _components_session_form_login_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
+        exact: true,
+        path: "/signup",
+        component: _components_session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_4__["default"]
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "group"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "footer-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "footer-img"
@@ -234,17 +239,9 @@ function (_React$Component) {
         href: "https://github.com/lee025/All-the-Things/wiki/Frontend-Routes"
       }, "Frontend Routes")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "https://github.com/lee025/All-the-Things/wiki/Backend-Routes"
-      }, "Backend Routes")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
+      }, "Backend Routes"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
         className: "footer-copy"
-      }, "\xA9 2019 All the Things. All rights reserved."))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
-        exact: true,
-        path: "/login",
-        component: _components_session_form_login_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
-        exact: true,
-        path: "/signup",
-        component: _components_session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_4__["default"]
-      })));
+      }, "\xA9 2019 All the Things. All rights reserved.")));
     }
   }]);
 
@@ -310,7 +307,9 @@ var Greeting = function Greeting(_ref) {
       logout = _ref.logout;
 
   var sessionLinks = function sessionLinks() {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: currentUser ? 'hidden' : ''
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
       className: "greeting-navbar"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
       className: "greeting-header-logo"
@@ -320,7 +319,10 @@ var Greeting = function Greeting(_ref) {
       to: "/login"
     }, "Login")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/signup"
-    }, "Sign up!")))));
+    }, "Sign up!")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      className: "calvin-hobbs rotate split",
+      src: window.calvin_and_hobbsURL
+    })));
   };
 
   var personalGreeting = function personalGreeting() {
@@ -394,7 +396,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
+ // import Home from './home_page/home_page';
 
 var Root = function Root(_ref) {
   var store = _ref.store;
@@ -529,11 +531,13 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit,
-        className: "login-form-box split"
-      }, "Welcome to All the Things!", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "login-form-box split group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "welcome"
+      }, "Welcome to All the Things!"), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "login-input",
+        className: "login-input ",
         type: "text",
         value: this.state.username,
         onChange: this.update("username"),
