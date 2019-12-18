@@ -15,6 +15,7 @@ body {
   font-size: 16px;
   font-weight: 400;
   background: #eee;
+  font-family: American Typewriter, serif;
 }
 
 ul {
@@ -47,6 +48,7 @@ ul {
   // border: 1px solid black;
   display: flex;
   color: rgb(221, 217, 217);
+  font-weight: 500;
 }
 
 // login signup buttons
@@ -78,6 +80,8 @@ nav a:hover {
   border-radius: 5px;
   padding: 8px 0;
   margin: 5px;
+  font-size: 15px;
+  font-family: American Typewriter, serif;
 }
 
 .session-button,
@@ -88,6 +92,9 @@ input[type="submit"] {
   margin: 0 auto 20px auto;
   border-radius: 5px;
   text-align: center;
+  font-size: 15px;
+  font-family: American Typewriter, serif;
+
 }
 
 .session-button:hover {
@@ -98,7 +105,7 @@ input[type="submit"] {
 // ----- greeting main ----- //
 
 .calvin-hobbs {
-  border: 3px solid black;
+  border: 1px solid black;
   float: left;
   margin-left: 20px;
   // display: flex;
@@ -131,6 +138,8 @@ input[type="submit"] {
 
  .welcome {
    text-align: center;
+   font-weight: 400;
+   font-size: 20px;
  }
 
  .login-form-container {
@@ -158,9 +167,6 @@ input[type="submit"] {
  }
 
 
-
-
-
 /* Split the screen in half */
 // .split {
   // height: 100%;
@@ -171,9 +177,6 @@ input[type="submit"] {
   // overflow-x: hidden;
   // padding-top: 20px;
 // }
-
-
-
 
 
 
