@@ -17,44 +17,24 @@ const Greeting = ({ currentUser, logout }) => {
             </li>
           </ul>
         </nav>
-
-        {/* <div className='calvin-hobbs-main'>
-          <img className='calvin-hobbs rotate split' src={window.calvin_and_hobbsURL} />
-        </div> */}
       </article>
-
-      {/* <article className="login-left split">
-        <div>
-          <div className="login-cow-div">
-            <img className="cow-logo" src={window.cow_logoURL} />
-          </div>
-        </div>
-
-        <blockquote>
-          <p>
-            "You can't be that kid standing at the top of the water slide,
-            overthinking it. You have to go down the chute
-          </p>
-          <footer>- Tina Fey, Bossy Pants</footer>
-        </blockquote>
-
-        <div>
-          <div className="login-avatar-div">
-            <img className="avatar-bob" src={window.avatar_bobURL} />
-          </div>
-        </div>
-      </article> */}
     </div>
   );
 
   const personalGreeting = () => (
-    <hgroup className="header-group">
-      <h2 className="header-name">Hi, {currentUser.username}!</h2>
-      {/* <EditListContainer /> */}
-      <button className="header-button" onClick={logout}>
-        Log Out
-      </button>
-    </hgroup>
+    <section>
+      <header className="header-group">
+        <h2 className="header-name">Hi, {currentUser.username}!</h2>
+        {/* <EditListContainer /> */}
+        <button className="header-logout-button" onClick={logout}>
+          Log Out
+        </button>
+      </header>
+      <h2 className='workinprogress'>Work In Progress...</h2>
+      <div className='calvin-hobbs-main'>
+        <img className='calvin-hobbs rotate split' src={window.calvin_and_hobbsURL} />
+      </div>
+    </section>
   );
 
   return currentUser ? personalGreeting() : sessionLinks()

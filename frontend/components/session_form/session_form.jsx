@@ -4,12 +4,12 @@ class SessionForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
-      password: '',
-      email: ''
+      username: "",
+      password: "",
+      email: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.getValidations = this.getValidations.bind(this);
+    // this.refresh = this.refresh.bind(this);
   }
 
   update(field) {
@@ -22,8 +22,7 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user)
-      .then(() => this.props.history.push('/'));
+    this.props.processForm(user).then(() => this.props.history.push("/"));
   }
 
   renderErrors() {
@@ -36,20 +35,26 @@ class SessionForm extends React.Component {
     );
   }
 
-  getValidations() {
-    const errors = this.state.errors;
-    if (!$.isEmptyObject(errors)) {
-      errors.forEach(function(error) {
-        console.log('error', error.name);
-      });
-    }
+  componentDidUpdate(prevState) {
+    console.log(this.props.errors);
+    // console.log(this.props.formType);
+    var errors = this.props.errors;
+    var form = this.props.formType;
+    console.log(prevState.formType);
+    // console.log(form)
+    // if (prevState.formType !== nextState.formType){
+
+    // }
   }
 
-  render() {
+  // refresh() {
+  //   window.location.reload(false);
+  // }
 
+  render() {
     return (
-      <section className="login-main">
-        <article className="login-left split">
+      <section className="login-main" id='wrapper'>
+        <article className="login-left split group">
           <div className="login-second">
             <div>
               <div className="login-cow-div">
@@ -76,12 +81,12 @@ class SessionForm extends React.Component {
           </div>
         </article>
 
-        <article className="login-right">
+        <article className="login-right group">
           <form
             onSubmit={this.handleSubmit}
-            className="login-form-box split group"
+            className="login-form-box split"
           >
-              <h3 className="welcome">Welcome to All the Things!</h3>
+            <h3 className="welcome">Welcome to All the Things!</h3>
 
             <center>{this.renderErrors()}</center>
             <div className="login-form">
@@ -91,7 +96,7 @@ class SessionForm extends React.Component {
                   type="text"
                   value={this.state.username}
                   onChange={this.update("username")}
-                  placeholder=" Username"
+                  placeholder="Username"
                 />
               </label>
 
@@ -101,9 +106,11 @@ class SessionForm extends React.Component {
                 <input
                   className="login-input"
                   type="email"
+                  pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$"
+                  required
                   value={this.state.email}
                   onChange={this.update("email")}
-                  placeholder=" Email"
+                  placeholder="Email"
                 />
               </label>
 
@@ -113,7 +120,7 @@ class SessionForm extends React.Component {
                   type="password"
                   value={this.state.password}
                   onChange={this.update("password")}
-                  placeholder=" Password"
+                  placeholder="Password"
                 />
               </label>
               <br />

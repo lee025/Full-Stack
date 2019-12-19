@@ -261,23 +261,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_lists_edit_list_form_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/lists/edit_list_form_container */ "./frontend/components/lists/edit_list_form_container.jsx");
 /* harmony import */ var _components_lists_create_list_form_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/lists/create_list_form_container */ "./frontend/components/lists/create_list_form_container.jsx");
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
 
@@ -289,112 +272,66 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+var App = function App() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "greeting-container group"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
+    to: "/login"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    exact: true,
+    path: "/login",
+    component: _components_session_form_login_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    exact: true,
+    path: "/signup",
+    component: _components_session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    path: "/lists/:listId/edit",
+    component: _components_lists_edit_list_form_container__WEBPACK_IMPORTED_MODULE_7__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    exact: true,
+    path: "/lists",
+    component: _components_lists_list_index_container__WEBPACK_IMPORTED_MODULE_5__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    exact: true,
+    path: "/lists/:listId",
+    component: _components_lists_list_show_container__WEBPACK_IMPORTED_MODULE_6__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    path: "/lists/new",
+    component: _components_lists_create_list_form_container__WEBPACK_IMPORTED_MODULE_8__["default"]
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "group"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
+    className: "footer-main"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "footer-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "footer-img"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "footer-input"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "footer-list"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://github.com/lee025/All-the-Things/wiki/MVP-List"
+  }, "MVP List")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://github.com/lee025/All-the-Things/wiki/Schema"
+  }, "Schema")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://github.com/lee025/All-the-Things/wiki/Sample-State"
+  }, "Sample State")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://github.com/lee025/All-the-Things/wiki/Frontend-Routes"
+  }, "Frontend Routes")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://github.com/lee025/All-the-Things/wiki/Backend-Routes"
+  }, "Backend Routes"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
+    className: "footer-copy"
+  }, "\xA9 2019 All the Things. All rights reserved.")));
+};
 
-var App =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(App, _React$Component);
-
-  function App(props) {
-    _classCallCheck(this, App);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
-  }
-
-  _createClass(App, [{
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "greeting-container group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_9__["AuthRoute"], {
-        exact: true,
-        path: "/login",
-        component: _components_session_form_login_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_9__["AuthRoute"], {
-        exact: true,
-        path: "/signup",
-        component: _components_session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_4__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        path: "/lists/:listId/edit",
-        component: _components_lists_edit_list_form_container__WEBPACK_IMPORTED_MODULE_7__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        exact: true,
-        path: "/lists",
-        component: _components_lists_list_index_container__WEBPACK_IMPORTED_MODULE_5__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        exact: true,
-        path: "/lists/:listId",
-        component: _components_lists_list_show_container__WEBPACK_IMPORTED_MODULE_6__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        path: "/lists/new",
-        component: _components_lists_create_list_form_container__WEBPACK_IMPORTED_MODULE_8__["default"]
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "group"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
-        className: "footer-main"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "footer-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "footer-img"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "footer-input"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "footer-list"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "https://github.com/lee025/All-the-Things/wiki/MVP-List"
-      }, "MVP List")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "https://github.com/lee025/All-the-Things/wiki/Schema"
-      }, "Schema")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "https://github.com/lee025/All-the-Things/wiki/Sample-State"
-      }, "Sample State")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "https://github.com/lee025/All-the-Things/wiki/Frontend-Routes"
-      }, "Frontend Routes")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "https://github.com/lee025/All-the-Things/wiki/Backend-Routes"
-      }, "Backend Routes"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
-        className: "footer-copy"
-      }, "\xA9 2019 All the Things. All rights reserved.")));
-    }
-  }]);
-
-  return App;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-;
-/* harmony default export */ __webpack_exports__["default"] = (App); // const App = () => (
-//   <div className='greeting-container'>
-//     <header>
-//       <GreetingContainer />
-//     </header>
-//   <div className='greeting-main rotate'>
-//       <img className='calvin-hobbs' src={window.calvin_and_hobbsURL} />
-//   </div>
-//       {/* <footer className={this.props.formType === 'Sign Up' ? '' : 'hidden'}> */}
-//     <footer>
-//       <div className='footer-container'>
-//         <div className='footer-img'>
-//           {/* insert image */}
-//         </div>
-//         <div className='footer-input'>
-//           <ul className='footer-list'>
-//             <li><a href='https://github.com/lee025/All-the-Things/wiki/MVP-List'>MVP List</a></li>
-//             <li><a href='https://github.com/lee025/All-the-Things/wiki/Schema'>Schema</a></li>
-//             <li><a href='https://github.com/lee025/All-the-Things/wiki/Sample-State'>Sample State</a></li>
-//             <li><a href='https://github.com/lee025/All-the-Things/wiki/Frontend-Routes'>Frontend Routes</a></li>
-//             <li><a href='https://github.com/lee025/All-the-Things/wiki/Backend-Routes'>Backend Routes</a></li>
-//           </ul>
-//         </div>
-//         <small class="footer-copy">
-//           &copy; 2019 All the Things. All rights reserved.
-//         </small>
-//       </div>
-//     </footer> 
-//     <Switch>
-//       <AuthRoute exact path="/login" component={LogInFormContainer} />
-//       <AuthRoute exact path="/signup" component={SignUpFormContainer} />
-//     </Switch>
-//   </div>
-// );
-// export default App;
+/* harmony default export */ __webpack_exports__["default"] = (App);
+{
+  /* <div>
+  <img className='calvin-hobbs rotate split' src={window.calvin_and_hobbsURL} />
+  </div> */
+}
 
 /***/ }),
 
@@ -436,14 +373,21 @@ var Greeting = function Greeting(_ref) {
   };
 
   var personalGreeting = function personalGreeting() {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hgroup", {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
       className: "header-group"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
       className: "header-name"
     }, "Hi, ", currentUser.username, "!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-      className: "header-button",
+      className: "header-logout-button",
       onClick: logout
-    }, "Log Out"));
+    }, "Log Out")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+      className: "workinprogress"
+    }, "Work In Progress..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "calvin-hobbs-main"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      className: "calvin-hobbs rotate split",
+      src: window.calvin_and_hobbsURL
+    })));
   };
 
   return currentUser ? personalGreeting() : sessionLinks();
@@ -1036,12 +980,12 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SessionForm).call(this, props));
     _this.state = {
-      username: '',
-      password: '',
-      email: ''
+      username: "",
+      password: "",
+      email: ""
     };
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.getValidations = _this.getValidations.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this)); // this.refresh = this.refresh.bind(this);
+
     return _this;
   }
 
@@ -1062,7 +1006,7 @@ function (_React$Component) {
       e.preventDefault();
       var user = Object.assign({}, this.state);
       this.props.processForm(user).then(function () {
-        return _this3.props.history.push('/');
+        return _this3.props.history.push("/");
       });
     }
   }, {
@@ -1075,23 +1019,27 @@ function (_React$Component) {
       }));
     }
   }, {
-    key: "getValidations",
-    value: function getValidations() {
-      var errors = this.state.errors;
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevState) {
+      console.log(this.props.errors); // console.log(this.props.formType);
 
-      if (!$.isEmptyObject(errors)) {
-        errors.forEach(function (error) {
-          console.log('error', error.name);
-        });
-      }
-    }
+      var errors = this.props.errors;
+      var form = this.props.formType;
+      console.log(prevState.formType); // console.log(form)
+      // if (prevState.formType !== nextState.formType){
+      // }
+    } // refresh() {
+    //   window.location.reload(false);
+    // }
+
   }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-        className: "login-main"
+        className: "login-main",
+        id: "wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("article", {
-        className: "login-left split"
+        className: "login-left split group"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-second"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1109,10 +1057,10 @@ function (_React$Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "avatar-bob-text"
       }, "Quotes curated by Bob T. Monkey, renowned productivity expert")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("article", {
-        className: "login-right"
+        className: "login-right group"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit,
-        className: "login-form-box split group"
+        className: "login-form-box split"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "welcome"
       }, "Welcome to All the Things!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("center", null, this.renderErrors()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1122,21 +1070,23 @@ function (_React$Component) {
         type: "text",
         value: this.state.username,
         onChange: this.update("username"),
-        placeholder: " Username"
+        placeholder: "Username"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: this.props.formType === "Sign Up" ? "" : "hidden"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "login-input",
         type: "email",
+        pattern: "^[a-zA-Z0-9.!#$%&\u2019*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)+$",
+        required: true,
         value: this.state.email,
         onChange: this.update("email"),
-        placeholder: " Email"
+        placeholder: "Email"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "login-input",
         type: "password",
         value: this.state.password,
         onChange: this.update("password"),
-        placeholder: " Password"
+        placeholder: "Password"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "session-button",
         onClick: this.handleSubmit,
@@ -1559,7 +1509,7 @@ var Auth = function Auth(_ref) {
     exact: exact,
     render: function render(props) {
       return !loggedIn ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, props) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
-        to: "/"
+        to: "/signup"
       });
     }
   });

@@ -14,6 +14,9 @@ label, textarea, article, footer, small {
   background: transparent;
 }
 
+.html {
+  height: 100%;
+}
 
 .hidden {
   display: none;
@@ -38,8 +41,14 @@ body {
   background: #eee;
   font-family: American Typewriter, serif;
   position: relative;
+  height: 100%;
   // margin: 0;
   // min-height: 100%;
+}
+
+#wrapper {
+  min-height: 100%;
+  position: relative;
 }
 
 ul {
@@ -64,14 +73,18 @@ ul {
 
 .greeting-header-logo {
   font-family: cursive;
-  position: relative;
+  // position: relative;
   display: block;
+  width: 200px;
+  height: 33px;
+  font-size: 25px;
+  margin-top: 10px;
 }
 
 .greeting-header-list {
   // border: 1px solid black;
   display: flex;
-  color: rgb(221, 217, 217);
+  color: whitesmoke;
   font-weight: 500;
 }
 
@@ -97,50 +110,29 @@ ul {
 // }
 
 nav a:hover {
- color: white;
+ color: rgb(216, 214, 214);
 }
-
-
-// ----- greeting main ----- //
-
-.calvin-hobbs-main {
-  height: 100%;
-  width: auto;
-}
-
-.calvin-hobbs {
-  border: 1px solid black;
-  float: left;
-  margin-left: 20px;
-  // display: flex;
-  // position: relative;
-  width: 50%;
-  height: 50%;
-}
-
-// .rotate:hover {
-//   -webkit-transform: rotateZ(10deg);
-//   -ms-transform: rotateZ(10deg);    
-//   transform: rotateZ(10deg);
-// }
 
 
 // ----- login right panel ---- //
 
 .login-right{
-  // position: relative;
+  position: relative;
   // border: 1px solid black;
-  display: flex;
+  // display: flex;
   justify-content: center;
   align-content: center;
-  width: 48%;
+  width: 50%;
   height: 100%;
-  // float: left;
+  // z-index: 3;
+  float: left;
+  z-index: 1010101010;
 }
+
 
 .login-form-box {
   //  border: 1px solid blue;
-   position: relative;
+  //  position: relative;
    padding-right: 15px;
    padding-left: 15px ;
    padding: 20px;
@@ -155,14 +147,14 @@ nav a:hover {
    display: block;
    text-align: center;
    font-weight: 400;
-   font-size: 20px;
+   font-size: 25px;
  }
 
  .login-form-container {
    display: flex;
    justify-content: center;
    margin-top: 100px;
-   position: relative;
+  //  position: relative;
  }
 
  .login-form {
@@ -174,7 +166,7 @@ nav a:hover {
  }
 
  .login-input {
-  width: 75%;
+  width: 70%;
   // min-width: 50%;
   border-radius: 5px;
   // padding: 8px 0;
@@ -182,12 +174,13 @@ nav a:hover {
   font-size: 15px;
   font-family: American Typewriter, serif;
   height: 40px;
+  padding-left: 20px;
 }
 
 .session-button,
 input[type="submit"] {
   cursor: pointer;
-  width: 76%;
+  width: 75%;
   height: 40px;
   background-color: white;
   color: grey;
@@ -220,27 +213,31 @@ input[type="submit"] {
 .login-main {
   // border: 3px solid yellow;
   // margin-bottom: 10px;
-  position: relative;
+  // position: relative;
   display: flex;
   clear: both;
   height: 100%;
+  overflow: auto;
+  padding-bottom: 135px;
 }
 
 .login-left {
   position: relative;
   // border: 1px solid black;
-  width: 48%;
+  width: 50%;
   height: 100%;
-  display: block;
+  // display: flex;
   float: left;
   background-color: rgb(184, 180, 180);
+  // z-index: 1;
+  z-index: 1010101010;
 }
 
 .login-cow-div {
   // border: 2px solid green;
   display: flex;
   justify-content: center;
-  margin: 13px 0 0 5px;
+  margin: 20px 0 0 5px;
 }
 
 .blockquote-main {
@@ -312,9 +309,12 @@ input[type="submit"] {
   color: black;
   // border: 2px solid black;
   display: block;
-  position: static;
+  position: absolute;
   bottom: 0;
   width: 100%;
+  height: 75px;
+  padding: 30px;
+  clear: both;
   // box-sizing: border-box;
 }
 
@@ -344,6 +344,7 @@ footer a:hover {
   padding-bottom: 10px;
   text-align: center;
   font-size: 12px;
+  margin-top: 10px;
 }
 
 
@@ -354,3 +355,59 @@ footer a:hover {
 }
 
 
+// ----- user page ----- //
+
+.calvin-hobbs-main {
+  height: 100%;
+  width: auto;
+}
+
+.calvin-hobbs {
+  border: 1px solid black;
+  float: left;
+  margin: 10% 25%;
+  // display: flex;
+  // position: relative;
+  width: 50%;
+  height: 50%;
+}
+
+// .rotate:hover {
+//   -webkit-transform: rotateZ(10deg);
+//   -ms-transform: rotateZ(10deg);    
+//   transform: rotateZ(10deg);
+// }
+
+.header-group {
+  // border: 2px solid red;
+  background-color: rgb(71, 120, 212);
+  display: flex;
+  justify-content: space-between;
+  // margin: 0 auto 20px;
+  padding: 0 40px;
+  border-bottom: 1px solid transparent;
+}
+
+.header-logout-button {
+  cursor: pointer;
+  width: 10%;
+  height: 40px;
+  background-color: white;
+  color: grey;
+  margin-top: 7px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 15px;
+  font-family: American Typewriter, serif;
+  margin: 5px;
+}
+
+.header-logout-button:hover {
+  opacity: .8;
+}
+
+.workinprogress {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+}
