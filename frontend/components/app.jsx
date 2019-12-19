@@ -4,6 +4,11 @@ import { Route, Switch } from 'react-router-dom';
 
 import LogInFormContainer from '../components/session_form/login_form_container';
 import SignUpFormContainer from '../components/session_form/signup_form_container';
+import ListIndexContainer from '../components/lists/list_index_container';
+import ListShowContainer from '../components/lists/list_show_container';
+import EditListContainer from '../components/lists/edit_list_form_container';
+import CreateListContainer from '../components/lists/create_list_form_container';
+
 
 import { AuthRoute } from "../util/route_util";
 
@@ -14,36 +19,55 @@ class App extends React.Component {
 
   render() {
     return (
-
-      <div className='greeting-container group'>
+      <div className="greeting-container group">
         <header>
           <GreetingContainer />
         </header>
 
-      
         {/* <div>
           <img className='calvin-hobbs rotate split' src={window.calvin_and_hobbsURL} />
         </div> */}
 
-        
         <Switch>
           <AuthRoute exact path="/login" component={LogInFormContainer} />
           <AuthRoute exact path="/signup" component={SignUpFormContainer} />
+          <Route path="/lists/:listId/edit" component={EditListContainer} />
+          <Route exact path="/lists" component={ListIndexContainer} />
+          <Route exact path="/lists/:listId" component={ListShowContainer} />
+          <Route path="/lists/new" component={CreateListContainer} />
         </Switch>
 
-        <div className='group'></div>
-        <footer>
-          <div className='footer-container'>
-            <div className='footer-img'>
-              {/* insert image */}
-            </div>
-            <div className='footer-input'>
-              <ul className='footer-list'>
-                <li><a href='https://github.com/lee025/All-the-Things/wiki/MVP-List'>MVP List</a></li>
-                <li><a href='https://github.com/lee025/All-the-Things/wiki/Schema'>Schema</a></li>
-                <li><a href='https://github.com/lee025/All-the-Things/wiki/Sample-State'>Sample State</a></li>
-                <li><a href='https://github.com/lee025/All-the-Things/wiki/Frontend-Routes'>Frontend Routes</a></li>
-                <li><a href='https://github.com/lee025/All-the-Things/wiki/Backend-Routes'>Backend Routes</a></li>
+        <div className="group"></div>
+        <footer className='footer-main'>
+          <div className="footer-container">
+            <div className="footer-img">{/* insert image */}</div>
+            <div className="footer-input">
+              <ul className="footer-list">
+                <li>
+                  <a href="https://github.com/lee025/All-the-Things/wiki/MVP-List">
+                    MVP List
+                  </a>
+                </li>
+                <li>
+                  <a href="https://github.com/lee025/All-the-Things/wiki/Schema">
+                    Schema
+                  </a>
+                </li>
+                <li>
+                  <a href="https://github.com/lee025/All-the-Things/wiki/Sample-State">
+                    Sample State
+                  </a>
+                </li>
+                <li>
+                  <a href="https://github.com/lee025/All-the-Things/wiki/Frontend-Routes">
+                    Frontend Routes
+                  </a>
+                </li>
+                <li>
+                  <a href="https://github.com/lee025/All-the-Things/wiki/Backend-Routes">
+                    Backend Routes
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
@@ -51,7 +75,6 @@ class App extends React.Component {
             &copy; 2019 All the Things. All rights reserved.
           </small>
         </footer>
-
       </div>
     );
   }
@@ -63,12 +86,31 @@ export default App;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // const App = () => (
 //   <div className='greeting-container'>
 //     <header>
 //       <GreetingContainer />
 //     </header>
-  
 
 //   <div className='greeting-main rotate'>
 //       <img className='calvin-hobbs' src={window.calvin_and_hobbsURL} />

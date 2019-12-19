@@ -8,6 +8,7 @@ class User < ApplicationRecord
   after_initialize :ensure_token
 
 ######## [ADD Validations after other tables have been made]
+  has_many :lists
 
   #SPIRE
   def self.find_by_credentials(username, password)
