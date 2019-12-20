@@ -22,7 +22,7 @@ import { AuthRoute, ProtectedRoute } from "../util/route_util";
       <Switch>
         <AuthRoute exact path="/" component={LogInFormContainer} />
         <AuthRoute exact path="/signup" component={SignUpFormContainer} />
-        <ProtectedRoute exact path="/lists" component={ListIndexContainer} />
+        {/* <ProtectedRoute exact path="/lists" component={ListIndexContainer} /> */}
         <Route path="/lists/:listId/edit" component={EditListContainer} />
         <Route exact path="/lists/:listId" component={ListShowContainer} />
         <Route path="/lists/new" component={CreateListContainer} />

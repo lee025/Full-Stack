@@ -30,7 +30,7 @@ body {
   font-family: American Typewriter, serif;
   position: relative;
   min-height: 100%;
-  bottom: 0;
+  // bottom: 0;
   // margin: 0;
   // min-height: 100%;
 }
@@ -441,10 +441,10 @@ footer a:hover {
   height: 100%;
   width: 25%; // change with JS
   // position: relative;
-  position: fixed; // stay in place
+  position: absolute; // stay in place
   // z-index: 1; // stay on top
   // top: 0;
-  left: 0;
+  // lefst: -190;
   background-color: black;
   overflow-x: hidden; // disable horizontal scroll
   // overflow-y: auto;
@@ -468,6 +468,82 @@ footer a:hover {
 
 .list-index-item {
   margin: 10px;
+}
+
+// -------- nav dropdown ---------- // 
+
+.nav-list-title a {
+  // display: inline-block;
+  display: block;
+  float: left;
+  margin-right: 5px;
+}
+
+.nav-dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.dd-button {
+  display: inline-block;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 10px 30px 10px 20px;
+  background-color: #ffffff;
+  cursor: pointer;
+  white-space: nowrap;
+
+}
+
+.dd-button:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid transparent;
+}
+
+.dd-button:hover{
+  opacity: .8;
+}
+
+.dd-input {
+  display: none;
+}
+
+.dd-menu {
+  position: absolute;
+  top: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0;
+  margin: 2px 0 0 0;
+  box-shadow: 0 0 6px 0 rgba(0,0,0,0.1);
+  background-color: #ffffff;
+  list-style-type: none;
+}
+
+.dd-input + .dd-menu {
+  display: none;
+}
+
+.dd-input:checked + .dd-menu {
+  display: block;
+}
+
+.dd-menu li {
+  padding: 5px 10px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.dd-menu li:hover {
+  opacity: .8;
 }
 
 

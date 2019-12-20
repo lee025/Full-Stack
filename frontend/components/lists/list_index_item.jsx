@@ -5,12 +5,26 @@ import { deleteList } from '../../util/list_api_util';
 const ListIndexItem = (props) => {
   console.log(props)
   return (
-    <li className='list-index-item'>
-      <Link to={`/lists/${props.list.id}`}>{props.list.title}</Link>
-      <Link to={`/lists/${props.list.id}/edit`}>Rename List</Link>
-      <button onClick={() => props.deleteList(props.listId)}>Remove List</button>
-    </li>
-    )
+    <label className="nav-dropdown">
+      <div className="dd-button"> + </div>
+      <span className='nav-list-title'>
+        <Link to={`/lists/${props.list.id}`}>{props.list.title}</Link>
+      </span>
+      <input type="checkbox" className="dd-input" id="test" />
+      <div className="dd-menu">
+        <ul className="list-index-item">
+          <li>
+            <Link to={`/lists/${props.list.id}/edit`}>Rename List</Link>
+          </li>
+          <li>
+            <button onClick={() => props.deleteList(props.listId)}>
+              Remove List
+            </button>
+          </li>
+        </ul>
+      </div>
+    </label>
+  );
   }
 
 
