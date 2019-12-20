@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { deleteList } from '../../util/list_api_util';
+import { Link, Redirect } from 'react-router-dom';
+
 
 const ListIndexItem = (props) => {
-  console.log(props)
+  // console.log(props)
   return (
     <label className="nav-dropdown">
       <div className="dd-button"> + </div>
@@ -16,8 +16,13 @@ const ListIndexItem = (props) => {
           <li>
             <Link to={`/lists/${props.list.id}/edit`}>Rename List</Link>
           </li>
+          {/* <li>
+            <button onClick={() => props.updateList(props.list.id)}>
+              Rename List
+            </button>
+          </li> */}
           <li>
-            <button onClick={() => props.deleteList(props.listId)}>
+            <button onClick={() => props.deleteList(props.list.id)} >
               Remove List
             </button>
           </li>

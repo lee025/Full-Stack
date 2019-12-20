@@ -440,8 +440,8 @@ footer a:hover {
   // min-height: calc(100vh - 70px);
   height: 100%;
   width: 25%; // change with JS
-  position: static;
-  // position: fixed; // stay in place
+  // position: static;
+  position: fixed; // stay in place
   // z-index: 1; // stay on top
   // top: 0;
   // left: -190;

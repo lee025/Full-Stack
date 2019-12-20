@@ -5,6 +5,7 @@ import { fetchList, updateList } from '../../actions/list_actions';
 class EditListForm extends React.Component {
   
   componentDidMount(){
+    console.log(this.props);
     this.props.fetchList(this.props.match.params.listId)
   }
 
@@ -13,7 +14,7 @@ class EditListForm extends React.Component {
 
     if (!list) return null;
     return (
-      <PostForm action={action} formType={formType} post={post}/>
+      <ListForm action={action} formType={formType} post={post}/>
     );
   }
 };

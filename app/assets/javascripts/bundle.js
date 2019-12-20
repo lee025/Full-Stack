@@ -339,6 +339,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lists_list_index_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../lists/list_index_container */ "./frontend/components/lists/list_index_container.jsx");
 /* harmony import */ var _lists_create_list_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../lists/create_list_form_container */ "./frontend/components/lists/create_list_form_container.jsx");
 /* harmony import */ var _lists_edit_list_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../lists/edit_list_form_container */ "./frontend/components/lists/edit_list_form_container.jsx");
+/* harmony import */ var _lists_list_show_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../lists/list_show_container */ "./frontend/components/lists/list_show_container.jsx");
+
 
 
 
@@ -520,6 +522,7 @@ function (_React$Component) {
   _createClass(EditListForm, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      console.log(this.props);
       this.props.fetchList(this.props.match.params.listId);
     }
   }, {
@@ -530,7 +533,7 @@ function (_React$Component) {
           formType = _this$props.formType,
           list = _this$props.list;
       if (!list) return null;
-      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(PostForm, {
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(ListForm, {
         action: action,
         formType: formType,
         post: post
@@ -610,7 +613,10 @@ function (_React$Component) {
 
     _classCallCheck(this, ListForm);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(ListForm).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ListForm).call(this, props)); // this.state = {
+    //   title: '',
+    // };
+
     _this.state = _this.props.list;
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
@@ -670,6 +676,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _list_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./list_index_item */ "./frontend/components/lists/list_index_item.jsx");
 /* harmony import */ var _create_list_form_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./create_list_form_container */ "./frontend/components/lists/create_list_form_container.jsx");
+/* harmony import */ var _edit_list_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit_list_form_container */ "./frontend/components/lists/edit_list_form_container.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -687,6 +694,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -713,7 +721,16 @@ function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           lists = _this$props.lists,
-          deleteList = _this$props.deleteList;
+          deleteList = _this$props.deleteList,
+          updateList = _this$props.updateList;
+      var listItems = lists.map(function (list) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_list_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          list: list,
+          key: list.id,
+          deleteList: deleteList,
+          updateList: updateList
+        });
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sidenav",
         id: "mySidenav"
@@ -728,13 +745,7 @@ function (_React$Component) {
         className: "a"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "list-index"
-      }, lists.map(function (list) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_list_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          list: list,
-          key: list.id,
-          deleteList: deleteList
-        });
-      }))));
+      }, listItems)));
     }
   }]);
 
@@ -758,6 +769,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _list_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./list_index */ "./frontend/components/lists/list_index.jsx");
 /* harmony import */ var _actions_list_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/list_actions */ "./frontend/actions/list_actions.js");
+/* harmony import */ var _util_list_api_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/list_api_util */ "./frontend/util/list_api_util.js");
+
 
 
 
@@ -772,6 +785,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchLists: function fetchLists() {
       return dispatch(Object(_actions_list_actions__WEBPACK_IMPORTED_MODULE_2__["fetchLists"])());
+    },
+    updateList: function updateList(list) {
+      return dispatch(Object(_util_list_api_util__WEBPACK_IMPORTED_MODULE_3__["updateList"])(list));
     },
     deleteList: function deleteList(listId) {
       return dispatch(Object(_actions_list_actions__WEBPACK_IMPORTED_MODULE_2__["deleteList"])(listId));
@@ -795,13 +811,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _util_list_api_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../util/list_api_util */ "./frontend/util/list_api_util.js");
-
 
 
 
 var ListIndexItem = function ListIndexItem(props) {
-  console.log(props);
+  // console.log(props)
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     className: "nav-dropdown"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -822,7 +836,7 @@ var ListIndexItem = function ListIndexItem(props) {
     to: "/lists/".concat(props.list.id, "/edit")
   }, "Rename List")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     onClick: function onClick() {
-      return props.deleteList(props.listId);
+      return props.deleteList(props.list.id);
     }
   }, "Remove List")))));
 };
@@ -912,9 +926,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  console.log(state.lists);
+  // console.log(state.lists)
   return {
-    list: state.lists[ownProps.match.params.listId]
+    list: state.entites.lists[ownProps.match.params.listId]
   };
 };
 

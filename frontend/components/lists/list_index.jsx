@@ -1,6 +1,7 @@
 import React from 'react';
 import ListIndexItem from './list_index_item';
 import CreateListContainer from './create_list_form_container';
+import EditListContainer from './edit_list_form_container'
 
 class ListIndex extends React.Component {
   constructor(props){
@@ -12,7 +13,10 @@ class ListIndex extends React.Component {
   }
 
   render(){
-    const { lists, deleteList } = this.props;
+    const { lists, deleteList, updateList } = this.props;
+
+    const listItems = lists.map(list => (
+        <ListIndexItem list={list} key={list.id} deleteList={deleteList} updateList={updateList}/>));
 
     return (
       <div className="sidenav" id="mySidenav">
@@ -22,18 +26,11 @@ class ListIndex extends React.Component {
         <h2>TEST SIDE NAV</h2>
         <div className="a">
           <CreateListContainer />
+          {/* <EditListContainer /> */}
         </div>
         <div className="a">
           <ul className="list-index">
-            {lists.map(list => {
-              return (
-                <ListIndexItem
-                  list={list}
-                  key={list.id}
-                  deleteList={deleteList}
-                />
-              );
-            })}
+            {listItems}
           </ul>
         </div>
       </div>

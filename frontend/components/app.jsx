@@ -15,17 +15,16 @@ import { AuthRoute, ProtectedRoute } from "../util/route_util";
   const App = () => (
     <div className="greeting-container group">
       {/* <Redirect to="/login" /> */}
-      {/* <header> */}
+
         <GreetingContainer />
-      {/* </header> */}
 
       <Switch>
         <AuthRoute exact path="/" component={LogInFormContainer} />
         <AuthRoute exact path="/signup" component={SignUpFormContainer} />
         <ProtectedRoute path="/lists" component={HomePageContainer} />
-        {/* <Route path="/lists/:listId/edit" component={EditListContainer} />
-        <Route exact path="/lists/:listId" component={ListShowContainer} />
-        <Route path="/lists/new" component={CreateListContainer} /> */}
+        {/* <Route path="/lists/:listId/edit" component={EditListContainer} /> */}
+        {/* <Route exact path="/lists/:listId" component={ListShowContainer} /> */}
+        {/* <Route path="/lists/new" component={CreateListContainer} /> */}
         <Redirect to='/' />
       </Switch>
 

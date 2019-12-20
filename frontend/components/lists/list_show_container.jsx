@@ -4,9 +4,10 @@ import { fetchList } from '../../actions/list_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state.lists)
+  // console.log(state.lists)
+
   return {
-    list: state.lists[ownProps.match.params.listId]
+    list: state.entites.lists[ownProps.match.params.listId]
   }
 };
 

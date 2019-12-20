@@ -3,6 +3,7 @@ import { Link, Redirect, Route } from "react-router-dom";
 import ListIndexContainer from '../lists/list_index_container';
 import CreateListConainter from '../lists/create_list_form_container';
 import EditListContainer from '../lists/edit_list_form_container';
+import ListShowContainer from '../lists/list_show_container';
 
 const Greeting = ({ currentUser, logout }) => {
   const sessionLinks = () => (
@@ -39,7 +40,7 @@ const Greeting = ({ currentUser, logout }) => {
 
       <article className="user-main">
         {/*  */}
-        {/* <EditListContainer /> */}
+  
         <div className="calvin-hobbs-main">
           <h2 className="workinprogress">Work In Progress...</h2>
           <img
