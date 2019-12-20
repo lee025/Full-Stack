@@ -1,7 +1,8 @@
 import React from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, Route } from "react-router-dom";
 import ListIndexContainer from '../lists/list_index_container';
 import CreateListConainter from '../lists/create_list_form_container';
+import EditListContainer from '../lists/edit_list_form_container';
 
 const Greeting = ({ currentUser, logout }) => {
   const sessionLinks = () => (
@@ -33,21 +34,12 @@ const Greeting = ({ currentUser, logout }) => {
       </header>
       <div className="group"></div>
 
-      {/* side nav */}
-      <div className="sidenav" id="mySidenav">
-        <h2>TEST SIDE NAV</h2>
-        <div className="a">
-          <CreateListConainter />
-        </div>
-        <div className="a">
-          <ListIndexContainer />
-        </div>
-      </div>
 
       {/* main content-listShow/taskShow */}
 
       <article className="user-main">
         {/*  */}
+        {/* <EditListContainer /> */}
         <div className="calvin-hobbs-main">
           <h2 className="workinprogress">Work In Progress...</h2>
           <img

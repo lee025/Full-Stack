@@ -3,7 +3,7 @@ import React from 'react';
 import { fetchList, updateList } from '../../actions/list_actions';
 
 class EditListForm extends React.Component {
-
+  
   componentDidMount(){
     this.props.fetchList(this.props.match.params.listId)
   }
@@ -18,11 +18,16 @@ class EditListForm extends React.Component {
   }
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  list: state.lists[ownProps.match.params.listId],
+const mapStateToProps = (state, ownProps) => {
+
+  // console.log(state);
+
+  return {
+  list: state.entities.lists[ownProps.match.params.listId],
   formType: 'Rename List',
   button: 'Save'
-});
+  }
+};
 
 const mapDispatchToProps = dispatch => ({
   fetchList: listId => dispatch(fetchList(listId)),

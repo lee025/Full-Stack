@@ -440,17 +440,16 @@ footer a:hover {
   // min-height: calc(100vh - 70px);
   height: 100%;
   width: 25%; // change with JS
-  // position: relative;
-  position: absolute; // stay in place
+  position: static;
+  // position: fixed; // stay in place
   // z-index: 1; // stay on top
   // top: 0;
-  // lefst: -190;
-  background-color: black;
+  // left: -190;
+  background-color: transparent;
   overflow-x: hidden; // disable horizontal scroll
   // overflow-y: auto;
   padding-top: 60px; 
   transition: 0.5s; // effect to slide in sidnav
-  // margin-top: 44px;
 }
 
 .a {
@@ -471,6 +470,25 @@ footer a:hover {
 }
 
 // -------- nav dropdown ---------- // 
+
+.sidenav {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.nav-logo-calvin-div {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 0 5px;
+  padding: 10px 0 10px 0;
+
+}
+
+.nav-calvin-logo {
+  display: block;
+  height: 115px;
+  width: 115px;
+}
 
 .nav-list-title a {
   // display: inline-block;
@@ -534,6 +552,7 @@ footer a:hover {
 
 .dd-input:checked + .dd-menu {
   display: block;
+  
 }
 
 .dd-menu li {
