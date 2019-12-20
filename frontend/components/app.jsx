@@ -10,24 +10,25 @@ import EditListContainer from '../components/lists/edit_list_form_container';
 import CreateListContainer from '../components/lists/create_list_form_container';
 
 
-import { AuthRoute } from "../util/route_util";
+import { AuthRoute, ProtectedRoute } from "../util/route_util";
 
   const App = () => (
     <div className="greeting-container group">
+      {/* <Redirect to="/login" /> */}
       <header>
         <GreetingContainer />
       </header>
-      <Redirect to='/login' />
+
       <Switch>
-        <Route exact path="/login" component={LogInFormContainer} />
-        <Route exact path="/signup" component={SignUpFormContainer} />
+        <AuthRoute exact path="/" component={LogInFormContainer} />
+        <AuthRoute exact path="/signup" component={SignUpFormContainer} />
+        <ProtectedRoute exact path="/lists" component={ListIndexContainer} />
         <Route path="/lists/:listId/edit" component={EditListContainer} />
-        <Route exact path="/lists" component={ListIndexContainer} />
         <Route exact path="/lists/:listId" component={ListShowContainer} />
         <Route path="/lists/new" component={CreateListContainer} />
       </Switch>
 
-      <div className="group"></div>
+      <div className="group2"></div>
       <footer className="footer-main">
         <div className="footer-container">
           <div className="footer-img">{/* insert image */}</div>

@@ -22,18 +22,6 @@ label, textarea, article, footer, small {
   display: none;
 }
 
-#root {
-  border: 2px solid green;
-  // background-color: #3292f2;
-  position: absolute;
-  background-color: rgb(194, 192, 189);
-  color: white;
-  min-height: 100%;
-  width: 100%;
-  margin-top: 0;
-}
-
-
 body {
   font-family: "Roboto", sans-serif;
   font-size: 16px;
@@ -41,15 +29,28 @@ body {
   background: #eee;
   font-family: American Typewriter, serif;
   position: relative;
-  height: 100%;
+  min-height: 100%;
+  bottom: 0;
   // margin: 0;
   // min-height: 100%;
 }
 
-#wrapper {
-  min-height: 100%;
+#root {
+  // border: 2px solid green;
+  // background-color: #3292f2;
   position: relative;
+  background-color: rgb(194, 192, 189);
+  color: white;
+  min-height: 100%;
+  width: 100%;
+  margin-top: 0;
+
 }
+
+// #wrapper {
+//   min-height: 100%;
+//   position: relative;
+// }
 
 ul {
   list-style-type: none;
@@ -58,6 +59,7 @@ ul {
 
 .greeing-container {
   list-style-type: none;
+  position: relative;
 }
 
 // top nav bar
@@ -180,7 +182,7 @@ nav a:hover {
 .session-button,
 input[type="submit"] {
   cursor: pointer;
-  width: 75%;
+  width: 73%;
   height: 40px;
   background-color: white;
   color: grey;
@@ -218,7 +220,7 @@ input[type="submit"] {
   clear: both;
   height: 100%;
   overflow: auto;
-  padding-bottom: 135px;
+  // padding-bottom: 135px;
 }
 
 .login-left {
@@ -229,15 +231,20 @@ input[type="submit"] {
   // display: flex;
   float: left;
   background-color: rgb(184, 180, 180);
-  // z-index: 1;
-  z-index: 1010101010;
+  // z-index: 1010101010;
 }
 
-.login-cow-div {
+.login-calvin-div {
   // border: 2px solid green;
   display: flex;
   justify-content: center;
   margin: 20px 0 0 5px;
+}
+
+.calvin-logo {
+  height: 115px;
+  width: 115px;
+  margin-top: 35px;
 }
 
 .blockquote-main {
@@ -245,7 +252,7 @@ input[type="submit"] {
   box-sizing: border-box;
   margin-left: 25%;
   display: block;
-  margin-top: 250px;
+  margin-top: 300px;
   margin-bottom: 22px;
   font-size: 22px;
 }
@@ -272,23 +279,22 @@ input[type="submit"] {
   margin-bottom: 20%;
 }
 
-.avatar-text-main {
+.calvin-box-text-main {
   display: flex;
   justify-content: center;
 }
 
-.avatar-bob {
+.calvin-box {
   display: block;
   float: left;
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.85);
-  margin-right: -4px;
-  margin-left: 20px;
+  border: 2px solid rgb(71, 120, 212);
+  margin-left: 15px;
 }
 
-.avatar-bob-text {
+.calvin-box-text {
   // border: 1px solid black;
   display: block;
   padding: 15px 0 0 0;
@@ -309,9 +315,9 @@ input[type="submit"] {
   color: black;
   // border: 2px solid black;
   display: block;
-  position: absolute;
+  position: static;
   bottom: 0;
-  width: 100%;
+  width: 96.6%;
   height: 75px;
   padding: 30px;
   clear: both;
@@ -354,10 +360,24 @@ footer a:hover {
   clear: both;
 }
 
+.group2:before {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 
 // ----- user page ----- //
 
+.workinprogress {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+}
+
 .calvin-hobbs-main {
+  // display: flex;
+  // position: relative;
   height: 100%;
   width: auto;
 }
@@ -365,11 +385,13 @@ footer a:hover {
 .calvin-hobbs {
   border: 1px solid black;
   float: left;
-  margin: 10% 25%;
-  // display: flex;
+  margin: 20% 25% 20% 25%;
+  display: flex;
+  justify-content: center;
   // position: relative;
-  width: 50%;
-  height: 50%;
+  width: 40%;
+  height: 40%;
+  clear: both;
 }
 
 // .rotate:hover {
@@ -381,11 +403,13 @@ footer a:hover {
 .header-group {
   // border: 2px solid red;
   background-color: rgb(71, 120, 212);
+  position: static;
   display: flex;
   justify-content: space-between;
   // margin: 0 auto 20px;
   padding: 0 40px;
   border-bottom: 1px solid transparent;
+
 }
 
 .header-logout-button {
@@ -406,8 +430,51 @@ footer a:hover {
   opacity: .8;
 }
 
-.workinprogress {
-  display: flex;
-  justify-content: center;
-  margin-top: 5%;
+
+
+
+// -------- side nav ---------- //
+
+.sidenav {
+  border: 3px solid red;
+  // min-height: calc(100vh - 70px);
+  height: 100%;
+  width: 25%; // change with JS
+  // position: relative;
+  position: fixed; // stay in place
+  // z-index: 1; // stay on top
+  // top: 0;
+  left: 0;
+  background-color: black;
+  overflow-x: hidden; // disable horizontal scroll
+  // overflow-y: auto;
+  padding-top: 60px; 
+  transition: 0.5s; // effect to slide in sidnav
+  // margin-top: 44px;
+}
+
+.a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.list-index-item a{
+  display: block;
+}
+
+.list-index-item {
+  margin: 10px;
+}
+
+
+
+
+.user-main {
+  width: 75%;
+  position: relative;
+  float: right;
 }

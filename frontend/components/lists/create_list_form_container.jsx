@@ -4,7 +4,8 @@ import { createList } from '../../actions/list_actions';
 
 const mapStateToProps = state => ({
   list: { title: ''},
-  formType: 'Add a list'
+  formType: 'Add a list',
+  button: 'Add'
 })
 
 const mapDispatchToProps = dispatch => ({

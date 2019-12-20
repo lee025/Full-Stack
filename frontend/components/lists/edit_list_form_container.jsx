@@ -20,7 +20,8 @@ class EditListForm extends React.Component {
 
 const mapStateToProps = (state, ownProps) => ({
   list: state.lists[ownProps.match.params.listId],
-  formType: 'Rename List'
+  formType: 'Rename List',
+  button: 'Save'
 });
 
 const mapDispatchToProps = dispatch => ({

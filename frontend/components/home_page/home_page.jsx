@@ -14,8 +14,6 @@
 
 //   render() {
 
-//     debugger;
-
 //     return (
 
 //       <div className='greeting-container'>

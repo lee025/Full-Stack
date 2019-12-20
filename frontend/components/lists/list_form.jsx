@@ -1,7 +1,7 @@
 import React from 'react';
 
 class ListForm extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.state = this.props.list;
@@ -14,31 +14,30 @@ class ListForm extends React.Component {
   }
 
   update(field) {
-    return e => this.setState( {[field]: e.currentTarget.value} );
-  }
-
-  displayButton() {
-    this.props.formType === "Add a list" ? 'Add' : 'Save' 
+    return e => this.setState({ [field]: e.currentTarget.value });
   }
 
   render() {
-
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <label value={this.props.formType}> 
-            <input 
-              type='text'
+          <label className='add-list-label'>
+            Add a List 
+            <input
+              className='add-list-input'
+              type="text"
               value={this.state.title}
-              onChange={this.update('title')}
+              onChange={this.update("title")}
             />
           </label>
-          <button type='submit'>{this.displayButton()}</button>
+          <button className='add-list-button' 
+              onClick={this.handleSubmit}>
+                {this.props.button}
+          </button>
         </form>
       </div>
-    )
+    );
   }
-
 }
 
 export default ListForm;

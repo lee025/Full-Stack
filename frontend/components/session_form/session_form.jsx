@@ -22,7 +22,7 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user).then(() => this.props.history.push("/"));
+    this.props.processForm(user).then(() => this.props.history.push("/lists"));
   }
 
   renderErrors() {
@@ -36,11 +36,11 @@ class SessionForm extends React.Component {
   }
 
   componentDidUpdate(prevState) {
-    console.log(this.props.errors);
+    // console.log(this.props.errors);
     // console.log(this.props.formType);
     var errors = this.props.errors;
     var form = this.props.formType;
-    console.log(prevState.formType);
+    // console.log(prevState.formType);
     // console.log(form)
     // if (prevState.formType !== nextState.formType){
 
@@ -54,11 +54,11 @@ class SessionForm extends React.Component {
   render() {
     return (
       <section className="login-main" id='wrapper'>
-        <article className="login-left split group">
+        <article className="login-left split">
           <div className="login-second">
             <div>
-              <div className="login-cow-div">
-                <img className="cow-logo" src={window.cow_logoURL} />
+              <div className="login-calvin-div">
+                <img className="calvin-logo" src={window.calvin_logoURL} />
               </div>
             </div>
 
@@ -70,18 +70,18 @@ class SessionForm extends React.Component {
               <footer>- Tina Fey, Bossy Pants</footer>
             </blockquote>
 
-            <div className="avatar-text-main">
+            <div className="calvin-box-text-main">
               <div>
-                <img className="avatar-bob" src={window.avatar_bobURL} />
+                <img className="calvin-box" src={window.calvin_boxURL} />
               </div>
-              <div className="avatar-bob-text">
+              <div className="calvin-box-text">
                 Quotes curated by Bob T. Monkey, renowned productivity expert
               </div>
             </div>
           </div>
         </article>
 
-        <article className="login-right group">
+        <article className="login-right">
           <form
             onSubmit={this.handleSubmit}
             className="login-form-box split"

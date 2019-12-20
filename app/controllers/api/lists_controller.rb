@@ -3,12 +3,12 @@ class Api::ListsController < ApplicationController
 
   def new
     @list = List.new
-    render 'api/lists'
+    # render 'api/lists'
   end
 
   def index
     @lists = List.all 
-    render 'api/lists'
+    # render 'api/lists'
   end
 
   def show

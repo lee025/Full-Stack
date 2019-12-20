@@ -1,6 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import EditListContainer from '../lists/edit_list_form_container';
+import { Link, Redirect } from "react-router-dom";
+import ListIndexContainer from '../lists/list_index_container';
+import CreateListConainter from '../lists/create_list_form_container';
 
 const Greeting = ({ currentUser, logout }) => {
   const sessionLinks = () => (
@@ -10,7 +11,7 @@ const Greeting = ({ currentUser, logout }) => {
           <h1 className="greeting-header-logo">All the Things!</h1>
           <ul className="greeting-header-list">
             <li>
-              <Link to="/login">Login</Link>
+              <Link to="/">Login</Link>
             </li>
             <li>
               <Link to="/signup">Sign up!</Link>
@@ -21,23 +22,43 @@ const Greeting = ({ currentUser, logout }) => {
     </div>
   );
 
-  const personalGreeting = () => (
+
+  const userHome = () => (
     <section>
       <header className="header-group">
         <h2 className="header-name">Hi, {currentUser.username}!</h2>
-        {/* <EditListContainer /> */}
         <button className="header-logout-button" onClick={logout}>
           Log Out
         </button>
       </header>
-      <h2 className='workinprogress'>Work In Progress...</h2>
-      <div className='calvin-hobbs-main'>
-        <img className='calvin-hobbs rotate split' src={window.calvin_and_hobbsURL} />
+      <div className="group"></div>
+
+      {/* side nav */}
+      <div className="sidenav" id="mySidenav">
+        <h2>TEST SIDE NAV</h2>
+        <div className="a">
+          <CreateListConainter />
+        </div>
+        <div className="a">
+          <ListIndexContainer />
+        </div>
       </div>
+
+      {/* main content-listShow/taskShow */}
+
+      <article className="user-main">
+        {/*  */}
+        <div className="calvin-hobbs-main">
+          <h2 className="workinprogress">Work In Progress...</h2>
+          <img
+            className="calvin-hobbs rotate split"
+            src={window.calvin_and_hobbsURL}
+          />
+        </div>
+      </article>
     </section>
   );
-
-  return currentUser ? personalGreeting() : sessionLinks()
+  return currentUser ? userHome() : sessionLinks()
 };
 
 export default Greeting;
