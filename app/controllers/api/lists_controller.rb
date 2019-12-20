@@ -40,7 +40,7 @@ class Api::ListsController < ApplicationController
   def destroy
     @list = current_user.lists.find(params[:id])
     @list.destroy
-    render 'api/lists'
+
   end
 
   private

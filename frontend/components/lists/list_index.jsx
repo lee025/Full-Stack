@@ -23,19 +23,47 @@ class ListIndex extends React.Component {
         <div className="nav-logo-calvin-div">
           <img className="nav-calvin-logo" src={window.calvin_logoURL} />
         </div>
-        <h2>TEST SIDE NAV</h2>
         <div className="a">
           <CreateListContainer />
           {/* <EditListContainer /> */}
         </div>
-        <div className="a">
-          <ul className="list-index">
-            {listItems}
-          </ul>
-        </div>
+
+        {/* List dropdown */}
+        <label className="main-dropdown">
+          <div className="main-dd-button">+</div>
+          <span>LISTS</span>
+          <input type="checkbox" className="main-dd-input" />
+            <ul className="main-dd-menu">
+              {listItems}
+            </ul>
+        </label>
       </div>
     );
   }
 };
 
 export default ListIndex;
+
+
+
+
+
+
+
+
+  //   return (
+  //     <div className="sidenav" id="mySidenav">
+  //       <div className="nav-logo-calvin-div">
+  //         <img className="nav-calvin-logo" src={window.calvin_logoURL} />
+  //       </div>
+  //       <div className="a">
+  //         <CreateListContainer />
+  //         {/* <EditListContainer /> */}
+  //       </div>
+  //       <h3 className>LISTS</h3>
+  //       <div className="a">
+  //         <ul className="list-index">{listItems}</ul>
+  //       </div>
+  //     </div>
+  //   );
+  // }

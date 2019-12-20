@@ -522,7 +522,7 @@ function (_React$Component) {
   _createClass(EditListForm, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log(this.props);
+      // console.log(this.props);
       this.props.fetchList(this.props.match.params.listId);
     }
   }, {
@@ -739,12 +739,17 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "nav-calvin-logo",
         src: window.calvin_logoURL
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "TEST SIDE NAV"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "a"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_create_list_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "a"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "list-index"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_create_list_form_container__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "main-dropdown"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "main-dd-button"
+      }, "+"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "LISTS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "checkbox",
+        className: "main-dd-input"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "main-dd-menu"
       }, listItems)));
     }
   }]);
@@ -753,7 +758,22 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 ;
-/* harmony default export */ __webpack_exports__["default"] = (ListIndex);
+/* harmony default export */ __webpack_exports__["default"] = (ListIndex); //   return (
+//     <div className="sidenav" id="mySidenav">
+//       <div className="nav-logo-calvin-div">
+//         <img className="nav-calvin-logo" src={window.calvin_logoURL} />
+//       </div>
+//       <div className="a">
+//         <CreateListContainer />
+//         {/* <EditListContainer /> */}
+//       </div>
+//       <h3 className>LISTS</h3>
+//       <div className="a">
+//         <ul className="list-index">{listItems}</ul>
+//       </div>
+//     </div>
+//   );
+// }
 
 /***/ }),
 
@@ -820,20 +840,21 @@ var ListIndexItem = function ListIndexItem(props) {
     className: "nav-dropdown"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "dd-button"
-  }, " + "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, "+"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "nav-list-title"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/lists/".concat(props.list.id)
   }, props.list.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "checkbox",
-    className: "dd-input",
-    id: "test"
+    className: "dd-input"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "dd-menu"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "list-index-item"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/lists/".concat(props.list.id, "/edit")
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: function onClick() {
+      return props.updateList(props.list);
+    }
   }, "Rename List")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     onClick: function onClick() {
       return props.deleteList(props.list.id);
