@@ -5,16 +5,15 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import LogInFormContainer from '../components/session_form/login_form_container';
 import SignUpFormContainer from '../components/session_form/signup_form_container';
 import HomePageContainer from '../components/lists/list_index_container';
-import ListShowContainer from '../components/lists/list_show_container';
-import EditListContainer from '../components/lists/edit_list_form_container';
-import CreateListContainer from '../components/lists/create_list_form_container';
+// import ListShowContainer from '../components/lists/list_show_container';
+// import EditListContainer from '../components/lists/edit_list_form_container';
+// import CreateListContainer from '../components/lists/create_list_form_container';
 
 
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
 
   const App = () => (
     <div className="greeting-container group">
-      {/* <Redirect to="/login" /> */}
 
         <GreetingContainer />
 

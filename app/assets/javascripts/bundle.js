@@ -257,33 +257,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_session_form_login_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/session_form/login_form_container */ "./frontend/components/session_form/login_form_container.js");
 /* harmony import */ var _components_session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/session_form/signup_form_container */ "./frontend/components/session_form/signup_form_container.js");
 /* harmony import */ var _components_lists_list_index_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/lists/list_index_container */ "./frontend/components/lists/list_index_container.jsx");
-/* harmony import */ var _components_lists_list_show_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/lists/list_show_container */ "./frontend/components/lists/list_show_container.jsx");
-/* harmony import */ var _components_lists_edit_list_form_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/lists/edit_list_form_container */ "./frontend/components/lists/edit_list_form_container.jsx");
-/* harmony import */ var _components_lists_create_list_form_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/lists/create_list_form_container */ "./frontend/components/lists/create_list_form_container.jsx");
-/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
+/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
 
 
 
 
 
-
-
-
+ // import ListShowContainer from '../components/lists/list_show_container';
+// import EditListContainer from '../components/lists/edit_list_form_container';
+// import CreateListContainer from '../components/lists/create_list_form_container';
 
 
 
 var App = function App() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "greeting-container group"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_9__["AuthRoute"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_6__["AuthRoute"], {
     exact: true,
     path: "/",
     component: _components_session_form_login_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_9__["AuthRoute"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_6__["AuthRoute"], {
     exact: true,
     path: "/signup",
     component: _components_session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_4__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_9__["ProtectedRoute"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_6__["ProtectedRoute"], {
     path: "/lists",
     component: _components_lists_list_index_container__WEBPACK_IMPORTED_MODULE_5__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
@@ -449,7 +446,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_list_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/list_actions */ "./frontend/actions/list_actions.js");
 
 
-
+ // import { openModal } from '../../actions/modal_actions';
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
@@ -465,7 +462,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     action: function action(list) {
       return dispatch(Object(_actions_list_actions__WEBPACK_IMPORTED_MODULE_2__["createList"])(list));
-    }
+    } // closeModal: () => dispatch(closeModal())
+
   };
 };
 
@@ -745,7 +743,9 @@ function (_React$Component) {
         className: "main-dropdown"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-dd-button"
-      }, "+"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "LISTS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "+"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "main-dropdown-header"
+      }, "LISTS"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox",
         className: "main-dd-input"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
@@ -789,11 +789,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _list_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./list_index */ "./frontend/components/lists/list_index.jsx");
 /* harmony import */ var _actions_list_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/list_actions */ "./frontend/actions/list_actions.js");
-/* harmony import */ var _util_list_api_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../util/list_api_util */ "./frontend/util/list_api_util.js");
 
 
-
-
+ // import { openModal } from '../../actions/modal_actions';
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
@@ -807,11 +805,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       return dispatch(Object(_actions_list_actions__WEBPACK_IMPORTED_MODULE_2__["fetchLists"])());
     },
     updateList: function updateList(list) {
-      return dispatch(Object(_util_list_api_util__WEBPACK_IMPORTED_MODULE_3__["updateList"])(list));
+      return dispatch(Object(_actions_list_actions__WEBPACK_IMPORTED_MODULE_2__["updateList"])(list));
     },
     deleteList: function deleteList(listId) {
       return dispatch(Object(_actions_list_actions__WEBPACK_IMPORTED_MODULE_2__["deleteList"])(listId));
-    }
+    } // openModal: modal => dispatch(openModal(modal))
+
   };
 };
 
@@ -831,38 +830,102 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
 
-var ListIndexItem = function ListIndexItem(props) {
-  // console.log(props)
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    className: "nav-dropdown"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dd-button"
-  }, "+"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "nav-list-title"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/lists/".concat(props.list.id)
-  }, props.list.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "checkbox",
-    className: "dd-input"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dd-menu"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-    className: "list-index-item"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    onClick: function onClick() {
-      return props.updateList(props.list);
+
+var ListIndexItem =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ListIndexItem, _React$Component);
+
+  function ListIndexItem() {
+    _classCallCheck(this, ListIndexItem);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ListIndexItem).apply(this, arguments));
+  }
+
+  _createClass(ListIndexItem, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          list = _this$props.list,
+          updateList = _this$props.updateList,
+          deleteList = _this$props.deleteList;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "nav-dropdown"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dd-button"
+      }, "+"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "nav-list-title"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/lists/".concat(list.id)
+      }, list.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "checkbox",
+        className: "dd-input"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dd-menu"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "list-index-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/lists/".concat(list.id, "/edit")
+      }, "Rename List")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: function onClick() {
+          return deleteList(list.id);
+        }
+      }, "Remove List")))));
     }
-  }, "Rename List")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    onClick: function onClick() {
-      return props.deleteList(props.list.id);
-    }
-  }, "Remove List")))));
-};
+  }]);
 
-/* harmony default export */ __webpack_exports__["default"] = (ListIndexItem);
+  return ListIndexItem;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (ListIndexItem); // const ListIndexItem = (props) => {
+//   return (
+//     <label className="nav-dropdown">
+//       <div className="dd-button">+</div>
+//       <span className='nav-list-title'>
+//         <Link to={`/lists/${props.list.id}`}>{props.list.title}</Link>
+//       </span>
+//       <input type="checkbox" className="dd-input" />
+//       <div className="dd-menu">
+//         <ul className="list-index-item">
+//           {/* <li>
+//             <Link to={`/lists/${props.list.id}/edit`}>Rename List</Link>
+//           </li> */}
+//           <li>
+//             <button onClick={(list) => props.updateList(props.list)}>
+//               Rename List
+//             </button>
+//           </li>
+//           <li>
+//             <button onClick={() => props.deleteList(props.list.id)} >
+//               Remove List
+//             </button>
+//           </li>
+//         </ul>
+//       </div>
+//     </label>
+//   );
+//   }
+// export default ListIndexItem;
 
 /***/ }),
 

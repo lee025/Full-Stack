@@ -484,6 +484,10 @@ footer a:hover {
   border-bottom: 1px solid #ccc;
 }
 
+.main-dropdown-header {
+  font-size: 20px;
+}
+
 .main-dd-button {
   // display: inline-block;
   border: 1px solid gray;
@@ -614,6 +618,10 @@ footer a:hover {
   opacity: .8;
 }
 
+.dd-list-button:hover {
+  opacity: .8;
+}
+
 .dd-input {
   display: none;
 }
@@ -656,4 +664,5 @@ footer a:hover {
   width: 75%;
   position: relative;
   float: right;
+  // height: 100%;
 }

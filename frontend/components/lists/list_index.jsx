@@ -25,13 +25,12 @@ class ListIndex extends React.Component {
         </div>
         <div className="a">
           <CreateListContainer />
-          {/* <EditListContainer /> */}
         </div>
 
         {/* List dropdown */}
         <label className="main-dropdown">
           <div className="main-dd-button">+</div>
-          <span>LISTS</span>
+          <span className='main-dropdown-header'>LISTS</span>
           <input type="checkbox" className="main-dd-input" />
             <ul className="main-dd-menu">
               {listItems}

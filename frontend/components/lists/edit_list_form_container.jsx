@@ -24,9 +24,9 @@ const mapStateToProps = (state, ownProps) => {
   // console.log(state);
 
   return {
-  list: state.entities.lists[ownProps.match.params.listId],
-  formType: 'Rename List',
-  button: 'Save'
+    list: state.entities.lists[ownProps.match.params.listId],
+    formType: 'Rename List',
+    button: 'Save'
   }
 };
 
