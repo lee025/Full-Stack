@@ -28,7 +28,7 @@ const Greeting = ({ currentUser, logout }) => {
   const userHome = () => (
     <section>
       <header className="header-group">
-        <h2 className="header-name">Hi, {currentUser.username}!</h2>
+        <p className="header-name">Hi, {currentUser.username}!</p>
         <button className="header-logout-button" onClick={logout}>
           Log Out
         </button>
@@ -42,7 +42,7 @@ const Greeting = ({ currentUser, logout }) => {
         {/*  */}
   
         <div className="calvin-hobbs-main">
-          <h2 className="workinprogress">Work In Progress...</h2>
+          <p className="workinprogress">Work In Progress...</p>
           <img
             className="calvin-hobbs rotate split"
             src={window.calvin_and_hobbsURL}

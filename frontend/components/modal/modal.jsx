@@ -1,3 +1,36 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class Modal extends React.Component {
+
+  render(){
+    const { text, onClose } = this.props;
+
+    return (
+      // <noscript />
+      <div className='modal-wrapper'>
+        <div className='modal1'>
+          <button className='close' onClick={() => onClose()}>&times;</button>
+          <div className='text'>{text}</div>
+        </div>
+       </div>
+    );
+  }
+
+}
+
+export default Modal;
+
+
+
+
+
+
+
+
+
+
+
 // import React from "react";
 // import { closeModal } from '../../actions/modal_actions';
 // import { connect } from 'react-redux';

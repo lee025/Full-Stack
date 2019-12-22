@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import ListIndex from './list_index';
 import { fetchLists, deleteList, updateList } from '../../actions/list_actions';
-// import { openModal } from '../../actions/modal_actions';
+import { openModal, closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = state => {
   return {
@@ -13,7 +13,8 @@ const mapDispatchToProps = dispatch => ({
   fetchLists: () => dispatch(fetchLists()),
   updateList: list => dispatch(updateList(list)),
   deleteList: listId => dispatch(deleteList(listId)),
-  // openModal: modal => dispatch(openModal(modal))
+  openModal: modal => dispatch(openModal(modal)),
+  closeModal: () => dispatch(closeModal())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListIndex);

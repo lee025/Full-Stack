@@ -13,6 +13,7 @@ import HomePageContainer from '../components/lists/list_index_container';
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
 
   const App = () => (
+
     <div className="greeting-container group">
 
         <GreetingContainer />

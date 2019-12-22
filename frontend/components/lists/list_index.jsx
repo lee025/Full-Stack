@@ -19,10 +19,14 @@ class ListIndex extends React.Component {
         <ListIndexItem list={list} key={list.id} deleteList={deleteList} updateList={updateList}/>));
 
     return (
+
+      
+
       <div className="sidenav" id="mySidenav">
         <div className="nav-logo-calvin-div">
           <img className="nav-calvin-logo" src={window.calvin_logoURL} />
         </div>
+
         <div className="a">
           <CreateListContainer />
         </div>
@@ -32,10 +36,13 @@ class ListIndex extends React.Component {
           <div className="main-dd-button">+</div>
           <span className='main-dropdown-header'>LISTS</span>
           <input type="checkbox" className="main-dd-input" />
-            <ul className="main-dd-menu">
-              {listItems}
-            </ul>
+            
+            <div className="main-dd-menu">            
+                {listItems}            
+            </div>
+
         </label>
+
       </div>
     );
   }

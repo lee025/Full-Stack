@@ -1,11 +1,11 @@
 html, body, header, a, button,
-ul, li, main, section, img, div, h2, p, form, 
+ul, li, main, section, img, div, h3, p, form, 
 label, textarea, article, footer, small {
   margin: 0;
   padding: 0;
   border: 0;
   outline: 0;
-  font: inherit;
+  font-family: inherit;
   color: inherit;
   text-align: inherit;
   text-decoration: inherit;
@@ -315,6 +315,7 @@ input[type="submit"] {
   color: black;
   // border: 2px solid black;
   display: block;
+  // position: fixed;
   position: static;
   bottom: 0;
   width: 96.6%;
@@ -415,7 +416,7 @@ footer a:hover {
 .header-logout-button {
   cursor: pointer;
   width: 10%;
-  height: 40px;
+  height: 35px;
   background-color: white;
   color: grey;
   margin-top: 7px;
@@ -424,6 +425,7 @@ footer a:hover {
   font-size: 15px;
   font-family: American Typewriter, serif;
   margin: 5px;
+  padding: 0px 15px 0px 15px;
 }
 
 .header-logout-button:hover {
@@ -436,10 +438,10 @@ footer a:hover {
 // -------- side nav ---------- //
 
 .sidenav {
-  border: 3px solid red;
+  border: 2px solid red;
   // min-height: calc(100vh - 70px);
   height: 100%;
-  width: 25%; // change with JS
+  width: 30%; // change with JS
   // position: static;
   position: fixed; // stay in place
   // z-index: 1; // stay on top
@@ -450,6 +452,7 @@ footer a:hover {
   // overflow-y: auto;
   padding-top: 60px; 
   transition: 0.5s; // effect to slide in sidnav
+  box-sizing: border-box;
 }
 
 .a {
@@ -463,11 +466,6 @@ footer a:hover {
 .list-index-item a{
   display: block;
 }
-
-// .list-index-item {
-//   margin: 10px;
-// }
-
 
 // ---------- main-nav dropdown ---------- //
 
@@ -490,13 +488,15 @@ footer a:hover {
 
 .main-dd-button {
   // display: inline-block;
-  border: 1px solid gray;
+  // border: 1px solid gray;
+  border: 1px solid blue;
   border-radius: 4px;
   background-color: transparent;
   cursor: pointer;
   white-space: nowrap;
   float: right;
   padding: 0 5px 0 5px;
+  margin-right: 3px;
 }
 
 .main-dd-button:after {
@@ -516,7 +516,6 @@ footer a:hover {
   opacity: .8;;
 }
 
-
 .main-dd-input {
   display: none;
 }
@@ -524,14 +523,12 @@ footer a:hover {
 .main-dd-menu {
   display: none;
   position: absolute;
-  top: 100%;
+  // top: 100%;
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 0;
   margin: 2px 0 0 0;
   box-shadow: 0 0 6px 0 rgba(0,0,0,0.1);
-  background-color: transparent;
-  list-style-type: none;
 }
 
 .main-dd-input + .main-dd-menu {
@@ -539,29 +536,20 @@ footer a:hover {
 } 
 
 .main-dd-input:checked + .main-dd-menu {
-  display: block;
+  display: grid;
+  width: -webkit-fill-available;
 } 
 
 .main-dd-menu li {
-  padding: 5px 23px;
-  cursor: pointer;
-  white-space: nowrap;
+  padding: 15px 35px;
+  // white-space: nowrap;
 }
 
 .main-dd-menu li:hover {
   opacity: .8;;
 }
 
-
-
-
-
 // -------- sub-nav dropdown ---------- // 
-
-.sidenav {
-  box-sizing: border-box;
-  padding: 0;
-}
 
 .nav-logo-calvin-div {
   display: flex;
@@ -577,28 +565,52 @@ footer a:hover {
   width: 115px;
 }
 
-.nav-list-title a { // list title
-  // display: inline-block;
-  display: block;
-  float: left;
-  margin-right: 5px;
+.add-list-label {
   font-size: 20px;
 }
 
+.add-list-input {
+  margin-right: 5px;
+  width: 100px;
+}
+
+.add-list-button {
+  font-size: 20px;
+}
+
+
+.nav-list-title a { // list title
+  // display: inline-block;
+  float: left;
+  font-size: 20px;
+  height: fit-content;
+  color: black;
+}
+
 .nav-dropdown { // each list dropdown
-  display: inline-block;
-  position: block;
-  margin: 5px 0 px 0;
+  display: block;
+  // position: relative; // X on each list
+}
+
+.nav-dropdown:hover {
+  opacity: .8;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
 
 .dd-button {
-  display: inline-block;
+  // display: inline-block;
+  display: block;
+  position: relative;
   border: 1px solid rgb(10, 2, 2);
   border-radius: 5px;
   padding: 1px 0px 0px 7px;
   background-color: transparent;
   cursor: pointer;
   white-space: nowrap;
+  float: right;
 }
 
 .dd-button:after {
@@ -622,19 +634,19 @@ footer a:hover {
   opacity: .8;
 }
 
+
+// .dd-menu {
+//   position: relative;
+//   top: 100%;
+//   border: 1px solid #ccc;
+//   border-radius: 5px;
+//   padding: 0;
+//   box-shadow: 0 0 6px 0 rgba(0,0,0,0.1);
+//   background-color: transparent;
+// }
+
 .dd-input {
   display: none;
-}
-
-.dd-menu {
-  position: relative;
-  top: 100%;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 0;
-  box-shadow: 0 0 6px 0 rgba(0,0,0,0.1);
-  background-color: transparent;
-  list-style-type: none;
 }
 
 .dd-input + .dd-menu {
@@ -644,21 +656,24 @@ footer a:hover {
 .dd-input:checked + .dd-menu {
   display: block;
   border: 1px solid red;
-  
+  position: relative;
+  // top: 100%;
+  // border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 6px 0 rgba(0,0,0,0.1);
 }
 
-.dd-menu li {
+.dd-menu li button {
   // padding: 5px 10px;
   cursor: pointer;
   white-space: nowrap;
+  color: red;
+  font-size: 15px;
 }
 
 .dd-menu li:hover {
   opacity: .8;
 }
-
-
-
 
 .user-main {
   width: 75%;
@@ -666,3 +681,111 @@ footer a:hover {
   float: right;
   // height: 100%;
 }
+
+
+
+// ------- MODAL --------- //
+
+.open-button {
+  color: green;
+  // display: inline-block;
+  border: 1px solid rgb(10, 2, 2);
+  border-radius: 5px;
+  padding: 0px 5px 0px 5px;
+  background-color: transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  float: right;
+}
+
+.open-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 0; 
+  height: 0; 
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid black;
+}
+
+.open-button:hover{
+  opacity: .8;
+}
+
+.modal-wrapper{
+  position: absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  top: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modal {
+  position: fixed;
+  top: 12%;
+  left: 35%;
+  // right: 40px;
+  // bottom: 40px;
+  border: 1px solid red;
+  background: transparent;
+  // overflow: auto;
+  border-radius: 5px;
+  // outline: none;
+  padding: 10px;
+  // display: block;
+  height: 200px;
+  width: 400px;
+  color: red;
+}
+
+.modal-button {
+  display: inline-block;
+  border: 1px solid rgb(10, 2, 2);
+  border-radius: 5px;
+  padding: 1px 0px 0px 7px;
+  background-color: transparent;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.close {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+// .dd-input {
+//   display: none;
+// }
+
+.dd-menu {
+  // display: none;
+  position: absolute;
+  top: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0;
+  margin: 2px 0 0 0;
+  box-shadow: 0 0 6px 0 rgba(0,0,0,0.1);
+}
+
+// .dd-menu {
+//   padding: 5px 23px;
+//   cursor: pointer;
+//   white-space: nowrap;
+// }
+
+.dd-menu li:hover {
+  opacity: .8;;
+}
+
