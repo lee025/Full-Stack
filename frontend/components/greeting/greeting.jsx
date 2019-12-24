@@ -1,9 +1,6 @@
 import React from "react";
 import { Link, Redirect, Route } from "react-router-dom";
-import ListIndexContainer from '../lists/list_index_container';
-import CreateListConainter from '../lists/create_list_form_container';
-import EditListContainer from '../lists/edit_list_form_container';
-import ListShowContainer from '../lists/list_show_container';
+
 
 const Greeting = ({ currentUser, logout }) => {
   const sessionLinks = () => (
@@ -39,7 +36,6 @@ const Greeting = ({ currentUser, logout }) => {
       {/* main content-listShow/taskShow */}
 
       <article className="user-main">
-        {/*  */}
   
         <div className="calvin-hobbs-main">
           <p className="workinprogress">Work In Progress...</p>
@@ -48,6 +44,7 @@ const Greeting = ({ currentUser, logout }) => {
             src={window.calvin_and_hobbsURL}
           />
         </div>
+        
       </article>
     </section>
   );

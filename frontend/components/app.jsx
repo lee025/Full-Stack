@@ -2,6 +2,7 @@ import React from 'react';
 import GreetingContainer from './greeting/greeting_container';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
+import Modal from './modal/modal';
 import LogInFormContainer from '../components/session_form/login_form_container';
 import SignUpFormContainer from '../components/session_form/signup_form_container';
 import HomePageContainer from '../components/lists/list_index_container';
@@ -15,7 +16,6 @@ import { AuthRoute, ProtectedRoute } from "../util/route_util";
   const App = () => (
 
     <div className="greeting-container group">
-
         <GreetingContainer />
 
       <Switch>
@@ -28,7 +28,7 @@ import { AuthRoute, ProtectedRoute } from "../util/route_util";
         <Redirect to='/' />
       </Switch>
 
-      <div className="group2"></div>
+      {/* <div className="group2"></div> */}
       <footer className="footer-main">
         <div className="footer-container">
           <div className="footer-img">{/* insert image */}</div>

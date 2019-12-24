@@ -13,14 +13,14 @@ class ListIndex extends React.Component {
   }
 
   render(){
-    const { lists, deleteList, updateList } = this.props;
 
+    console.log(this.props)
+
+    const { lists, deleteList, updateList } = this.props;
     const listItems = lists.map(list => (
         <ListIndexItem list={list} key={list.id} deleteList={deleteList} updateList={updateList}/>));
-
+  
     return (
-
-      
 
       <div className="sidenav" id="mySidenav">
         <div className="nav-logo-calvin-div">
@@ -38,8 +38,8 @@ class ListIndex extends React.Component {
           <input type="checkbox" className="main-dd-input" />
             
             <div className="main-dd-menu">            
-                {listItems}            
-            </div>
+                {listItems}   
+            </div>       
 
         </label>
 

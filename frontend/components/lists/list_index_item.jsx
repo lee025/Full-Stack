@@ -2,73 +2,91 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Modal from '../modal/modal';
 
-
 class ListIndexItem extends React.Component {
-
-
   // -------------------
   constructor(props){
     super(props)
 
     this.state = { modal: false }
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   openModal(e){
     e.preventDefault();
-    return this.setState({ modal: true });
+    this.setState({ modal: true });
   }
 
   closeModal(e){
     e.preventDefault();
-    return this.setState({ modal: false });
+    this.setState({ modal: false });
   }
 
-  // renderModal() {
-  //   if(this.state.modal) {
-  //     return(
-  //       <div>
-  //         <Modal text={"Modal Text"} 
-  //           onClose={() => this.setState({ modal: false })} />
-  //       </div>
-  //     )
-  //   }
-  //   return null;
-  // }
+  handleSubmit(e) {
+    e.preventDefault();
+    const list = Object.assign({}, this.state)
+    this.props.action(list).then(this.props.closeModal);
+  }
+
+  update(field) {
+    return e => this.setState({ [field]: e.currentTarget.value });
+  }
+
+  renderModal() {
+    if(this.state.modal) {
+      return(
+        <div>
+          <Modal 
+            // text={"Modal Text"}
+            onClose={() => this.setState({ modal: false })} 
+          />
+        </div>
+      )
+    }
+    return null;
+  }
 // ---------------------
 
 
 
   render() {
+
+    // console.log(this.props)
+
     const { list, updateList, deleteList } = this.props;
-    
+
     return (
       <label className="nav-dropdown">
 
-        <div className="dd-button" onClick={this.state.openModal}>+</div>
+        <div className="dd-button">+</div>
         
         <span className='nav-list-title'>
           <Link to={`/lists/${list.id}`}>{list.title}</Link>
         </span>
-
-          {/* <div className='text'>{text}</div> */}
-          {/* {this.renderModal()} */}
+         
         <input type='checkbox' className="dd-input" />
           <ul className="dd-menu">
-          <li><button className="dd-button" onClick={this.state.openModal}>Rename List</button>
 
-        <div className='modal'>
-          <button className='close' onClick={this.state.closeModal}>&times;</button>
-        </div>
-          </li>
+            <li>
+              <button className="dd-button" onClick={this.openModal}>Rename List</button>
+            </li>
+            <li>
+              <button className="dd-button" onClick={this.openModal}>Remove List</button>
+            </li>
 
-              <li>
-                <button onClick={() => deleteList(list.id)} >
+          <div className='modal'>
+            {this.renderModal()}
+          </div>
+
+              {/* <li>
+                <button className='dd-button' onClick={() => deleteList(list.id)} >
                   Remove List
                 </button>
-              </li>
+              </li>  */}
 
           </ul>
-        {/* </div> */}
+
       </label>
     );
   }

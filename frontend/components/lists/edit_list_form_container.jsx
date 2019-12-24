@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import { fetchList, updateList } from '../../actions/list_actions';
+import { openModal, closeModal } from '../../actions/modal_actions';
 
 class EditListForm extends React.Component {
   
@@ -30,9 +31,17 @@ const mapStateToProps = (state, ownProps) => {
   }
 };
 
-const mapDispatchToProps = dispatch => ({
-  fetchList: listId => dispatch(fetchList(listId)),
-  action: list => dispatch(updateList(list))
-});
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchList: listId => dispatch(fetchList(listId)),
+    action: list => dispatch(updateList(list)),
+    // otherForm: (
+    //   <button onClick={(list) => dispatch(openModal('Rename List'))}>
+    //     Rename List
+    //   </button>
+    // ),
+    // closeModal: () => dispatch(closeModal())
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditListForm);
