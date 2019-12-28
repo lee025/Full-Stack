@@ -336,11 +336,6 @@ var App = function App() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
-{
-  /* <div>
-  <img className='calvin-hobbs rotate split' src={window.calvin_and_hobbsURL} />
-  </div> */
-}
 
 /***/ }),
 
@@ -489,131 +484,6 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-/***/ "./frontend/components/lists/delete_list_container.jsx":
-/*!*************************************************************!*\
-  !*** ./frontend/components/lists/delete_list_container.jsx ***!
-  \*************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _list_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./list_form */ "./frontend/components/lists/list_form.jsx");
-/* harmony import */ var _list_index_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./list_index_item */ "./frontend/components/lists/list_index_item.jsx");
-/* harmony import */ var _lists_list_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../lists/list_index */ "./frontend/components/lists/list_index.jsx");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _util_list_api_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../util/list_api_util */ "./frontend/util/list_api_util.js");
-
-
-
-
-
-
-
-var mapStateToProps = function mapStateToProps(state) {
-  return {
-    list: {
-      title: ''
-    },
-    title: 'Remove a list',
-    formType: 'remove'
-  };
-};
-
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {
-    action: function action(list) {
-      return dispatch(Object(_util_list_api_util__WEBPACK_IMPORTED_MODULE_5__["deleteList"])(list));
-    }
-  };
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_list_index_item__WEBPACK_IMPORTED_MODULE_2__["default"])));
-
-/***/ }),
-
-/***/ "./frontend/components/lists/edit_list_form_container.jsx":
-/*!****************************************************************!*\
-  !*** ./frontend/components/lists/edit_list_form_container.jsx ***!
-  \****************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _list_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./list_form */ "./frontend/components/lists/list_form.jsx");
-/* harmony import */ var _actions_list_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/list_actions */ "./frontend/actions/list_actions.js");
-/* harmony import */ var _list_index_item__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./list_index_item */ "./frontend/components/lists/list_index_item.jsx");
-/* harmony import */ var _lists_list_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../lists/list_index */ "./frontend/components/lists/list_index.jsx");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-
-
-
-
-
-
-
-var mapStateToProps = function mapStateToProps(state) {
-  return {
-    list: {
-      title: ''
-    },
-    title: 'Rename List',
-    formType: 'update'
-  };
-};
-
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {
-    action: function action(list) {
-      return dispatch(Object(_actions_list_actions__WEBPACK_IMPORTED_MODULE_2__["updateList"])(list));
-    }
-  };
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_list_index_item__WEBPACK_IMPORTED_MODULE_3__["default"]))); // import { connect } from 'react-redux';
-// import React from 'react';
-// import { fetchList, updateList } from '../../actions/list_actions';
-// import { openModal, closeModal } from '../../actions/modal_actions';
-// class EditListForm extends React.Component {
-//   componentDidMount(){
-//     // console.log(this.props);
-//     this.props.fetchList(this.props.match.params.lists.id)
-//   }
-//   render() {
-//     const { action, formType, list } = this.props;
-//     if (!list) return null;
-//     return (
-//       <ListForm action={action} formType={formType} post={post}/>
-//     );
-//   }
-// };
-// const mapStateToProps = (state, ownProps) => {
-//   // console.log(state);
-//   return {
-//     list: state.entities.lists[ownProps.match.params.lists.id],
-//     formType: 'Rename List',
-//     button: 'Save'
-//   }
-// };
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     fetchList: listId => dispatch(fetchList(listId)),
-//     action: list => dispatch(updateList(list)),
-//     // otherForm: (
-//     //   <button onClick={(list) => dispatch(openModal('Rename List'))}>
-//     //     Rename List
-//     //   </button>
-//     // ),
-//     // closeModal: () => dispatch(closeModal())
-//   };
-// };
-// export default connect(mapStateToProps, mapDispatchToProps)(EditListForm);
-
-/***/ }),
-
 /***/ "./frontend/components/lists/list_form.jsx":
 /*!*************************************************!*\
   !*** ./frontend/components/lists/list_form.jsx ***!
@@ -721,8 +591,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _list_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./list_index_item */ "./frontend/components/lists/list_index_item.jsx");
 /* harmony import */ var _create_list_form_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./create_list_form_container */ "./frontend/components/lists/create_list_form_container.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _lists_edit_list_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../lists/edit_list_form_container */ "./frontend/components/lists/edit_list_form_container.jsx");
-/* harmony import */ var _lists_delete_list_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../lists/delete_list_container */ "./frontend/components/lists/delete_list_container.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -740,8 +608,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
 
 
 
@@ -772,8 +638,8 @@ function (_React$Component) {
           deleteList = _this$props.deleteList,
           updateList = _this$props.updateList,
           processForm = _this$props.processForm,
-          fetchList = _this$props.fetchList; // console.log(this.props)
-
+          fetchList = _this$props.fetchList;
+      console.log(this.props);
       var listItems = lists.map(function (list) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_list_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           list: list,
@@ -959,10 +825,10 @@ function (_React$Component) {
     _this.openModal = _this.openModal.bind(_assertThisInitialized(_this));
     _this.closeModal = _this.closeModal.bind(_assertThisInitialized(_this));
     _this.deleteCurrentList = _this.deleteCurrentList.bind(_assertThisInitialized(_this));
-    _this.updateCurrentList = _this.updateCurrentList.bind(_assertThisInitialized(_this)); // this.showModal = this.showModal.bind(this);
-
+    _this.updateCurrentList = _this.updateCurrentList.bind(_assertThisInitialized(_this));
     _this.openUpdateModal = _this.openUpdateModal.bind(_assertThisInitialized(_this));
     _this.openRemoveModal = _this.openRemoveModal.bind(_assertThisInitialized(_this));
+    _this.stopBubble = _this.stopBubble.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1004,7 +870,8 @@ function (_React$Component) {
       e.preventDefault();
       this.setState({
         modal: false,
-        removeForm: false
+        removeForm: false,
+        updateForm: false
       });
     }
   }, {
@@ -1013,24 +880,13 @@ function (_React$Component) {
       e.stopPropagation();
       var list = Object.assign({}, this.state.list);
       this.updateCurrentList();
-      this.closeModal(e); // const action = this.state.processForm(list, this.state.formType)
-      // console.log(action)
-      // .then(() => this.state.history.push("/lists"));
-    } // showModal(e){
-    // var update = document.getElementsByClassName('update-form-container');
-    // var remove = document.getElementsByClassName('remove-form-container);
-    // const ddMenuItems = [ 'dd-menu', '.update-form-container, '.remove-form-container' ]
-    // const ddMenu = document.querySelectorAll(ddMenuItems.join(','));
-    // const ddMenu = document.querySelectorAll('.update-form-container, '.remove-form-container)
-    // const ddMenu = document.getElementsByClassName('remove-form-container')
-    // console.log(ddMenu)
-    //   if (ddMenu[0].classList.contains('hidden')) {
-    //     ddMenu[0].classList.remove('hidden')
-    //   } else {
-    //     ddMenu[0].classList.add('hidden')
-    //   }
-    // }
-
+      this.closeModal(e);
+    }
+  }, {
+    key: "stopBubble",
+    value: function stopBubble(e) {
+      e.stopPropagation();
+    }
   }, {
     key: "update",
     value: function update(field) {
@@ -1059,7 +915,11 @@ function (_React$Component) {
     value: function renderModal() {
       if (this.state.modal && this.state.updateForm) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "modal"
+          className: "modal-wrapper",
+          onClick: this.closeModal
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "modal",
+          onClick: this.stopBubble
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
           className: "update-form-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -1076,10 +936,14 @@ function (_React$Component) {
         }, "Save"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "dd-button-cancel",
           onClick: this.closeModal
-        }, "Cancel")));
+        }, "Cancel"))));
       } else if (this.state.modal && this.state.removeForm) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "modal"
+          className: "modal-wrapper",
+          onClick: this.closeModal
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "modal",
+          onClick: this.stopBubble
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
           className: "remove-form-container",
           value: this.props.formType
@@ -1092,7 +956,7 @@ function (_React$Component) {
         }, "Yes, remove list"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "dd-button-cancel",
           onClick: this.closeModal
-        }, "Cancel")));
+        }, "Cancel"))));
       } else {
         return null;
       }
@@ -1101,7 +965,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      console.log(this.state);
+      // console.log(this.state)
       var list = this.props.list;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "nav-dropdown"
@@ -1124,50 +988,14 @@ function (_React$Component) {
         onClick: this.openRemoveModal
       }, "Remove List"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: ""
-      }, this.renderModal(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "lists/".concat(list.id)
-      })));
+      }, this.renderModal()));
     }
   }]);
 
   return ListIndexItem;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (ListIndexItem); // import React from 'react';
-// import { Link } from 'react-router-dom';
-// class ListIndexItem extends React.Component {
-//   render() {
-//     const { list, updateList, deleteList } = this.props;
-//     return (
-//       <label className="nav-dropdown">
-//         <div className="dd-button">+</div>
-//         <span className='nav-list-title'>
-//           <Link to={`/lists/${list.id}`}>{list.title}</Link>
-//         </span>
-//         <input type="checkbox" className="dd-input" />
-//         <div className="dd-menu">
-//           <ul className="list-index-item">
-//             <li>
-//               <Link to={`/lists/${list.id}/edit`}>Rename List</Link>
-//             </li>
-//             {/* <li>
-//               <button className='dd-list-button' onClick={(list) => updateList(list)}>
-//                 Rename List
-//               </button>
-//             </li> */}
-//             <li>
-//               <button onClick={() => deleteList(list.id)} >
-//                 Remove List
-//               </button>
-//             </li>
-//           </ul>
-//         </div>
-//       </label>
-//     );
-//   }
-// }
-// export default ListIndexItem;
-
+/* harmony default export */ __webpack_exports__["default"] = (ListIndexItem);
 {
   /* <Modal 
              list={this.state.list}

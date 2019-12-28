@@ -68,11 +68,3 @@ import { AuthRoute, ProtectedRoute } from "../util/route_util";
 export default App;
 
 
-
-
-
-        {
-          /* <div>
-          <img className='calvin-hobbs rotate split' src={window.calvin_and_hobbsURL} />
-        </div> */
-        }

@@ -2,8 +2,7 @@ import React from 'react';
 import ListIndexItem from './list_index_item';
 import CreateListContainer from './create_list_form_container';
 import { Link } from 'react-router-dom';
-import EditListContainer from '../lists/edit_list_form_container';
-import DeleteListContiner from '../lists/delete_list_container';
+
 
 class ListIndex extends React.Component {
   constructor(props){
@@ -19,8 +18,7 @@ class ListIndex extends React.Component {
     
     const { lists, deleteList, updateList, processForm, fetchList } = this.props;
     
-    // console.log(this.props)
-
+    console.log(this.props)
     const listItems = lists.map(list => (
       <ListIndexItem 
         list={list} 

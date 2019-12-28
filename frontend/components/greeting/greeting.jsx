@@ -23,7 +23,7 @@ const Greeting = ({ currentUser, logout }) => {
 
 
   const userHome = () => (
-    <section>
+    <section> 
       <header className="header-group">
         <p className="header-name">Hi, {currentUser.username}!</p>
         <button className="header-logout-button" onClick={logout}>

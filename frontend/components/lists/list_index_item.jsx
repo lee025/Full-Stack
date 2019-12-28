@@ -19,9 +19,9 @@ class ListIndexItem extends React.Component {
     this.closeModal = this.closeModal.bind(this);
     this.deleteCurrentList = this.deleteCurrentList.bind(this);
     this.updateCurrentList = this.updateCurrentList.bind(this);
-    // this.showModal = this.showModal.bind(this);
     this.openUpdateModal = this.openUpdateModal.bind(this);
     this.openRemoveModal = this.openRemoveModal.bind(this);
+    this.stopBubble = this.stopBubble.bind(this);
   }
 
   componentDidMount(){
@@ -46,7 +46,7 @@ class ListIndexItem extends React.Component {
 
   closeModal(e){
     e.preventDefault();
-    this.setState({ modal: false, removeForm: false });
+    this.setState({ modal: false, removeForm: false, updateForm: false });
   }
 
   handleSubmit(e) {
@@ -54,25 +54,11 @@ class ListIndexItem extends React.Component {
     const list = Object.assign({}, this.state.list)
     this.updateCurrentList();
     this.closeModal(e);
-    // const action = this.state.processForm(list, this.state.formType)
-    // console.log(action)
-      // .then(() => this.state.history.push("/lists"));
   }
 
-// showModal(e){
-  // var update = document.getElementsByClassName('update-form-container');
-  // var remove = document.getElementsByClassName('remove-form-container);
-  // const ddMenuItems = [ 'dd-menu', '.update-form-container, '.remove-form-container' ]
-  // const ddMenu = document.querySelectorAll(ddMenuItems.join(','));
-  // const ddMenu = document.querySelectorAll('.update-form-container, '.remove-form-container)
-  // const ddMenu = document.getElementsByClassName('remove-form-container')
-  // console.log(ddMenu)
-//   if (ddMenu[0].classList.contains('hidden')) {
-//     ddMenu[0].classList.remove('hidden')
-//   } else {
-//     ddMenu[0].classList.add('hidden')
-//   }
-// }
+  stopBubble(e){
+    e.stopPropagation();
+  }
 
   update(field) {
     return e => this.setState({ list: {[field]: e.currentTarget.value, id: this.state.list.id} });
@@ -90,7 +76,8 @@ class ListIndexItem extends React.Component {
 
     if(this.state.modal && this.state.updateForm) {
       return (
-          <div className='modal'>
+        <div className='modal-wrapper' onClick={this.closeModal}>
+          <div className='modal' onClick={this.stopBubble}>
             <form className='update-form-container'>
               <button className='close' onClick={this.closeModal}>&times;</button>
               Rename List
@@ -110,10 +97,12 @@ class ListIndexItem extends React.Component {
               </button>
             </form>
           </div>
+        </div>
       )
     } else if (this.state.modal && this.state.removeForm) {
         return (
-          <div className='modal'>
+          <div className='modal-wrapper' onClick={this.closeModal}>
+          <div className='modal' onClick={this.stopBubble}>
             <form className='remove-form-container' value={this.props.formType}>
               <button className='close' onClick={this.closeModal}>&times;</button>
               <label>Remove List
@@ -127,6 +116,7 @@ class ListIndexItem extends React.Component {
               </button>
             </form>
           </div>
+         </div>
         )
     } else {
       return null
@@ -136,7 +126,7 @@ class ListIndexItem extends React.Component {
 
   render() {
 
-    console.log(this.state)
+    // console.log(this.state)
 
     const { list } = this.props;
 
@@ -164,7 +154,6 @@ class ListIndexItem extends React.Component {
 
           <div className=''>
               {this.renderModal()}
-              <Link to={`lists/${list.id}`} />
           </div>
 
       </label>
@@ -179,46 +168,13 @@ export default ListIndexItem;
 
 
 
-// import React from 'react';
-// import { Link } from 'react-router-dom';
 
 
-// class ListIndexItem extends React.Component {
 
 
-//   render() {
-//     const { list, updateList, deleteList } = this.props;
-//     return (
-//       <label className="nav-dropdown">
-//         <div className="dd-button">+</div>
-//         <span className='nav-list-title'>
-//           <Link to={`/lists/${list.id}`}>{list.title}</Link>
-//         </span>
-//         <input type="checkbox" className="dd-input" />
-//         <div className="dd-menu">
-//           <ul className="list-index-item">
-//             <li>
-//               <Link to={`/lists/${list.id}/edit`}>Rename List</Link>
-//             </li>
-//             {/* <li>
-//               <button className='dd-list-button' onClick={(list) => updateList(list)}>
-//                 Rename List
-//               </button>
-//             </li> */}
-//             <li>
-//               <button onClick={() => deleteList(list.id)} >
-//                 Remove List
-//               </button>
-//             </li>
-//           </ul>
-//         </div>
-//       </label>
-//     );
-//   }
-// }
 
 
-// export default ListIndexItem;
+
 
 
 
