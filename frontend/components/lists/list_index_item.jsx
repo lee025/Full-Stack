@@ -9,6 +9,8 @@ class ListIndexItem extends React.Component {
 
     this.state = { 
       modal: false,
+      updateForm: false,
+      removeForm: false,
       ...props 
     }
 
@@ -17,11 +19,13 @@ class ListIndexItem extends React.Component {
     this.closeModal = this.closeModal.bind(this);
     this.deleteCurrentList = this.deleteCurrentList.bind(this);
     this.updateCurrentList = this.updateCurrentList.bind(this);
+    // this.showModal = this.showModal.bind(this);
+    this.openUpdateModal = this.openUpdateModal.bind(this);
+    this.openRemoveModal = this.openRemoveModal.bind(this);
   }
 
   componentDidMount(){
     this.props.fetchList(this.state.list.id)
-    // console.log(this.state);
   }
 
   openModal(e){
@@ -30,37 +34,51 @@ class ListIndexItem extends React.Component {
     this.setState({ modal: true });
   }
 
+  openUpdateModal(e) {
+    e.preventDefault();
+    this.setState({ modal: true, updateForm: true });
+  }
+
+  openRemoveModal(e) {
+    e.preventDefault();
+    this.setState({ modal: true, removeForm: true });
+  }
+
   closeModal(e){
     e.preventDefault();
-    this.setState({ modal: false });
+    this.setState({ modal: false, removeForm: false });
   }
 
   handleSubmit(e) {
-    // e.preventDefault();
     e.stopPropagation();
     const list = Object.assign({}, this.state.list)
-    // debugger
-    // console.log('hello world!!!!!!!!!!!!!!!!!!!!!!!!!!')
     this.updateCurrentList();
-    // console.log('Just world!!!!!!!!!!!!!!!!!!!!!!!!!!')
     this.closeModal(e);
     // const action = this.state.processForm(list, this.state.formType)
     // console.log(action)
-
       // .then(() => this.state.history.push("/lists"));
-
-    // const modals = document.getElementsByClassName('modal');
-    // modals.classList.add('hidden');
   }
 
- 
+// showModal(e){
+  // var update = document.getElementsByClassName('update-form-container');
+  // var remove = document.getElementsByClassName('remove-form-container);
+  // const ddMenuItems = [ 'dd-menu', '.update-form-container, '.remove-form-container' ]
+  // const ddMenu = document.querySelectorAll(ddMenuItems.join(','));
+  // const ddMenu = document.querySelectorAll('.update-form-container, '.remove-form-container)
+  // const ddMenu = document.getElementsByClassName('remove-form-container')
+  // console.log(ddMenu)
+//   if (ddMenu[0].classList.contains('hidden')) {
+//     ddMenu[0].classList.remove('hidden')
+//   } else {
+//     ddMenu[0].classList.add('hidden')
+//   }
+// }
 
   update(field) {
     return e => this.setState({ list: {[field]: e.currentTarget.value, id: this.state.list.id} });
   }
 
   updateCurrentList() {
-      console.log('WORD....')
       this.props.updateList( this.state.list )
   }
 
@@ -70,96 +88,84 @@ class ListIndexItem extends React.Component {
 
   renderModal() {
 
-    if(this.state.modal) {
-
+    if(this.state.modal && this.state.updateForm) {
       return (
-        <div>
           <div className='modal'>
-
-            <form className='form-container'>
+            <form className='update-form-container'>
               <button className='close' onClick={this.closeModal}>&times;</button>
-              <label>List name
+              Rename List
+              <label>List name</label>
                 <input
                   type="text"
                   value={this.state.list.title}
                   onChange={this.update('title')}
                   className='rename-input'
                 />
-              </label>
-              <button className='dd-button' onClick={this.closeModal} >
-                Cancel
-          </button>
-              <button className='dd-button' onClick={this.handleSubmit}>
+              
+              <button className='dd-button-confirm' onClick={this.handleSubmit}>
                 Save
-          </button>
+              </button>
+              <button className='dd-button-cancel' onClick={this.closeModal} >
+                Cancel
+              </button>
             </form>
-
-            <br />
-
-            <form className='form-container' value={this.props.formType}>
+          </div>
+      )
+    } else if (this.state.modal && this.state.removeForm) {
+        return (
+          <div className='modal'>
+            <form className='remove-form-container' value={this.props.formType}>
               <button className='close' onClick={this.closeModal}>&times;</button>
               <label>Remove List
-            <p>Are you sure you want to remove?</p>
+                <p>Are you sure you want to remove?</p>
               </label>
-              <button className='dd-button' onClick={this.closeModal} >
-                Cancel
-          </button>
-              <button className='dd-button' onClick={this.deleteCurrentList} >
+              <button className='dd-button-confirm' onClick={this.deleteCurrentList} >
                 Yes, remove list
-          </button>
+              </button>
+              <button className='dd-button-cancel' onClick={this.closeModal} >
+                Cancel
+              </button>
             </form>
-
           </div>
-          {/* <Modal 
-            list={this.state.list}
-            onClose={() => this.setState({ modal: false })}
-            fetchList={(list) => this.setState(fetchList(list))}
-            deleteList={() => this.setState(deleteList())} 
-            updateList={(list) => this.setState(updateList(list))}
-            handleSubmit={this.handleSubmit}
-            processForm={(list, formType) => this.setState(formType(list))}
-          /> */}
-        </div>
-      )
+        )
+    } else {
+      return null
     }
-    return null;
   }
 // ---------------------
 
-
-
   render() {
 
-    // console.log(this.state.list)
+    console.log(this.state)
 
     const { list } = this.props;
 
     return (
       <label className="nav-dropdown">
-
         <div className="dd-button">+</div>
         
         <span className='nav-list-title'>
           <Link to={`/lists/${list.id}`}>{list.title}</Link>
         </span>
-          <div className=''>
-            <div className=''>
-              {this.renderModal()}
-              <Link to={`lists/${list.id}`} />
-            </div>
-          </div>
          
         <input type='checkbox' className="dd-input" />
           <ul className="dd-menu">
-
             <li>
-              <button className="dd-button" onClick={this.openModal}>Rename List</button>
+            <button className="dd-update-button" onClick={this.openUpdateModal}>
+                Rename List
+              </button>
             </li>
             <li>
-              <button className="dd-button" onClick={this.openModal}>Remove List</button>
+              <button className="dd-remove-button" onClick={this.openRemoveModal}>
+                Remove List
+              </button>
             </li>
-
           </ul>
+
+          <div className=''>
+              {this.renderModal()}
+              <Link to={`lists/${list.id}`} />
+          </div>
 
       </label>
     );
@@ -218,3 +224,12 @@ export default ListIndexItem;
 
 
 
+{/* <Modal 
+            list={this.state.list}
+            onClose={() => this.setState({ modal: false })}
+            fetchList={(list) => this.setState(fetchList(list))}
+            deleteList={() => this.setState(deleteList())} 
+            updateList={(list) => this.setState(updateList(list))}
+            handleSubmit={this.handleSubmit}
+            processForm={(list, formType) => this.setState(formType(list))}
+          /> */}

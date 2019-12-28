@@ -19,7 +19,8 @@ class ListIndex extends React.Component {
     
     const { lists, deleteList, updateList, processForm, fetchList } = this.props;
     
-    console.log(this.props)
+    // console.log(this.props)
+
     const listItems = lists.map(list => (
       <ListIndexItem 
         list={list} 

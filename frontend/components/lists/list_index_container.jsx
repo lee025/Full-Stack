@@ -4,7 +4,7 @@ import { fetchLists, fetchList, deleteList, updateList } from '../../actions/lis
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state)
+  // console.log(state)
   return {
     lists: Object.values(state.entities.lists).filter(list => {
       return list.user_id == state.session.id

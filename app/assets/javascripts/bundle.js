@@ -772,8 +772,8 @@ function (_React$Component) {
           deleteList = _this$props.deleteList,
           updateList = _this$props.updateList,
           processForm = _this$props.processForm,
-          fetchList = _this$props.fetchList;
-      console.log(this.props);
+          fetchList = _this$props.fetchList; // console.log(this.props)
+
       var listItems = lists.map(function (list) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_list_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           list: list,
@@ -853,7 +853,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
-  console.log(state);
+  // console.log(state)
   return {
     lists: Object.values(state.entities.lists).filter(function (list) {
       return list.user_id == state.session.id;
@@ -951,20 +951,25 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ListIndexItem).call(this, props));
     _this.state = _objectSpread({
-      modal: false
+      modal: false,
+      updateForm: false,
+      removeForm: false
     }, props);
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.openModal = _this.openModal.bind(_assertThisInitialized(_this));
     _this.closeModal = _this.closeModal.bind(_assertThisInitialized(_this));
     _this.deleteCurrentList = _this.deleteCurrentList.bind(_assertThisInitialized(_this));
-    _this.updateCurrentList = _this.updateCurrentList.bind(_assertThisInitialized(_this));
+    _this.updateCurrentList = _this.updateCurrentList.bind(_assertThisInitialized(_this)); // this.showModal = this.showModal.bind(this);
+
+    _this.openUpdateModal = _this.openUpdateModal.bind(_assertThisInitialized(_this));
+    _this.openRemoveModal = _this.openRemoveModal.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(ListIndexItem, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchList(this.state.list.id); // console.log(this.state);
+      this.props.fetchList(this.state.list.id);
     }
   }, {
     key: "openModal",
@@ -976,29 +981,56 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "openUpdateModal",
+    value: function openUpdateModal(e) {
+      e.preventDefault();
+      this.setState({
+        modal: true,
+        updateForm: true
+      });
+    }
+  }, {
+    key: "openRemoveModal",
+    value: function openRemoveModal(e) {
+      e.preventDefault();
+      this.setState({
+        modal: true,
+        removeForm: true
+      });
+    }
+  }, {
     key: "closeModal",
     value: function closeModal(e) {
       e.preventDefault();
       this.setState({
-        modal: false
+        modal: false,
+        removeForm: false
       });
     }
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      // e.preventDefault();
       e.stopPropagation();
-      var list = Object.assign({}, this.state.list); // debugger
-      // console.log('hello world!!!!!!!!!!!!!!!!!!!!!!!!!!')
-
-      this.updateCurrentList(); // console.log('Just world!!!!!!!!!!!!!!!!!!!!!!!!!!')
-
+      var list = Object.assign({}, this.state.list);
+      this.updateCurrentList();
       this.closeModal(e); // const action = this.state.processForm(list, this.state.formType)
       // console.log(action)
       // .then(() => this.state.history.push("/lists"));
-      // const modals = document.getElementsByClassName('modal');
-      // modals.classList.add('hidden');
-    }
+    } // showModal(e){
+    // var update = document.getElementsByClassName('update-form-container');
+    // var remove = document.getElementsByClassName('remove-form-container);
+    // const ddMenuItems = [ 'dd-menu', '.update-form-container, '.remove-form-container' ]
+    // const ddMenu = document.querySelectorAll(ddMenuItems.join(','));
+    // const ddMenu = document.querySelectorAll('.update-form-container, '.remove-form-container)
+    // const ddMenu = document.getElementsByClassName('remove-form-container')
+    // console.log(ddMenu)
+    //   if (ddMenu[0].classList.contains('hidden')) {
+    //     ddMenu[0].classList.remove('hidden')
+    //   } else {
+    //     ddMenu[0].classList.add('hidden')
+    //   }
+    // }
+
   }, {
     key: "update",
     value: function update(field) {
@@ -1015,7 +1047,6 @@ function (_React$Component) {
   }, {
     key: "updateCurrentList",
     value: function updateCurrentList() {
-      console.log('WORD....');
       this.props.updateList(this.state.list);
     }
   }, {
@@ -1026,47 +1057,51 @@ function (_React$Component) {
   }, {
     key: "renderModal",
     value: function renderModal() {
-      if (this.state.modal) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      if (this.state.modal && this.state.updateForm) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "modal"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-          className: "form-container"
+          className: "update-form-container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "close",
           onClick: this.closeModal
-        }, "\xD7"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "List name", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        }, "\xD7"), "Rename List", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "List name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           type: "text",
           value: this.state.list.title,
           onChange: this.update('title'),
           className: "rename-input"
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "dd-button",
-          onClick: this.closeModal
-        }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "dd-button",
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "dd-button-confirm",
           onClick: this.handleSubmit
-        }, "Save")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-          className: "form-container",
+        }, "Save"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "dd-button-cancel",
+          onClick: this.closeModal
+        }, "Cancel")));
+      } else if (this.state.modal && this.state.removeForm) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "modal"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+          className: "remove-form-container",
           value: this.props.formType
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "close",
           onClick: this.closeModal
         }, "\xD7"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Remove List", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Are you sure you want to remove?")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "dd-button",
-          onClick: this.closeModal
-        }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "dd-button",
+          className: "dd-button-confirm",
           onClick: this.deleteCurrentList
-        }, "Yes, remove list"))));
+        }, "Yes, remove list"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "dd-button-cancel",
+          onClick: this.closeModal
+        }, "Cancel")));
+      } else {
+        return null;
       }
-
-      return null;
     } // ---------------------
 
   }, {
     key: "render",
     value: function render() {
-      // console.log(this.state.list)
+      console.log(this.state);
       var list = this.props.list;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "nav-dropdown"
@@ -1076,24 +1111,22 @@ function (_React$Component) {
         className: "nav-list-title"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/lists/".concat(list.id)
-      }, list.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: ""
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: ""
-      }, this.renderModal(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "lists/".concat(list.id)
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, list.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox",
         className: "dd-input"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "dd-menu"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "dd-button",
-        onClick: this.openModal
+        className: "dd-update-button",
+        onClick: this.openUpdateModal
       }, "Rename List")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "dd-button",
-        onClick: this.openModal
-      }, "Remove List"))));
+        className: "dd-remove-button",
+        onClick: this.openRemoveModal
+      }, "Remove List"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: ""
+      }, this.renderModal(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "lists/".concat(list.id)
+      })));
     }
   }]);
 
@@ -1134,6 +1167,18 @@ function (_React$Component) {
 //   }
 // }
 // export default ListIndexItem;
+
+{
+  /* <Modal 
+             list={this.state.list}
+             onClose={() => this.setState({ modal: false })}
+             fetchList={(list) => this.setState(fetchList(list))}
+             deleteList={() => this.setState(deleteList())} 
+             updateList={(list) => this.setState(updateList(list))}
+             handleSubmit={this.handleSubmit}
+             processForm={(list, formType) => this.setState(formType(list))}
+           /> */
+}
 
 /***/ }),
 
