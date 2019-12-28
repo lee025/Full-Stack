@@ -6,10 +6,10 @@ export const fetchLists = () => (
   })
 )
 
-export const fetchList = listId => (
+export const fetchList = id => (
   $.ajax({
     method: "GET",
-    url: `api/lists/${listId}`
+    url: `api/lists/${id}`
   })
 )
 
@@ -21,17 +21,21 @@ export const createList = list => (
   })
 )
 
-export const updateList = list => (
+export const updateList = list => {
+  // console.log('---------------------------')
+  // console.log(list)
+  return (
   $.ajax({
     method: "PATCH",
     url: `api/lists/${list.id}`,
     data: { list }
   })
-)
+  )
+}
 
-export const deleteList = listId => (
+export const deleteList = id => (
   $.ajax({
     method: "DELETE",
-    url: `api/lists/${listId}`
+    url: `api/lists/${id}`
   })
 )

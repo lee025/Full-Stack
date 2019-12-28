@@ -6,9 +6,7 @@ import Modal from './modal/modal';
 import LogInFormContainer from '../components/session_form/login_form_container';
 import SignUpFormContainer from '../components/session_form/signup_form_container';
 import HomePageContainer from '../components/lists/list_index_container';
-// import ListShowContainer from '../components/lists/list_show_container';
-// import EditListContainer from '../components/lists/edit_list_form_container';
-// import CreateListContainer from '../components/lists/create_list_form_container';
+
 
 
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
@@ -22,9 +20,7 @@ import { AuthRoute, ProtectedRoute } from "../util/route_util";
         <AuthRoute exact path="/" component={LogInFormContainer} />
         <AuthRoute exact path="/signup" component={SignUpFormContainer} />
         <ProtectedRoute path="/lists" component={HomePageContainer} />
-        {/* <Route path="/lists/:listId/edit" component={EditListContainer} /> */}
-        {/* <Route exact path="/lists/:listId" component={ListShowContainer} /> */}
-        {/* <Route path="/lists/new" component={CreateListContainer} /> */}
+
         <Redirect to='/' />
       </Switch>
 

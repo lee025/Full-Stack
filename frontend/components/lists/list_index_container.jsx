@@ -1,21 +1,37 @@
 import { connect } from 'react-redux';
 import ListIndex from './list_index';
-import { fetchLists, deleteList, updateList } from '../../actions/list_actions';
-// import { openModal, closeModal } from '../../actions/modal_actions';
-// import Modal from '../modal/modal';
+import { fetchLists, fetchList, deleteList, updateList } from '../../actions/list_actions';
+import { withRouter } from 'react-router-dom';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+  console.log(state)
   return {
-  lists: Object.values(state.entities.lists),
+    lists: Object.values(state.entities.lists).filter(list => {
+      return list.user_id == state.session.id
+    }),
+    // currentUser: state.session.id
   }
 };
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = ( dispatch, ownProps ) => {
+  return {
   fetchLists: () => dispatch(fetchLists()),
+  fetchList: id => dispatch(fetchList(id)),
+  // processForm: (list, formType) => {
+  //   // console./og(formType)
+  //   if ( formType === 'update') {
+  //     const up = dispatch(updateList(list))
+  //     // console.log(up)
+  //     return up 
+  //   } else if ( formType === 'remove') {
+  //     const remove = dispatch(deleteList(list ))
+  //     // console.log(remove)
+  //     return remove
+  //   }
+  // },
   updateList: list => dispatch(updateList(list)),
-  deleteList: listId => dispatch(deleteList(listId)),
-  // openModal: modal => dispatch(openModal(modal)),
-  // closeModal: () => dispatch(closeModal())
-});
+  deleteList: id => dispatch(deleteList(id))
+}};
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListIndex);
+export default withRouter(connect(
+  mapStateToProps, mapDispatchToProps)(ListIndex));

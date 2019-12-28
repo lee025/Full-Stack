@@ -36,7 +36,7 @@ class ListForm extends React.Component {
           </label>
           <button className='add-list-button' 
               onClick={this.handleSubmit}>
-                {this.props.button}
+                Add
           </button>
         </form>
       </div>

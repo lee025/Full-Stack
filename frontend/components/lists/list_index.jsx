@@ -1,7 +1,9 @@
 import React from 'react';
 import ListIndexItem from './list_index_item';
 import CreateListContainer from './create_list_form_container';
-import EditListContainer from './edit_list_form_container'
+import { Link } from 'react-router-dom';
+import EditListContainer from '../lists/edit_list_form_container';
+import DeleteListContiner from '../lists/delete_list_container';
 
 class ListIndex extends React.Component {
   constructor(props){
@@ -14,11 +16,19 @@ class ListIndex extends React.Component {
 
   render(){
 
+    
+    const { lists, deleteList, updateList, processForm, fetchList } = this.props;
+    
     console.log(this.props)
-
-    const { lists, deleteList, updateList } = this.props;
     const listItems = lists.map(list => (
-        <ListIndexItem list={list} key={list.id} deleteList={deleteList} updateList={updateList}/>));
+      <ListIndexItem 
+        list={list} 
+        key={list.id} 
+        deleteList={deleteList} 
+        updateList={updateList} 
+        fetchList={fetchList}
+        processForm={processForm} 
+      />));
   
     return (
 
@@ -34,7 +44,9 @@ class ListIndex extends React.Component {
         {/* List dropdown */}
         <label className="main-dropdown">
           <div className="main-dd-button">+</div>
-          <span className='main-dropdown-header'>LISTS</span>
+          <span className='main-dropdown-header'>
+            <Link to='/lists'>LISTS</Link>
+          </span>
           <input type="checkbox" className="main-dd-input" />
             
             <div className="main-dd-menu">            

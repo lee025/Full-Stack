@@ -446,13 +446,13 @@ footer a:hover {
   // min-height: calc(100vh - 70px);
   height: 800px;
   width: 25%; // change with JS
-  // position: static;
+  // position: fixed;
   position: relative; // stay in place
   // z-index: 1; // stay on top
   // top: 0;
   // left: -190;
   background-color: transparent;
-  overflow-x: hidden; // disable horizontal scroll
+  // overflow-x: hidden; // disable horizontal scroll
   // overflow-y: auto;
   padding-top: 60px; 
   transition: 0.5s; // effect to slide in sidnav
@@ -724,7 +724,7 @@ footer a:hover {
   left:0;
   right:0;
   top: 0;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.3);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -732,9 +732,9 @@ footer a:hover {
 }
 
 .modal {
-  position: fixed;
-  top: 50%;
-  left: 35%;
+  position: relative;
+  // top: 50%;
+  left: 100%;
   // right: 40px;
   // bottom: 40px;
   border: 1px solid blue;
@@ -774,7 +774,12 @@ footer a:hover {
 .form-container {
   display: block;
   position: relative;
+  // contain: content;
 }
+
+// .rename-input {
+//   display: block;
+// }
 
 // .dd-input {
 //   display: none;
@@ -813,7 +818,7 @@ footer a:hover {
   bottom: 0;
   right: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.3);
   z-index: 10;
 }
 
