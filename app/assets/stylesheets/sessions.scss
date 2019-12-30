@@ -411,10 +411,16 @@ footer a:hover {
   position: static;
   display: flex;
   justify-content: space-between;
+  height: 69px;
   // margin: 0 auto 20px;
   padding: 0 40px;
   border-bottom: 1px solid transparent;
 
+}
+
+.fas {
+  font-size: 12px;
+  color: #ccc;
 }
 
 .header-logout-button {
@@ -423,21 +429,39 @@ footer a:hover {
   height: 35px;
   background-color: white;
   color: grey;
-  margin-top: 7px;
   border-radius: 5px;
   text-align: center;
   font-size: 15px;
   font-family: American Typewriter, serif;
-  margin: 5px;
+  margin: 15px 0px 0px 0px;
   padding: 0px 15px 0px 15px;
+  display: flex;
+  justify-content: center;
 }
 
 .header-logout-button:hover {
   opacity: .8;
 }
 
+.header-name {
+  margin-top: 25px;
+}
 
+.user-main-right {
+  height: 100%;
+  background: rgb(34, 34, 37);
+  display: flex;
+  flex-direction: column;
+}
 
+.user-main-right li {
+  border-bottom: 1px solid #ccc;
+}
+
+.user-main-right li:hover {
+  border-bottom: 1px solid #ccc;
+  opacity: .5;
+}
 
 // -------- side nav ---------- //
 
@@ -457,6 +481,9 @@ footer a:hover {
   padding-top: 60px; 
   transition: 0.5s; // effect to slide in sidnav
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  float: left;
 }
 
 .a {

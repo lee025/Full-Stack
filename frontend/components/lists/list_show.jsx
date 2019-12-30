@@ -1,22 +1,39 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class ListShow extends React.Component {
+  constructor(props){
+    super(props);
+
+    // console.log(this.props)
+  }
 
   componentDidMount() {
     this.props.fetchList(this.props.match.params.listId);
+    this.props.fetchListTasks(this.props.match.params.listId);
+  }
+
+  taskListItem(task){
+    return (
+      <li key={task.id}>
+        <input type='checkbox' />
+        {task.task_name}
+      </li>
+    )
   }
 
   render() {
-    const { list } = this.props;
-    return(
+    const { list, tasks } = this.props;
+    const listTasks = tasks.map(task => this.taskListItem(task))
+    console.log(this.props.tasks)
+    return (
       <div>
-        <h3>{list.title}</h3>
-        {/* map tasks later */}
-
+        <ul>
+          { listTasks }
+        </ul>
       </div>
     );
   }
 }
 
-export default ListShow;
+export default withRouter(ListShow);

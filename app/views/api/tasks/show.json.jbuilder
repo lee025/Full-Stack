@@ -1,0 +1,1 @@
+json.extract! @task, :id, :task_name, :list_id, :start, :due, :notes, :completed 

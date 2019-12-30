@@ -2,14 +2,11 @@ import React from 'react';
 import GreetingContainer from './greeting/greeting_container';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-import Modal from './modal/modal';
 import LogInFormContainer from '../components/session_form/login_form_container';
 import SignUpFormContainer from '../components/session_form/signup_form_container';
-import HomePageContainer from '../components/lists/list_index_container';
-
-
 
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
+import HomePage from './home_page';
 
   const App = () => (
 
@@ -19,10 +16,11 @@ import { AuthRoute, ProtectedRoute } from "../util/route_util";
       <Switch>
         <AuthRoute exact path="/" component={LogInFormContainer} />
         <AuthRoute exact path="/signup" component={SignUpFormContainer} />
-        <ProtectedRoute path="/lists" component={HomePageContainer} />
-
+        <ProtectedRoute path="/lists" component={HomePage} />
         <Redirect to='/' />
       </Switch>
+
+      {/* <ProtectedRoute path='/lists' component={TaskIndexContainer} /> */}
 
       {/* <div className="group2"></div> */}
       <footer className="footer-main">

@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import ListForm from './list_form';
 import { createList } from '../../actions/list_actions';
-import ListIndexItem from './list_index_item';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = state => ({

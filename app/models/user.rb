@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
 ######## [ADD Validations after other tables have been made]
   has_many :lists
+  has_many :tasks, through: :lists, source: :tasks
 
   #SPIRE
   def self.find_by_credentials(username, password)

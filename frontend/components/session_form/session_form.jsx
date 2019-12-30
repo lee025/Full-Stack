@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -40,10 +41,7 @@ class SessionForm extends React.Component {
     // console.log(this.props.formType);
     var errors = this.props.errors;
     var form = this.props.formType;
-    // console.log(prevState.formType);
-    // console.log(form)
     // if (prevState.formType !== nextState.formType){
-
     // }
   }
 
@@ -82,6 +80,7 @@ class SessionForm extends React.Component {
         </article>
 
         <article className="login-right">
+
           <form
             onSubmit={this.handleSubmit}
             className="login-form-box split"
