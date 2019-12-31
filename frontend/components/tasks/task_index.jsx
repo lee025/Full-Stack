@@ -33,7 +33,7 @@ class TaskIndex extends React.Component {
     const tasksList = tasks.map(task => this.taskItem(task))
 
     return (
-      <div className=''>
+      <div className='task-index-container'>
         <ul>
           { tasksList }
         </ul>

@@ -13,6 +13,14 @@ class ListShow extends React.Component {
     this.props.fetchListTasks(this.props.match.params.listId);
   }
 
+  componentDidUpdate(prevProps) {
+    // debugger
+    if (prevProps.match.params.listId !== this.props.match.params.listId){
+      this.props.fetchList(this.props.match.params.listId);
+      this.props.fetchListTasks(this.props.match.params.listId);
+    }
+  }
+
   taskListItem(task){
     return (
       <li key={task.id}>
@@ -25,9 +33,9 @@ class ListShow extends React.Component {
   render() {
     const { list, tasks } = this.props;
     const listTasks = tasks.map(task => this.taskListItem(task))
-    console.log(this.props.tasks)
+    // console.log(this.props.tasks)
     return (
-      <div>
+      <div className='list-tasks-container'>
         <ul>
           { listTasks }
         </ul>

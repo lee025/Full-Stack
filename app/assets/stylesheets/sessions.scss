@@ -371,6 +371,37 @@ footer a:hover {
 // }
 
 
+
+
+// ------- top-task-nav --------- // 
+
+.add-task-form{
+  display: block;
+  padding: 10px;
+  font-size: 15px;
+}
+
+.add-task-form button{
+  padding: 10px;
+  font-size: 15px;
+  border: 1px solid white;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.add-task-form button:hover{
+  opacity: .5;
+}
+
+.add-task-input{
+  width: 50%;
+  height: 30px;
+  font-size: 15px;
+  font-family: inherit;
+}
+
+
+
 // ----- user page ----- //
 
 .workinprogress {
@@ -462,6 +493,55 @@ footer a:hover {
   border-bottom: 1px solid #ccc;
   opacity: .5;
 }
+
+
+
+// ---------- list summary ------------ // 
+
+.task-index-container{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.list-tasks-container{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  height: 100%;
+}
+
+.list-summary-container{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  height: 100%;
+
+}
+
+.list-summary-counter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border: 1px solid white;
+  border-radius: 5px;
+  height: 35px;
+  padding: 10px;
+  width: 50px;
+}
+
+
+// ------ task detail --------- // 
+
+.task-detail-container{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 50%;
+  padding: 10px;
+}
+
+
 
 // -------- side nav ---------- //
 
@@ -608,6 +688,12 @@ footer a:hover {
 .add-list-button {
   font-size: 20px;
   cursor: pointer;
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 0px 15px;
+}
+.add-list-button:hover {
+  opacity: .5;
 }
 
 .nav-list-title {

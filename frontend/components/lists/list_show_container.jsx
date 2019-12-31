@@ -13,12 +13,13 @@ const mapStateToProps = ({entities}, ownProps) => {
   //   return tasks.list_id == entities.lists.id
   // })
 
+  const list = entities.lists[ownProps.match.params.listId]
+
   return {
-    list: entities.lists[ownProps.match.params.listId],
-    tasks: Object.values(entities.tasks),
-    // tasks: Object.values(entities.tasks).filter(tasks => {
-    //   return tasks.list_id == entities.lists.id
-    // })
+    list,
+    tasks: Object.values(entities.tasks).filter(tasks => {
+      return tasks.list_id == list.id
+    })
   }
 };
 

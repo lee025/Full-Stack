@@ -3,16 +3,15 @@ class Api::ListsController < ApplicationController
 
   def new
     @list = List.new
-    # render 'api/lists'
   end
 
   def index
     @lists = List.all 
-    # render 'api/lists'
   end
 
   def show
-    @list = current_user.lists.find(params[:id])
+    @list = current_user.lists.find(id: params[:id])
+    render :show
   end
 
   def create

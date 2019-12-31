@@ -7,24 +7,17 @@ import { createTask } from '../../actions/task_actions';
 const mapStateToProps = ({entities}, ownProps) => {
 
   return {
-    task: {
-      list_id: ownProps.match.params.listId,
-      task_name: '',
-      start: '',
-      due: '',
-      notes: '',
-      completed: false,
-    },
+    // listId: ownProps.match.params.listId
   };
 };
 
 
 const mapDispatchToProps = dispatch => {
   return {
-    createTask: task => dispatch(createTask(task)),
+    createTask: (listId, task) => dispatch(createTask(listId, task)),
   };
 };
 
-export default withRouter(connect(
-  mapStateToProps, mapDispatchToProps
-))(CreateTask);
+export default connect(
+  null, mapDispatchToProps
+)(CreateTask);

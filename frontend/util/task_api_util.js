@@ -19,10 +19,10 @@ export const fetchListTasks = listId => { // verified working
   });
 }
 
-export const createTask = (task) => {
+export const createTask = (listId, task) => {
   return $.ajax({
     method: 'POST',
-    url: `api/lists/${task.list_id}/tasks`,
+    url: `api/lists/${listId}/tasks`,
     data: { task }
   });
 }

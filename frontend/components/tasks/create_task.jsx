@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 
 class CreateTask extends React.Component {
@@ -6,14 +7,25 @@ class CreateTask extends React.Component {
     super(props)
 
     this.state = {
-      ...props,
+      list_id: this.props.match.params.listId,
+      task_name: '',
+      start: '',
+      due: '',
+      notes: '',
+      completed: false,
     }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(e){
     e.preventDefault();
-    this.setState(this.props.task);
+    const listId = this.props.match.params.listId;
+    const task = Object.assign({}, this.state);
+    this.props.createTask(listId, task)
+    // if (this.props.task.task_name !== ''){
+    //   this.props.createTask(task)
+    // }
+    // this.setState(this.props.task);
   }
 
   update(field){
@@ -22,13 +34,14 @@ class CreateTask extends React.Component {
 
   render(){
 
+    // const { task } = this.props;
     // console.log(this.props)
 
     return (
 
-      <form onSubmit={this.handleSubmit}>
+      <form className='add-task-form' onSubmit={this.handleSubmit}>
         <input 
-          className=''
+          className='add-task-input'
           type="text" 
           placeholder='Add a task...'
           value={this.state.task_name}
@@ -41,4 +54,4 @@ class CreateTask extends React.Component {
   }
 }
 
-export default CreateTask;
+export default withRouter(CreateTask);
