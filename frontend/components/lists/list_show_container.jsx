@@ -3,23 +3,27 @@ import ListShow from './list_show';
 import { withRouter } from 'react-router-dom';
 import { fetchList } from '../../actions/list_actions';
 import { fetchTasks, fetchListTasks } from '../../actions/task_actions';
-import {  } from '../../util/task_api_util';
+
 
 
 const mapStateToProps = ({entities}, ownProps) => {
-
-  // const list = entities.lists[ownProps.match.params.listId]
+  const list = entities.lists[ownProps.match.params.listId]
   // const tasks = Object.values(entities.tasks).filter(tasks => {
   //   return tasks.list_id == entities.lists.id
   // })
 
-  const list = entities.lists[ownProps.match.params.listId]
-
-  return {
-    list,
-    tasks: Object.values(entities.tasks).filter(tasks => {
-      return tasks.list_id == list.id
-    })
+  // debugger
+    if(list){
+    return {
+      list,
+      tasks: Object.values(entities.tasks).filter(tasks => {
+        return tasks.list_id == list.id
+      })
+    }
+  } else {
+    return {
+      tasks: []
+    }
   }
 };
 

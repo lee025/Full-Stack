@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = ( dispatch, ownProps ) => {
   return {
   fetchLists: () => dispatch(fetchLists()),
-  fetchList: id => dispatch(fetchList(id)),
+  fetchList: listId => dispatch(fetchList(listId)),
   // processForm: (list, formType) => {
   //   // console./og(formType)
   //   if ( formType === 'update') {

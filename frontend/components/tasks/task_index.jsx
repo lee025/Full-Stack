@@ -19,6 +19,7 @@ class TaskIndex extends React.Component {
     // console.log(task.task_name)
     return (
       <li key={task.id}> 
+      {/* <button></button> */}
       <input type='checkbox' />
         {task.task_name}
       </li>
@@ -27,7 +28,7 @@ class TaskIndex extends React.Component {
 
   render(){
     // console.log(this.props)
-    console.log(this.props.tasks)
+    // console.log(this.props.tasks)
 
     const { tasks } = this.props;
     const tasksList = tasks.map(task => this.taskItem(task))

@@ -26,8 +26,8 @@ export const fetchLists = () => dispatch => (
     .then( lists => dispatch(receiveAllLists(lists)))
 );
 // 2`fetchList(listId)`;
-export const fetchList = listId => dispatch => (
-  ListApiUtil.fetchList(listId)
+export const fetchList = id => dispatch => (
+  ListApiUtil.fetchList(id)
     .then( list => dispatch(receiveList(list)))
 );
 // 3`createList(list)`;
