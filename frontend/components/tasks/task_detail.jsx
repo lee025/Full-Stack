@@ -5,13 +5,8 @@ class TaskDetail extends React.Component {
     super(props);
 
     this.state = {
-      ...props,
-      // list_id: this.props.match.params.listId,
-      // task_name: '',
-      // start: '',
-      // due: new Date(),
-      // notes: '',
-      // completed: false,
+      list_id: this.props.match.params.listId,
+      due: new Date(),
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -43,13 +38,15 @@ class TaskDetail extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const task = Object.assign({}, this.state.task)
+    const task = Object.assign({}, this.props.task)
     const listId = this.props.match.params.listId
-    this.props.updateTask(listId, this.state.task);
+    // this.state.due = Date.parse(this.state.due)
+    console.log(this.state)
+    this.props.updateTask(listId, { ...this.state, id: task.id } );
   }
 
   update(field) {
-    return e => this.setState({ [field]: e.currentTarget.value, id: this.props.task.id })
+    return e => this.setState({ [field]: e.currentTarget.value })
   }
 
   noteItem(note){
@@ -70,7 +67,7 @@ class TaskDetail extends React.Component {
     if(!task){ return null; }
     if(!list){ return null; }
     
-    // console.log(task.due)
+    console.log(task.due)
     return (
       <div className='task-detail-container'>
         <div>
@@ -85,7 +82,7 @@ class TaskDetail extends React.Component {
               type="date" 
               value={task.due || undefined}
               onChange={this.update('due')}
-              required pattern='\d{2}-\d{2}-\d{4}'
+              // required pattern='\d{2}-\d{2}-\d{4}'
             />
             <button onClick={this.handleSubmit}>OK</button>
           </li> 

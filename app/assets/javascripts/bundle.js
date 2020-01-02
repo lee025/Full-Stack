@@ -2272,7 +2272,10 @@ function (_React$Component) {
     _classCallCheck(this, TaskDetail);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(TaskDetail).call(this, props));
-    _this.state = _objectSpread({}, props);
+    _this.state = {
+      list_id: _this.props.match.params.listId,
+      due: new Date()
+    };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this)); // this.updateTaskName = this.updateTaskName.bind(this);
 
     return _this;
@@ -2307,9 +2310,13 @@ function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
-      var task = Object.assign({}, this.state.task);
-      var listId = this.props.match.params.listId;
-      this.props.updateTask(listId, this.state.task);
+      var task = Object.assign({}, this.props.task);
+      var listId = this.props.match.params.listId; // this.state.due = Date.parse(this.state.due)
+
+      console.log(this.state);
+      this.props.updateTask(listId, _objectSpread({}, this.state, {
+        id: task.id
+      }));
     }
   }, {
     key: "update",
@@ -2317,9 +2324,7 @@ function (_React$Component) {
       var _this2 = this;
 
       return function (e) {
-        var _this2$setState;
-
-        return _this2.setState((_this2$setState = {}, _defineProperty(_this2$setState, field, e.currentTarget.value), _defineProperty(_this2$setState, "id", _this2.props.task.id), _this2$setState));
+        return _this2.setState(_defineProperty({}, field, e.currentTarget.value));
       };
     }
   }, {
@@ -2341,9 +2346,9 @@ function (_React$Component) {
 
       if (!list) {
         return null;
-      } // console.log(task.due)
+      }
 
-
+      console.log(task.due);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "task-detail-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
@@ -2351,9 +2356,8 @@ function (_React$Component) {
       }, task.task_name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "due: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "date",
         value: task.due || undefined,
-        onChange: this.update('due'),
-        required: true,
-        pattern: "\\d{2}-\\d{2}-\\d{4}"
+        onChange: this.update('due') // required pattern='\d{2}-\d{2}-\d{4}'
+
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleSubmit
       }, "OK")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "List: ", list.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Notes ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -2580,8 +2584,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -2629,18 +2631,21 @@ function (_React$Component) {
     key: "toggleTaskComplete",
     value: function toggleTaskComplete() {
       // debugger
-      var task = this.props.task;
+      var task = this.props.task; // console.log(this.props.task)
+
       var listId = this.props.match.params.listId;
       var completed = this.props.task.completed;
 
       if (completed) {
-        return this.setState({
-          task: _defineProperty({}, completed, true)
-        }), this.props.updateTask(listId, task);
+        this.props.updateTask(listId, {
+          completed: false,
+          id: task.id
+        });
       } else {
-        return this.setState({
-          task: _defineProperty({}, completed, true)
-        }), this.props.updateTask(listId, task);
+        this.props.updateTask(listId, {
+          completed: true,
+          id: task.id
+        });
       }
     }
   }, {
@@ -2653,11 +2658,15 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      console.log(this.props.task);
+      // console.log(this.props.task)
+      if (!this.props.task) {
+        return null;
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "task-nav-bar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "far fa-check-square",
+        className: this.props.task.completed ? "far fa-check-square" : "far fa-square",
         onClick: this.toggleTaskComplete
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "far fa-trash-alt",
@@ -3269,6 +3278,7 @@ var createTask = function createTask(listId, task) {
   });
 };
 var updateTask = function updateTask(listId, task) {
+  console.log(task);
   return $.ajax({
     method: 'PATCH',
     url: "api/lists/".concat(listId, "/tasks/").concat(task.id),

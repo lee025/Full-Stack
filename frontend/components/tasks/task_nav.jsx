@@ -7,7 +7,6 @@ class TaskNav extends React.Component{
 
     this.toggleTaskComplete = this.toggleTaskComplete.bind(this);
     this.deleteCurrentTask = this.deleteCurrentTask.bind(this);
-
   }
 
   componentDidMount(){
@@ -21,18 +20,13 @@ class TaskNav extends React.Component{
   toggleTaskComplete(){
     // debugger
     const task = this.props.task;
+    // console.log(this.props.task)
     const listId = this.props.match.params.listId;
     const completed = this.props.task.completed;
     if(completed){
-      return (
-        this.setState({ task: {[completed]: true} }),
-        this.props.updateTask(listId, task)
-      )
+      this.props.updateTask(listId, { completed: false, id: task.id })
     } else {
-      return (
-        this.setState({ task: {[completed]: true} }),
-        this.props.updateTask(listId, task)
-      )
+      this.props.updateTask(listId, { completed: true, id: task.id })
     }
   }
 
@@ -43,11 +37,14 @@ class TaskNav extends React.Component{
   }
 
   render(){
-    console.log(this.props.task)
-
+    // console.log(this.props.task)
+    if(!this.props.task){ return null }
     return(
       <div className='task-nav-bar'>
-        <i className="far fa-check-square" onClick={this.toggleTaskComplete}></i>
+        <i 
+          className={this.props.task.completed ? "far fa-check-square" : "far fa-square"} 
+          onClick={this.toggleTaskComplete}>
+        </i>
         <i className="far fa-trash-alt" onClick={this.deleteCurrentTask}></i>
       </div>
     )

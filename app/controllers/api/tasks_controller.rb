@@ -29,10 +29,12 @@ class Api::TasksController < ApplicationController
 
   def update
     @task = List.find(params[:list_id]).tasks.find(params[:id])
+    @task.due = Date.parse(task_params[:due])
+    # debugger
     if @task.update(task_params)
       render :show
     else
-      render json: @tasks.errors.full_messages
+      render json: @task.errors.full_messages
     end
   end
 
@@ -44,7 +46,7 @@ class Api::TasksController < ApplicationController
 
   private
   def task_params
-    params.require(:task).permit(:task_name, :list_id, :start, :due, :notes, :completed)
+    params.require(:task).permit(:id, :task_name, :list_id, :start, :due, :notes, :completed)
     # params.require(:task).permit(:task_name, :list_id, :start, :due, notes: [], :completed)
   end
 
