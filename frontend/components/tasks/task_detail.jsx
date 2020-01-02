@@ -7,6 +7,8 @@ class TaskDetail extends React.Component {
     this.state = {
       ...props,
     }
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount(){
@@ -20,6 +22,16 @@ class TaskDetail extends React.Component {
     }
   }
 
+  handleSubmit(e) {
+    e.stopPropogation();
+    const task = Object.assign({}, this.state.task)
+    this.props.updateTask(this.state.task);
+  }
+
+  update(field) {
+    return e => this.setState({ task: { [field]: e.currentTarget.value, id: this.state.task.id } })
+  }
+
   noteItem(note){
     return(
       <li>
@@ -29,11 +41,11 @@ class TaskDetail extends React.Component {
   }
 
   render(){
+
+    // console.log(this.props.location.pathname)
     
     // const task = this.props.task;
     // const list = this.props.list;
-    
-    
     
     const { task, list } = this.props;
     // const noteItems = task.notes.map(note => this.noteItem(note))
@@ -41,10 +53,11 @@ class TaskDetail extends React.Component {
     if(!task){ return null; }
     if(!list){ return null; }
     
-    console.log(task.notes)
+    // console.log(task.notes)
     return (
       <div className='task-detail-container'>
         <h2>{task.task_name}</h2>
+          <i className="fas fa-pencil-alt"></i>
         <ul>
           <li>due:</li> 
           <li>List: {list.title}</li>

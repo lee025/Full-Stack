@@ -740,22 +740,18 @@ function (_React$Component) {
   _inherits(HomePage, _React$Component);
 
   function HomePage(props) {
-    var _this;
-
     _classCallCheck(this, HomePage);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(HomePage).call(this, props));
-    _this.state = {
-      showTaskDetail: false
-    };
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(HomePage).call(this, props)); // this.state = {
+    //   showTaskDetail: false,
+    // }
   }
 
   _createClass(HomePage, [{
     key: "render",
     value: function render() {
-      // console.log(this.props)
       // console.log(this.props.location.pathname)
+      console.log(this.props);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_lists_list_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("article", {
         className: "user-main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
@@ -771,6 +767,11 @@ function (_React$Component) {
         path: "/lists/:listId",
         component: _components_lists_list_show_container__WEBPACK_IMPORTED_MODULE_4__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        exact: true,
+        path: "/lists/:listId/tasks",
+        component: _components_lists_list_summary_container__WEBPACK_IMPORTED_MODULE_7__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        exact: true,
         path: "/lists/:listId/tasks/:taskId",
         component: _components_tasks_task_detail_container__WEBPACK_IMPORTED_MODULE_6__["default"]
       }))));
@@ -1333,7 +1334,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _tasks_task_detail_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../tasks/task_detail_container */ "./frontend/components/tasks/task_detail_container.jsx");
+/* harmony import */ var _list_show_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./list_show_container */ "./frontend/components/lists/list_show_container.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1354,15 +1363,22 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
 var ListShow =
 /*#__PURE__*/
 function (_React$Component) {
   _inherits(ListShow, _React$Component);
 
   function ListShow(props) {
+    var _this;
+
     _classCallCheck(this, ListShow);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(ListShow).call(this, props)); // console.log(this.props)
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ListShow).call(this, props));
+    _this.state = _objectSpread({}, props); // this.toggleSummaryDetail = this.toggleSummaryDetail.bind(this)
+
+    return _this;
   }
 
   _createClass(ListShow, [{
@@ -1379,31 +1395,48 @@ function (_React$Component) {
         this.props.fetchList(this.props.match.params.listId);
         this.props.fetchListTasks(this.props.match.params.listId);
       }
-    }
+    } // toggleSummaryDetail(e){
+    //   e.preventDefault();
+    //   this.setState({ listSummary: false, taskDetail: true });
+    // }
+    // renderSummaryDetail(){
+    //   if (this.state.listSummary && !this.state.taskDetail){
+    //     <Route path='/lists/:listId' component={ListSummaryContainer} /> 
+    //   } else {
+    //     <Route path='/lists/:listId/tasks/:taskId' component={TaskDetailContainer} />
+    //   }
+    // }
+
   }, {
     key: "taskListItem",
     value: function taskListItem(task) {
+      var list = this.props.list;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         key: task.id
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "checkbox"
-      }), task.task_name);
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/lists/".concat(list.id, "/tasks/").concat(task.id)
+      }, task.task_name));
     }
   }, {
     key: "render",
     value: function render() {
-      var _this = this;
+      var _this2 = this;
 
       var _this$props = this.props,
           list = _this$props.list,
           tasks = _this$props.tasks;
       var listTasks = tasks.map(function (task) {
-        return _this.taskListItem(task);
+        return _this2.taskListItem(task);
       }); // console.log(this.props.tasks)
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "list-tasks-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, listTasks));
+      return (// <div>
+        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "list-tasks-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, listTasks))
+        /* {this.renderSummaryDetail}
+        </div> */
+
+      );
     }
   }]);
 
@@ -2208,9 +2241,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -2230,6 +2263,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(TaskDetail).call(this, props));
     _this.state = _objectSpread({}, props);
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2247,6 +2281,26 @@ function (_React$Component) {
       }
     }
   }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.stopPropogation();
+      var task = Object.assign({}, this.state.task);
+      this.props.updateTask(this.state.task);
+    }
+  }, {
+    key: "update",
+    value: function update(field) {
+      var _this2 = this;
+
+      return function (e) {
+        var _task;
+
+        return _this2.setState({
+          task: (_task = {}, _defineProperty(_task, field, e.currentTarget.value), _defineProperty(_task, "id", _this2.state.task.id), _task)
+        });
+      };
+    }
+  }, {
     key: "noteItem",
     value: function noteItem(note) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, note);
@@ -2254,6 +2308,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      // console.log(this.props.location.pathname)
       // const task = this.props.task;
       // const list = this.props.list;
       var _this$props = this.props,
@@ -2266,12 +2321,14 @@ function (_React$Component) {
 
       if (!list) {
         return null;
-      }
+      } // console.log(task.notes)
 
-      console.log(task.notes);
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "task-detail-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, task.task_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "due:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "List: ", list.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Notes ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, task.task_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-pencil-alt"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "due:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "List: ", list.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Notes ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "Add Notes???"
       })), task.notes));
@@ -2383,8 +2440,7 @@ function (_React$Component) {
     _classCallCheck(this, TaskIndex);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(TaskIndex).call(this, props));
-    _this.state = _objectSpread({}, props); // console.log(this.props)
-
+    _this.state = _objectSpread({}, props);
     return _this;
   }
 

@@ -49,7 +49,6 @@ class ListIndex extends React.Component {
               
               <div className="main-dd-menu">            
                   {listItems}   
-                  {/* <Route path='/lists/:list_id/tasks' component={TaskIndex} /> */}
               </div>       
 
           </label>

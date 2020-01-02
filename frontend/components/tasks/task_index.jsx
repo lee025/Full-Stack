@@ -7,13 +7,11 @@ class TaskIndex extends React.Component {
     this.state = {
       ...props,
     }
-    // console.log(this.props)
   }
 
   componentDidMount() {
     this.props.fetchTasks();
   }
-
 
   taskItem(task) {
     // console.log(task.task_name)

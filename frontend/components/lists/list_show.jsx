@@ -1,11 +1,19 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, Route, withRouter } from 'react-router-dom';
+import TaskDetailContainer from '../tasks/task_detail_container';
+import ListSummaryContainer from './list_show_container';
 
 class ListShow extends React.Component {
   constructor(props){
     super(props);
 
-    // console.log(this.props)
+    this.state = {
+      ...props,
+      // listSummary: true,
+      // taskDetail: false,
+    }
+
+    // this.toggleSummaryDetail = this.toggleSummaryDetail.bind(this)
   }
 
   componentDidMount() {
@@ -21,11 +29,26 @@ class ListShow extends React.Component {
     }
   }
 
+  // toggleSummaryDetail(e){
+  //   e.preventDefault();
+  //   this.setState({ listSummary: false, taskDetail: true });
+  // }
+
+  // renderSummaryDetail(){
+  //   if (this.state.listSummary && !this.state.taskDetail){
+  //     <Route path='/lists/:listId' component={ListSummaryContainer} /> 
+  //   } else {
+  //     <Route path='/lists/:listId/tasks/:taskId' component={TaskDetailContainer} />
+  //   }
+  // }
+
   taskListItem(task){
+    const list = this.props.list;
     return (
       <li key={task.id}>
-        <input type='checkbox' />
-        {task.task_name}
+        {/* input add onClick={toggleSummaryDetail} */}
+        {/* <input type='checkbox' /> */}
+        <Link to={`/lists/${list.id}/tasks/${task.id}`}>{task.task_name}</Link>
       </li>
     )
   }
@@ -35,11 +58,14 @@ class ListShow extends React.Component {
     const listTasks = tasks.map(task => this.taskListItem(task))
     // console.log(this.props.tasks)
     return (
-      <div className='list-tasks-container'>
-        <ul>
-          { listTasks }
-        </ul>
-      </div>
+      // <div>
+        <div className='list-tasks-container'>
+          <ul>
+            { listTasks }
+          </ul>
+        </div>
+        /* {this.renderSummaryDetail}
+      </div> */
     );
   }
 }

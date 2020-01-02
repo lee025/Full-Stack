@@ -11,16 +11,16 @@ import TaskNavContainer from '../components/tasks/task_nav_container';
 class HomePage extends React.Component {
   constructor(props){
     super(props);
-    this.state = {
-      showTaskDetail: false,
-    }
+    // this.state = {
+    //   showTaskDetail: false,
+    // }
   }
 
 
 
   render() {
-    // console.log(this.props)
     // console.log(this.props.location.pathname)
+    console.log(this.props)
     return (
       <div>
         {/* col1 ListDropDown */}
@@ -37,8 +37,8 @@ class HomePage extends React.Component {
 
             <Route exact path='/lists' component={TaskIndexContainer} />
             <Route path='/lists/:listId' component={ListShowContainer} />
-            {/* <Route path='/lists/:listId' component={ListSummaryContainer} /> */}
-            <Route path='/lists/:listId/tasks/:taskId' component={TaskDetailContainer} />
+            <Route exact path='/lists/:listId/tasks' component={ListSummaryContainer} />
+            <Route exact path='/lists/:listId/tasks/:taskId' component={TaskDetailContainer} />
           </div>
         </article>
        
