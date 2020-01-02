@@ -391,7 +391,7 @@ footer a:hover {
   border: 1px solid white;
   border-radius: 3px;
   padding: 5px 15px;
-  margin-right: 5px;
+  margin: 5px 5px 5px 0px;
 }
 
 .add-task-form{
@@ -604,8 +604,14 @@ footer a:hover {
   padding: 10px;
 }
 
-.fa-pencil-alt{
-  font-size: 17px;
+.task-detail-header{
+  display: block
+}
+
+.fa-pencil-alt:before{
+  // display: none;
+  font-size: 15px;
+  padding-left: 10px;
 }
 
 .task-detail-container li{

@@ -15,6 +15,7 @@ class TaskDetail extends React.Component {
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    // this.updateTaskName = this.updateTaskName.bind(this);
   }
 
   componentDidMount(){
@@ -28,6 +29,16 @@ class TaskDetail extends React.Component {
     if (prevProps.match.params.taskId !== this.props.match.params.taskId){
       this.props.fetchTask(listId, this.props.match.params.taskId);
     }
+  }
+
+  updateTaskName(){
+    return (
+      <input 
+        type="text"
+        value={this.props.task.task_name}
+        onChange={this.update('task_name')}
+      />
+    )
   }
 
   handleSubmit(e) {
@@ -59,10 +70,16 @@ class TaskDetail extends React.Component {
     if(!task){ return null; }
     if(!list){ return null; }
     
-    console.log(task.due)
+    // console.log(task.due)
     return (
       <div className='task-detail-container'>
-        <h2>{task.task_name}</h2><i className="fas fa-pencil-alt"></i>
+        <div>
+          <h2 className='task-detail-header'>{task.task_name}</h2>
+          {/* <h2 className='task-detail-header'>
+            {task.task_name}
+            <i className="fas fa-pencil-alt" onClick={this.updateTaskName()}></i>
+          </h2> */}
+        </div>
         <ul>
           <li>due: <input 
               type="date" 

@@ -8,6 +8,7 @@ export const fetchTasks = () => { // verified working
 export const fetchTask = (listId, id) => { // verified working
   return $.ajax({
     method: 'GET',
+    // url: `api/tasks/${id}`,
     url: `api/lists/${listId}/tasks/${id}`
   });
 }
@@ -35,9 +36,9 @@ export const updateTask = (listId, task) => {
   });
 }
 
-export const deleteTask = id => {
+export const deleteTask = (listId, id)=> {
   return $.ajax({
     method: "DELETE",
-    url: `api/tasks/${id}`
+    url: `api/lists/${listId}/tasks/${id}`
   });
 }

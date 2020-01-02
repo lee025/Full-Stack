@@ -26,7 +26,7 @@ class HomePage extends React.Component {
 
 
         <article className="user-main-container">
-          <Route path='/lists/:listId/tasks' component={TaskNavContainer} />
+          <Route path='/lists/:listId/tasks/:taskId' component={TaskNavContainer} />
           <Route path='/lists/:listId/tasks' component={CreateTaskContainer} />
           {/* <TaskNavContainer /> */}
           <div className="user-main-right">
@@ -34,8 +34,8 @@ class HomePage extends React.Component {
 
             <Route exact path='/lists' component={TaskIndexContainer} />
             <Route path='/lists/:listId' component={ListShowContainer} />
+            <Route path='/lists/:listId/tasks/:taskId' component={TaskDetailContainer} />
             <Route exact path='/lists/:listId/tasks' component={ListSummaryContainer} />
-            <Route exact path='/lists/:listId/tasks/:taskId' component={TaskDetailContainer} />
           </div>
         </article>
        

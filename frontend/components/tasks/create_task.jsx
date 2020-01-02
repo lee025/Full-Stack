@@ -19,15 +19,16 @@ class CreateTask extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    const listId = this.props.match.params.listId;
+    this.props.fetchTask(listId, this.props.match.params.taskId);
+  }
+
   handleSubmit(e){
     e.preventDefault();
     const listId = this.props.match.params.listId;
     const task = Object.assign({}, this.state);
     this.props.createTask(listId, task)
-    // if (this.props.task.task_name !== ''){
-    //   this.props.createTask(task)
-    // }
-    // this.setState(this.props.task);
   }
 
   update(field){

@@ -12,7 +12,7 @@ class ListSummary extends React.Component {
   
   // --- dont need bc ListShow has same route and logic already ---
   // componentDidMount(){
-  //   this.props.fetchList(this.props.match.params.listid);
+  //   this.props.fetchList(this.props.match.params.listId);
   //   this.props.fetchListTasks(this.props.match.params.listId);
   // }
 

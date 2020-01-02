@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import TaskNav from './task_nav';
-import { fetchTask, deleteTask } from '../../actions/task_actions';
+import { fetchTask, deleteTask, updateTask } from '../../actions/task_actions';
 import { fetchList } from '../../actions/list_actions';
 
 const mapStateToProps = ({entities}, ownProps) => {
@@ -14,7 +14,8 @@ const mapStateToProps = ({entities}, ownProps) => {
       list,
       tasks: Object.values(entities.tasks).filter(tasks => {
         return tasks.list_id == list.id
-      })
+      }),
+      task: entities.tasks[ownProps.match.params.taskId]
     }
   } else {
       return {
@@ -24,9 +25,10 @@ const mapStateToProps = ({entities}, ownProps) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  fetchTask: id => dispatch(fetchTask(id)),
-  deleteTask: id => dispatch(deleteTask(id)),
+  fetchTask: (listId, id) => dispatch(fetchTask(listId, id)),
+  deleteTask: (listId, id) => dispatch(deleteTask(listId, id)),
   fetchList: listId => dispatch(fetchList(listId)),
+  updateTask: (listId, task) => dispatch(updateTask(listId, task)),
 })
 
 export default connect(
