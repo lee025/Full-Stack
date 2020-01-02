@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, Route, withRouter } from 'react-router-dom';
-import TaskDetailContainer from '../tasks/task_detail_container';
-import ListSummaryContainer from './list_show_container';
+
 
 class ListShow extends React.Component {
   constructor(props){
@@ -46,8 +45,7 @@ class ListShow extends React.Component {
     const list = this.props.list;
     return (
       <li key={task.id}>
-        {/* input add onClick={toggleSummaryDetail} */}
-        {/* <input type='checkbox' /> */}
+        {/* onClick={toggleSummaryDetail} */}
         <Link to={`/lists/${list.id}/tasks/${task.id}`}>{task.task_name}</Link>
       </li>
     )

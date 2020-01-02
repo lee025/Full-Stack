@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class TaskIndex extends React.Component {
   constructor(props){
@@ -10,16 +11,17 @@ class TaskIndex extends React.Component {
   }
 
   componentDidMount() {
+    this.props.fetchList(this.props.match.params.listId);
     this.props.fetchTasks();
   }
 
   taskItem(task) {
-    // console.log(task.task_name)
+    // console.log(this.props)
     return (
       <li key={task.id}> 
-      {/* <button></button> */}
       <input type='checkbox' />
         {task.task_name}
+        {/* <Link to={`/lists/${list.id}/tasks/${task.id}`}>{task.task_name}</Link> */}
       </li>
     )
   }

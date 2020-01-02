@@ -28,7 +28,7 @@ class Api::TasksController < ApplicationController
   end
 
   def update
-    @task = List.find_by(params[:list_id]).tasks.find_by(params[:id])
+    @task = List.find(params[:list_id]).tasks.find(params[:id])
     if @task.update(task_params)
       render :show
     else
@@ -37,7 +37,7 @@ class Api::TasksController < ApplicationController
   end
 
   def destroy
-    @task = List.find_by(params[:list_id]).tasks.find_by(params[:id])
+    @task = List.find(params[:list_id]).tasks.find(params[:id])
     @task.destroy
     render :show
   end

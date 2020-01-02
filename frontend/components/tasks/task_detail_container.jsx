@@ -7,14 +7,14 @@ import { withRouter } from 'react-router-dom';
 const mapStateToProps = ( {entities}, ownProps ) => {
   // console.log(entities)
   return {
-    task: entities.tasks[ownProps.match.params.taskId],
     list: entities.lists[ownProps.match.params.listId],
+    task: entities.tasks[ownProps.match.params.taskId],
   }
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchTask: id => dispatch(fetchTask(id)),
-  updateTask: task => dispatch(updateTask(task)),
+  fetchTask: (listId, id) => dispatch(fetchTask(listId, id)),
+  updateTask: (listId, task) => dispatch(updateTask(listId, task)),
   fetchList: listId => dispatch(listId),
   fetchSelectedTask: task => dispatch(fetchSelectedTask(task))
 });

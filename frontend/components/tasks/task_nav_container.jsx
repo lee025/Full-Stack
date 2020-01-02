@@ -6,12 +6,20 @@ import { fetchTask, deleteTask } from '../../actions/task_actions';
 import { fetchList } from '../../actions/list_actions';
 
 const mapStateToProps = ({entities}, ownProps) => {
-  console.log(entities)
-  return {
-    list: entities.lists[ownProps.match.params.listId],
-    tasks: Object.values(entities.tasks).filter(tasks => {
-      return tasks.list_id == list.id
-    })
+  // console.log(entities)
+  const list = entities.lists[ownProps.match.params.listId]
+
+  if(list){
+    return {
+      list,
+      tasks: Object.values(entities.tasks).filter(tasks => {
+        return tasks.list_id == list.id
+      })
+    }
+  } else {
+      return {
+        tasks: []
+      }
   }
 }
 

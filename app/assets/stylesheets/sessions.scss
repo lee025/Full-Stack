@@ -194,11 +194,16 @@ input[type="submit"] {
   text-align: center;
   font-size: 15px;
   font-family: American Typewriter, serif;
-
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
 }
 
 .session-button:hover {
-  opacity: .8;
+  // opacity: .8;
+  background-color: rgba(0, 0, 0, 0.2); 
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  transform: translateY(-1px);
 }
 
 
@@ -376,6 +381,19 @@ footer a:hover {
 
 // ------- top-task-nav --------- // 
 
+.task-nav-bar {
+  display: flex;
+  border-bottom: 1px solid #ccc ;
+}
+
+.task-nav-bar i {
+  display: flex;
+  border: 1px solid white;
+  border-radius: 3px;
+  padding: 5px 15px;
+  margin-right: 5px;
+}
+
 .add-task-form{
   padding: 10px;
   font-size: 15px;
@@ -389,10 +407,16 @@ footer a:hover {
   border: 1px solid white;
   border-radius: 5px;
   margin: 5px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
 }
 
 .add-task-form button:hover{
-  opacity: .5;
+  // opacity: .5;
+  background-color: rgba(0, 0, 0, 0.1); 
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  transform: translateY(-1px);
 }
 
 .add-task-input{
@@ -452,8 +476,8 @@ footer a:hover {
 }
 
 .fas {
-  font-size: 12px;
-  color: #ccc;
+  margin-top: 20px;
+  font-size: 30px;
 }
 
 .header-logout-button {
@@ -470,10 +494,16 @@ footer a:hover {
   padding: 0px 15px 0px 15px;
   display: flex;
   justify-content: center;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
 }
 
 .header-logout-button:hover {
-  opacity: .8;
+  // opacity: .8;
+  background-color: rgba(0, 0, 0, 0.3); 
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  transform: translateY(-1px);
 }
 
 .header-name {
@@ -481,11 +511,16 @@ footer a:hover {
 }
 
 .user-main-right {
-  height: calc(100% - 70px);
+  height: calc(100% - 109px);
   width: 100%;
   background: rgb(34, 34, 37);
   display: flex;
   flex-direction: row;
+}
+
+.user-main-right h2 {
+  font-size: 1.5em;
+  font-weight: 600;
 }
 
 .user-main-right li {
@@ -569,8 +604,8 @@ footer a:hover {
   padding: 10px;
 }
 
-.fa-pencil-alt.md-14{
-  font-size: 14px;
+.fa-pencil-alt{
+  font-size: 17px;
 }
 
 .task-detail-container li{
@@ -586,7 +621,7 @@ footer a:hover {
 // -------- side nav ---------- //
 
 .sidenav {
-  border: 2px solid rgb(71, 120, 212);
+  border-right: 1px solid white;
   // min-height: calc(100vh - 70px);
   height: 800px;
   width: 25%; // change with JS
@@ -663,7 +698,7 @@ footer a:hover {
 // }
 
 .main-dd-button:hover {
-  opacity: .8;;
+  opacity: .8;
 }
 
 .main-dd-input {
@@ -728,12 +763,18 @@ footer a:hover {
 .add-list-button {
   font-size: 20px;
   cursor: pointer;
-  border: 2px solid white;
+  border: 1px solid white;
   border-radius: 5px;
   padding: 0px 15px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
 }
 .add-list-button:hover {
-  opacity: .5;
+  // opacity: .5;
+  background-color: rgba(0, 0, 0, 0.1); 
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  transform: translateY(-1px);
 }
 
 .nav-list-title {
@@ -849,7 +890,7 @@ footer a:hover {
   opacity: .8; // rename remove buttons
 }
 
-.user-main {
+.user-main-container {
   width: 75%;
   // position: relative;
   // display: flex;;

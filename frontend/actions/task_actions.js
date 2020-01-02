@@ -38,8 +38,8 @@ export const fetchTasks = () => dispatch => {
   .then(tasks => dispatch(receiveAllTasks(tasks)))
 }
 
-export const fetchTask = id => dispatch => {
-  return TaskApiUtil.fetchTask(id)
+export const fetchTask = (listId, id)=> dispatch => {
+  return TaskApiUtil.fetchTask(listId, id)
   .then(task => dispatch(receiveTask(task)))
 }
 
@@ -53,8 +53,8 @@ export const createTask = (listId, task) => dispatch => {
     .then(task => dispatch(receiveTask(task)))
 }
 
-export const updateTask = task => dispatch => {
-  return TaskApiUtil.updateTask(task)
+export const updateTask = (listId, task) => dispatch => {
+  return TaskApiUtil.updateTask(listId, task)
     .then(task => dispatch(receiveTask(task)))
 }
 

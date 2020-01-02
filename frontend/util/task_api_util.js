@@ -5,10 +5,10 @@ export const fetchTasks = () => { // verified working
   });
 }
 
-export const fetchTask = (id) => { // verified working
+export const fetchTask = (listId, id) => { // verified working
   return $.ajax({
     method: 'GET',
-    url: `api/tasks/${id}`
+    url: `api/lists/${listId}/tasks/${id}`
   });
 }
 
@@ -27,10 +27,10 @@ export const createTask = (listId, task) => {
   });
 }
 
-export const updateTask = task => {
+export const updateTask = (listId, task) => {
   return $.ajax({
     method: 'PATCH',
-    url: `api/tasks/${task.id}`,
+    url: `api/lists/${listId}/tasks/${task.id}`,
     data: { task }
   });
 }

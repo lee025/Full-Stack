@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import TaskIndex from './task_index';
-
+import { fetchList } from '../../actions/list_actions';
 import {
   fetchTasks, fetchTask, fetchListTasks
 } from '../../actions/task_actions';
@@ -20,8 +20,9 @@ const mapStateToProps = ( state, ownProps ) => {
 
 const mapDispatchToProps = ( dispatch ) => {
   return {
+    fetchList: listId => dispatch(fetchList(listId)),
     fetchTasks: () => dispatch(fetchTasks()),
-    fetchTask: id => dispatch(fetchTask(id)),
+    fetchTask: (listId, id) => dispatch(fetchTask(listId, id)),
     fetchListTasks: listId => dispatch(fetchListTasks(listId))
   }
 };

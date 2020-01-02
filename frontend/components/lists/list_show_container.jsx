@@ -8,12 +8,9 @@ import { fetchTasks, fetchListTasks } from '../../actions/task_actions';
 
 const mapStateToProps = ({entities}, ownProps) => {
   const list = entities.lists[ownProps.match.params.listId]
-  // const tasks = Object.values(entities.tasks).filter(tasks => {
-  //   return tasks.list_id == entities.lists.id
-  // })
 
   // debugger
-    if(list){
+  if(list){
     return {
       list,
       tasks: Object.values(entities.tasks).filter(tasks => {

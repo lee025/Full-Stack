@@ -1,8 +1,5 @@
 import React from "react";
 import { Link, Redirect, Route, withRouter } from "react-router-dom";
-import CreateTask from '../tasks/create_task';
-import TaskIndexContainer from '../tasks/task_index_container';
-import { fetchTask, fetchTasks, fetchTaskList } from '../../actions/task_actions';
 
 
 class Greeting extends React.Component {
@@ -59,7 +56,7 @@ class Greeting extends React.Component {
       <section>
         <header className="header-group">
 
-          {/* <i className="fas fa-bars" onClick={this.toggleListDD}></i>  */}
+          <i className="fas fa-bars" onClick={this.toggleListDD}></i> 
 
           <p className="header-name">Hi, {this.props.currentUser.username}!</p>
           <button className="header-logout-button" onClick={this.onClick}>
