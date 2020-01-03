@@ -1,7 +1,7 @@
 # All the Things
 
 All the Things is an easy to use app, single-page web application the helps you keep track of all the things want to remember so you can focus on doing those things!
-![alt text](https://github.com/lee025/All-the-Things/app/assets/images/readme-login.png)
+![alt text](app/assets/images/readme-login.png?raw=true 'login-page')
 
 
 ## Technologies
@@ -25,4 +25,8 @@ All the Things is an easy to use app, single-page web application the helps you 
      * Task Detail breaks down all the details for each task including: task name, task list, due date, and notes
      * Task Navigation allows a User to mark a task complete/incomplete and delete a task
  
+### List CRUD
+All the things offers a simple and intuitive way to create, edit, and delete lists. 
+The list modal is a single component that that will render the correct form depending on what the user selects.
 
+![alt text](app/assets/images/readme-modal.png?raw=true 'list-modal')
