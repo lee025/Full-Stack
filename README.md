@@ -35,8 +35,8 @@ The list modal is a single component that that will render the correct form depe
 Users also are able to create, edit and delete tasks. Added features include marking them as complete/incomplete and adding a due date. Deleting and toggling completion are accessible only via the Task Navigation bar that is rendered once a task is selected. 
 
 ## Future Improvements
-[] List Navigation DropDown Menu
-[] Tabs for Completed/Incomplete tasks
-[] Tags for tasks
-[] Search functionality
-[] Attachments for tasks
+- [ ] List Navigation DropDown Menu
+- [ ] Tabs for Completed/Incomplete tasks
+- [ ] Tags for tasks
+- [ ] Search functionality
+- [ ] Attachments for tasks
