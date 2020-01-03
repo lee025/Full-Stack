@@ -750,11 +750,11 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_lists_list_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("article", {
         className: "user-main-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-        path: "/lists/:listId/tasks/:taskId",
-        component: _components_tasks_task_nav_container__WEBPACK_IMPORTED_MODULE_8__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         path: "/lists/:listId/tasks",
         component: _components_tasks_create_task_container__WEBPACK_IMPORTED_MODULE_5__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        path: "/lists/:listId/tasks/:taskId",
+        component: _components_tasks_task_nav_container__WEBPACK_IMPORTED_MODULE_8__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-main-right"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
@@ -765,12 +765,12 @@ function (_React$Component) {
         path: "/lists/:listId",
         component: _components_lists_list_show_container__WEBPACK_IMPORTED_MODULE_4__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-        path: "/lists/:listId/tasks/:taskId",
-        component: _components_tasks_task_detail_container__WEBPACK_IMPORTED_MODULE_6__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
         path: "/lists/:listId/tasks",
         component: _components_lists_list_summary_container__WEBPACK_IMPORTED_MODULE_7__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        path: "/lists/:listId/tasks/:taskId",
+        component: _components_tasks_task_detail_container__WEBPACK_IMPORTED_MODULE_6__["default"]
       }))));
     }
   }]);
@@ -1058,11 +1058,16 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
     fetchList: function fetchList(listId) {
       return dispatch(Object(_actions_list_actions__WEBPACK_IMPORTED_MODULE_2__["fetchList"])(listId));
     },
-    // processForm: (list, formType) => {
+    updateList: function updateList(list) {
+      return dispatch(Object(_actions_list_actions__WEBPACK_IMPORTED_MODULE_2__["updateList"])(list));
+    },
+    deleteList: function deleteList(id) {
+      return dispatch(Object(_actions_list_actions__WEBPACK_IMPORTED_MODULE_2__["deleteList"])(id));
+    } // processForm: (list, formType) => {
     //   // console./og(formType)
     //   if ( formType === 'update') {
     //     const up = dispatch(updateList(list))
-    //     // console.log(up)
+    //     // console.log(update)
     //     return up 
     //   } else if ( formType === 'remove') {
     //     const remove = dispatch(deleteList(list ))
@@ -1070,12 +1075,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
     //     return remove
     //   }
     // },
-    updateList: function updateList(list) {
-      return dispatch(Object(_actions_list_actions__WEBPACK_IMPORTED_MODULE_2__["updateList"])(list));
-    },
-    deleteList: function deleteList(id) {
-      return dispatch(Object(_actions_list_actions__WEBPACK_IMPORTED_MODULE_2__["deleteList"])(id));
-    }
+
   };
 };
 
@@ -1558,26 +1558,31 @@ function (_React$Component) {
     key: "numCompleted",
     value: function numCompleted() {
       var tasks = this.props.tasks;
+      var count = []; // debugger
 
       if (!tasks) {
         return null;
       }
 
-      Object.values(tasks).filter(function (tasks) {
-        return tasks.completed == true;
+      Object.values(tasks).filter(function (task) {
+        if (task.completed == true) {
+          count.push(task);
+        }
       });
+      return count;
     }
   }, {
     key: "render",
     value: function render() {
-      // console.log(this.props.tasks)
+      console.log(this.props.tasks);
       var _this$props = this.props,
           list = _this$props.list,
           tasks = _this$props.tasks;
 
       if (!list) {
         return null;
-      }
+      } // debugger
+
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "list-summary-container"
@@ -1585,7 +1590,7 @@ function (_React$Component) {
         className: "list-summary-box"
       }, tasks.length, " tasks"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "list-summary-box"
-      }, this.numCompleted.length, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "completed"));
+      }, this.numCompleted().length, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "completed"));
     }
   }]);
 
@@ -2113,9 +2118,6 @@ function (_React$Component) {
     _this.state = {
       list_id: _this.props.match.params.listId,
       task_name: '',
-      start: '',
-      due: '',
-      notes: '',
       completed: false
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
@@ -2125,8 +2127,7 @@ function (_React$Component) {
   _createClass(CreateTask, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var listId = this.props.match.params.listId;
-      this.props.fetchTask(listId, this.props.match.params.taskId);
+      var listId = this.props.match.params.listId; // this.props.fetchTask(listId, this.props.match.params.taskId);
     }
   }, {
     key: "handleSubmit",
@@ -2235,6 +2236,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -2261,6 +2263,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var TaskDetail =
 /*#__PURE__*/
 function (_React$Component) {
@@ -2274,10 +2277,11 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(TaskDetail).call(this, props));
     _this.state = {
       list_id: _this.props.match.params.listId,
-      due: new Date()
-    };
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this)); // this.updateTaskName = this.updateTaskName.bind(this);
+      due: new Date() // task_name: '',
 
+    };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.updateTaskName = _this.updateTaskName.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2299,21 +2303,17 @@ function (_React$Component) {
     }
   }, {
     key: "updateTaskName",
-    value: function updateTaskName() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        value: this.props.task.task_name,
-        onChange: this.update('task_name')
-      });
+    value: function updateTaskName(e) {
+      e.preventDefault();
+      var task = Object.assign({}, this.state);
+      this.props.updateTask(this.props.match.params.listId, task);
     }
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
       var task = Object.assign({}, this.props.task);
-      var listId = this.props.match.params.listId; // this.state.due = Date.parse(this.state.due)
-
-      console.log(this.state);
+      var listId = this.props.match.params.listId;
       this.props.updateTask(listId, _objectSpread({}, this.state, {
         id: task.id
       }));
@@ -2348,7 +2348,6 @@ function (_React$Component) {
         return null;
       }
 
-      console.log(task.due);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "task-detail-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
@@ -2356,14 +2355,15 @@ function (_React$Component) {
       }, task.task_name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "due: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "date",
         value: task.due || undefined,
-        onChange: this.update('due') // required pattern='\d{2}-\d{2}-\d{4}'
-
+        onChange: this.update('due')
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleSubmit
       }, "OK")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "List: ", list.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Notes ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "Add Notes"
-      })), task.notes));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.handleSubmit
+      }, "Add")), task.notes));
     }
   }]);
 
@@ -2398,8 +2398,8 @@ var mapStateToProps = function mapStateToProps(_ref, ownProps) {
   var entities = _ref.entities;
   // console.log(entities)
   return {
-    listId: ownProps.match.params.listId,
-    taskId: ownProps.match.params.taskId,
+    // listId: ownProps.match.params.listId,
+    // taskId: ownProps.match.params.taskId,
     list: entities.lists[ownProps.match.params.listId],
     task: entities.tasks[ownProps.match.params.taskId]
   };
@@ -2481,8 +2481,10 @@ function (_React$Component) {
   _createClass(TaskIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      var listId = this.props.match.params.listId;
       this.props.fetchList(this.props.match.params.listId);
       this.props.fetchTasks();
+      this.props.fetchTask(listId, this.props.match.params.taskId);
     }
   }, {
     key: "taskItem",
@@ -2490,9 +2492,7 @@ function (_React$Component) {
       // console.log(this.props)
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         key: task.id
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "checkbox"
-      }), task.task_name);
+      }, task.task_name);
     }
   }, {
     key: "render",
@@ -2501,7 +2501,9 @@ function (_React$Component) {
 
       // console.log(this.props)
       // console.log(this.props.tasks)
-      var tasks = this.props.tasks;
+      var _this$props = this.props,
+          list = _this$props.list,
+          tasks = _this$props.tasks;
       var tasksList = tasks.map(function (task) {
         return _this2.taskItem(task);
       });
@@ -2545,7 +2547,8 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   // console.log(state)
   return {
     tasks: Object.values(state.entities.tasks),
-    listId: ownProps.match.params.listId
+    listId: ownProps.match.params.listId,
+    task: state.entities.tasks[ownProps.match.params.taskId]
   };
 };
 
@@ -2614,6 +2617,12 @@ function (_React$Component) {
     _classCallCheck(this, TaskNav);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(TaskNav).call(this, props));
+    _this.state = {
+      task: {
+        completed: false,
+        id: null
+      }
+    };
     _this.toggleTaskComplete = _this.toggleTaskComplete.bind(_assertThisInitialized(_this));
     _this.deleteCurrentTask = _this.deleteCurrentTask.bind(_assertThisInitialized(_this));
     return _this;
@@ -2637,11 +2646,15 @@ function (_React$Component) {
       var completed = this.props.task.completed;
 
       if (completed) {
+        // this.setState({ task: { completed: false, id: task.id } })
         this.props.updateTask(listId, {
           completed: false,
           id: task.id
         });
       } else {
+        // console.log(task.id)
+        // this.setState({ task: { completed: true, id: task.id } })
+        // console.log(this.state)
         this.props.updateTask(listId, {
           completed: true,
           id: task.id

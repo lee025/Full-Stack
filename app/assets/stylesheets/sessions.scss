@@ -528,7 +528,7 @@ footer a:hover {
 }
 
 .user-main-right li:hover {
-  opacity: .5;
+  // opacity: .5;
 }
 
 
@@ -622,6 +622,29 @@ footer a:hover {
 
 .task-detail-container li:nth-child(2){
   text-transform: capitalize;
+}
+
+.task-detail-container input {
+  height: 22px;
+  font-size: 13px;
+  font-family: American Typewriter, serif;
+}
+
+.task-detail-container button {
+  padding: 5px 15px;
+  font-size: 15px;
+  border: 1px solid white;
+  border-radius: 5px;
+  margin: 5px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+}
+.task-detail-container button:hover {
+  background-color: white; 
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+  color: black;
+  // color: #fff;
+  transform: translateY(-1px);
 }
 
 // -------- side nav ---------- //
@@ -929,9 +952,9 @@ footer a:hover {
   overflow: auto;
   border-radius: 5px;
   // outline: none;
-  padding: 10px;
-  height: 150px;
-  width: 275px;
+  padding: 20px;
+  height: 200px;
+  width: 375px;
   color: black;
   box-shadow: 0 0 6px 0 rgba(0,0,0,0.1);
   z-index: 2;
@@ -995,6 +1018,7 @@ footer a:hover {
   display: block;
   position: relative;
   margin-top: 15px;
+  padding: 5px;
 }
 
 .update-form-container label{

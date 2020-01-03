@@ -5,6 +5,10 @@ class TaskNav extends React.Component{
   constructor(props){
     super(props);
 
+    this.state = {
+      task: {completed: false, id: null }
+    }
+
     this.toggleTaskComplete = this.toggleTaskComplete.bind(this);
     this.deleteCurrentTask = this.deleteCurrentTask.bind(this);
   }
@@ -24,8 +28,12 @@ class TaskNav extends React.Component{
     const listId = this.props.match.params.listId;
     const completed = this.props.task.completed;
     if(completed){
+        // this.setState({ task: { completed: false, id: task.id } })
       this.props.updateTask(listId, { completed: false, id: task.id })
     } else {
+        // console.log(task.id)
+        // this.setState({ task: { completed: true, id: task.id } })
+        // console.log(this.state)
       this.props.updateTask(listId, { completed: true, id: task.id })
     }
   }

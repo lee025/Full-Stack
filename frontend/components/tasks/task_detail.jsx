@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, Redirect } from 'react-router-dom';
 
 class TaskDetail extends React.Component {
   constructor(props){
@@ -7,10 +8,11 @@ class TaskDetail extends React.Component {
     this.state = {
       list_id: this.props.match.params.listId,
       due: new Date(),
+      // task_name: '',
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.updateTaskName = this.updateTaskName.bind(this);
+    this.updateTaskName = this.updateTaskName.bind(this);
   }
 
   componentDidMount(){
@@ -26,22 +28,18 @@ class TaskDetail extends React.Component {
     }
   }
 
-  updateTaskName(){
-    return (
-      <input 
-        type="text"
-        value={this.props.task.task_name}
-        onChange={this.update('task_name')}
-      />
-    )
+  updateTaskName(e){
+    e.preventDefault();
+    const task = Object.assign({}, this.state);
+    this.props.updateTask(this.props.match.params.listId, task);
+
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const task = Object.assign({}, this.props.task)
     const listId = this.props.match.params.listId
-    // this.state.due = Date.parse(this.state.due)
-    console.log(this.state)
+
     this.props.updateTask(listId, { ...this.state, id: task.id } );
   }
 
@@ -67,28 +65,29 @@ class TaskDetail extends React.Component {
     if(!task){ return null; }
     if(!list){ return null; }
     
-    console.log(task.due)
     return (
       <div className='task-detail-container'>
         <div>
           <h2 className='task-detail-header'>{task.task_name}</h2>
-          {/* <h2 className='task-detail-header'>
-            {task.task_name}
-            <i className="fas fa-pencil-alt" onClick={this.updateTaskName()}></i>
-          </h2> */}
+          {/* <input 
+            className='task-detail-header'
+            value={this.props.task_name}
+            onChange={this.update('task_name')}
+          /><i className="fas fa-pencil-alt" onClick={this.updateTaskName}></i> */}
         </div>
         <ul>
           <li>due: <input 
               type="date" 
               value={task.due || undefined}
               onChange={this.update('due')}
-              // required pattern='\d{2}-\d{2}-\d{4}'
             />
             <button onClick={this.handleSubmit}>OK</button>
           </li> 
           <li>List: {list.title}</li>
+          {/* <Link to={`/list/${list.id}/tasks`}></Link> */}
           <li>Notes <br/>
             <input type="text" placeholder='Add Notes'/>
+            <button onClick={this.handleSubmit}>Add</button>
           </li>
           { task.notes }
         </ul>

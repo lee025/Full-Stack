@@ -29,8 +29,8 @@ class Api::TasksController < ApplicationController
 
   def update
     @task = List.find(params[:list_id]).tasks.find(params[:id])
-    @task.due = Date.parse(task_params[:due])
     # debugger
+    # @task.due = Date.parse(task_params[:due])
     if @task.update(task_params)
       render :show
     else

@@ -7,8 +7,8 @@ import { withRouter } from 'react-router-dom';
 const mapStateToProps = ( {entities}, ownProps ) => {
   // console.log(entities)
   return {
-    listId: ownProps.match.params.listId,
-    taskId: ownProps.match.params.taskId,
+    // listId: ownProps.match.params.listId,
+    // taskId: ownProps.match.params.taskId,
     list: entities.lists[ownProps.match.params.listId],
     task: entities.tasks[ownProps.match.params.taskId],
   }

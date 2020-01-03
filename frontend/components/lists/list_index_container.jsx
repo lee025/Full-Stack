@@ -17,11 +17,13 @@ const mapDispatchToProps = ( dispatch, ownProps ) => {
   return {
   fetchLists: () => dispatch(fetchLists()),
   fetchList: listId => dispatch(fetchList(listId)),
+  updateList: list => dispatch(updateList(list)),
+  deleteList: id => dispatch(deleteList(id))
   // processForm: (list, formType) => {
   //   // console./og(formType)
   //   if ( formType === 'update') {
   //     const up = dispatch(updateList(list))
-  //     // console.log(up)
+  //     // console.log(update)
   //     return up 
   //   } else if ( formType === 'remove') {
   //     const remove = dispatch(deleteList(list ))
@@ -29,8 +31,6 @@ const mapDispatchToProps = ( dispatch, ownProps ) => {
   //     return remove
   //   }
   // },
-  updateList: list => dispatch(updateList(list)),
-  deleteList: id => dispatch(deleteList(id))
 }};
 
 export default withRouter(connect(

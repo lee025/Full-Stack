@@ -11,9 +11,6 @@ class CreateTask extends React.Component {
     this.state = {
       list_id: this.props.match.params.listId,
       task_name: '',
-      start: '',
-      due: '',
-      notes: '',
       completed: false,
     }
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,7 +18,7 @@ class CreateTask extends React.Component {
 
   componentDidMount() {
     const listId = this.props.match.params.listId;
-    this.props.fetchTask(listId, this.props.match.params.taskId);
+    // this.props.fetchTask(listId, this.props.match.params.taskId);
   }
 
   handleSubmit(e){

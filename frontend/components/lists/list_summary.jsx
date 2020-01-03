@@ -18,19 +18,23 @@ class ListSummary extends React.Component {
 
   numCompleted(){
     const tasks = this.props.tasks
+    const count = [];
+    // debugger
     if(!tasks){ return null; }
-    Object.values(tasks).filter(tasks => {
-      return tasks.completed == true
+    Object.values(tasks).filter(task => {
+      if (task.completed == true){
+        count.push(task)
+      }
     })
+    return count;
   }
 
   render(){
-    // console.log(this.props.tasks)
-
+    console.log(this.props.tasks)
     const { list, tasks } = this.props;    
 
     if(!list){ return null; }
-
+    // debugger
     return (
       <div className='list-summary-container'>
         <h2>{list.title}</h2>
@@ -38,7 +42,7 @@ class ListSummary extends React.Component {
           {tasks.length} tasks
         </div>
         <div className='list-summary-box'>
-          {this.numCompleted.length} <br/>completed
+          {this.numCompleted().length} <br/>completed
         </div>
       </div>
     )

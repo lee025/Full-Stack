@@ -15,6 +15,7 @@ const mapStateToProps = ( state, ownProps ) => {
   return {
     tasks: Object.values(state.entities.tasks),
     listId: ownProps.match.params.listId,
+    task: state.entities.tasks[ownProps.match.params.taskId],
   }
 };
 
