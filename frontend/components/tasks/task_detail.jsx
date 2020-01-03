@@ -87,8 +87,10 @@ class TaskDetail extends React.Component {
           <li>List: 
             <Link to={`/lists/${task.list_id}/tasks`}> {list.title}</Link>
           </li>
+          
           <li>Notes <br/>
-            <input 
+            {/* <img className='hobbs-icon' src={window.notes_hobbs_iconURL} /> */}
+           <input 
               type="text" 
               placeholder='Add Notes'
               value={this.state.notes}
