@@ -383,7 +383,8 @@ footer a:hover {
 
 .task-nav-bar {
   display: flex;
-  border-bottom: 1px solid #ccc ;
+  border-bottom: 1px solid whitesmoke ;
+  margin-left: 10px;
 }
 
 .task-nav-bar i {
@@ -392,13 +393,21 @@ footer a:hover {
   border-radius: 3px;
   padding: 5px 15px;
   margin: 5px 5px 5px 0px;
+  transition: all 0.1s ease 0s;
+
+}
+
+.task-nav-bar i:hover{
+  opacity: .5;
+  transform: translateY(-1px);
 }
 
 .add-task-form{
   padding: 10px;
   font-size: 15px;
   // background: rgb(34, 34, 37);
-  border-bottom: 1px solid #ccc ;
+  // border-bottom: 1px solid #ccc ;
+  border-bottom: 1px solid whitesmoke ;
 }
 
 .add-task-form button{
@@ -605,29 +614,40 @@ footer a:hover {
 }
 
 .task-detail-header{
-  display: block
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 20px;
 }
 
-.fa-pencil-alt:before{
+.fa-pencil-alt{
   // display: none;
   font-size: 15px;
   padding-left: 10px;
+  transition: all 0.3s ease 0s;
 }
 
-.task-detail-container li{
-  margin: 5px 0px 35px 0px;
-  border-bottom: none;
-  padding-right: 10px;
+// .task-detail-header-edit {
+//   display: none;
+// }
+
+// .task-detail-header-edit + .fa-pencil-alt:hover{
+//   height: 22px;
+//   font-size: 13px;
+//   font-family: American Typewriter, serif;
+// }
+
+
+.fa-pencil-alt:hover{
+  opacity: .5;
+  transform: translateY(-1px);
 }
 
-.task-detail-container li:nth-child(2){
-  text-transform: capitalize;
-}
 
 .task-detail-container input {
   height: 22px;
   font-size: 13px;
   font-family: American Typewriter, serif;
+  margin: 10px 0px;
 }
 
 .task-detail-container button {
@@ -647,6 +667,15 @@ footer a:hover {
   transform: translateY(-1px);
 }
 
+.task-detail-container li{
+  margin: 5px 0px 35px 0px;
+  border-bottom: none;
+  padding-right: 10px;
+}
+
+.task-detail-container li:nth-child(2){
+  text-transform: capitalize;
+}
 // -------- side nav ---------- //
 
 .sidenav {
@@ -704,7 +733,7 @@ footer a:hover {
 .main-dd-button {
   // display: inline-block;
   // border: 1px solid gray;
-  border: 1px solid blue;
+  border: 1px solid white;
   border-radius: 4px;
   background-color: transparent;
   cursor: pointer;
@@ -712,22 +741,18 @@ footer a:hover {
   float: right;
   padding: 0 5px 0 5px;
   margin-right: 3px;
+  color: white;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
 }
 
-// .main-dd-button:after {
-//   content: '';
-//   position: absolute;
-//   top: 50%;
-//   // right: 15px;
-//   // transform: translateY(-50%);
-//   width: 0; 
-//   height: 0; 
-//   // border-left: 5px solid transparent;
-//   // border-right: 5px solid transparent;
-// }
-
 .main-dd-button:hover {
-  opacity: .8;
+  // opacity: .8;
+  background-color: white; 
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+  color: black;
+  // color: #fff;
+  transform: translateY(-1px);
 }
 
 .main-dd-input {
@@ -790,11 +815,11 @@ footer a:hover {
 }
 
 .add-list-button {
-  font-size: 20px;
+  font-size: 15px;
   cursor: pointer;
   border: 1px solid white;
   border-radius: 5px;
-  padding: 0px 15px;
+  padding: 5px 15px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease 0s;
 }
@@ -836,31 +861,38 @@ footer a:hover {
   // display: inline-block;
   display: block;
   position: relative;
-  border: 1px solid rgb(10, 2, 2);
+  border: 1px solid white;
   border-radius: 5px;
   padding: 1px 0px 0px 7px;
   background-color: transparent;
   cursor: pointer;
   white-space: nowrap;
   float: right;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
 }
 
-.dd-button:after {
-  content: '';
-  position: block;
-  top: 50%;
-  right: 15px;
-  transform: translateY(-50%);
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 5px solid transparent;
-}
+// .dd-button:after {
+//   content: '';
+//   position: block;
+//   top: 50%;
+//   right: 15px;
+//   // transform: translateY(-50%);
+//   width: 0;
+//   height: 0;
+//   border-left: 5px solid transparent;
+//   border-right: 5px solid transparent;
+//   border-top: 5px solid transparent;
+//     // background-color: white; 
+//   box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+//   color: black;
+//   // color: #fff;
+//   transform: translateY(-1px);
+// }
 
-.dd-button:hover{
-  opacity: .8;
-}
+// .dd-button:hover{
+//   opacity: .8;
+// }
 
 .dd-list-button:hover {
   opacity: .8;
@@ -900,10 +932,12 @@ footer a:hover {
   display: inline-block;
   // border: 1px solid red;
   position: relative;
-  border: 1px solid #ccc;
-  background: white;
+  // border: 1px solid white;
   border-radius: 3px;
+  background-color: white;
   box-shadow: 0 0 6px 0 rgba(0,0,0,0.1);
+  // box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
 }
 
 .dd-menu li button {
@@ -916,7 +950,12 @@ footer a:hover {
 }
 
 .dd-menu li:hover {
-  opacity: .8; // rename remove buttons
+  // opacity: .8; // rename remove buttons
+  background-color: white; 
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+  color: black;
+  // color: #fff;
+  transform: translateY(-1px);
 }
 
 .user-main-container {
@@ -947,9 +986,9 @@ footer a:hover {
 .modal {
   // position: absolute;
   // left: 100%;
-  border: 1px solid #ccc;
+  border: 1px solid white;
   background: white;
-  overflow: auto;
+  // overflow: auto;
   border-radius: 5px;
   // outline: none;
   padding: 20px;

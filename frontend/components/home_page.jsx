@@ -32,7 +32,7 @@ class HomePage extends React.Component {
           <div className="user-main-right">
             {/* col2 UserMain*/}
             <Route exact path='/lists' component={TaskIndexContainer} />
-            <Route path='/lists/:listId' component={ListShowContainer} />
+            <Route path='/lists/:listId/tasks' component={ListShowContainer} />
             <Route exact path='/lists/:listId/tasks' component={ListSummaryContainer} />
             <Route path='/lists/:listId/tasks/:taskId' component={TaskDetailContainer} />
           </div>

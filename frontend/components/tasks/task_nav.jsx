@@ -16,10 +16,21 @@ class TaskNav extends React.Component{
   componentDidMount(){
     // debugger
     const listId = this.props.match.params.listId;
-    // this.props.fetchList(this.props.match.params.listId);
-    this.props.fetchTask(listId, this.props.match.params.taskId);
+
+    if (this.props.match.taskId) {
+      this.props.fetchTask(listId, this.props.match.params.taskId)
+    } else {
+      this.props.fetchList(listId)
+    }
   }
 
+  componentDidUpdate(prevProps){
+    const listId = this.props.match.params.listid;
+    if(!this.props.match.params.taskId){
+    // if (prevProps.match.url !== this.props.match.url){
+      this.props.fetchList(listId)
+    }
+  }
 
   toggleTaskComplete(){
     // debugger
@@ -27,13 +38,10 @@ class TaskNav extends React.Component{
     // console.log(this.props.task)
     const listId = this.props.match.params.listId;
     const completed = this.props.task.completed;
-    if(completed){
-        // this.setState({ task: { completed: false, id: task.id } })
+
+    if (completed) {
       this.props.updateTask(listId, { completed: false, id: task.id })
     } else {
-        // console.log(task.id)
-        // this.setState({ task: { completed: true, id: task.id } })
-        // console.log(this.state)
       this.props.updateTask(listId, { completed: true, id: task.id })
     }
   }
@@ -41,13 +49,18 @@ class TaskNav extends React.Component{
   deleteCurrentTask(){
     // debugger
     const listId = this.props.match.params.listId;
-    this.props.deleteTask(listId, this.props.match.params.taskId);
+    const task = this.props.task;
+
+    this.props.deleteTask(listId, this.props.match.params.taskId)
+    .then(() => this.props.history.push(`/lists/${listId}/tasks`))
+    .then(() => window.location.reload())
   }
 
   render(){
-    // console.log(this.props.task)
+    // console.log(this.props)
     if(!this.props.task){ return null }
-    return(
+
+    return (
       <div className='task-nav-bar'>
         <i 
           className={this.props.task.completed ? "far fa-check-square" : "far fa-square"} 

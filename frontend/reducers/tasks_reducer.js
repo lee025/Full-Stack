@@ -14,6 +14,7 @@ const TasksReducer = ( state = {}, action ) => {
     case REMOVE_TASK:
       let nextState = Object.assign({}, state)
       delete nextState[action.taskId]
+      return nextState
     default:
       return state;
   }

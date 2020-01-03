@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, Route } from 'react-router-dom';
+
 
 class TaskDetail extends React.Component {
   constructor(props){
@@ -8,11 +9,11 @@ class TaskDetail extends React.Component {
     this.state = {
       list_id: this.props.match.params.listId,
       due: new Date(),
-      // task_name: '',
+      task_name: '',
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.updateTaskName = this.updateTaskName.bind(this);
+    // this.updateTaskName = this.updateTaskName.bind(this);
   }
 
   componentDidMount(){
@@ -28,10 +29,7 @@ class TaskDetail extends React.Component {
     }
   }
 
-  updateTaskName(e){
-    e.preventDefault();
-    const task = Object.assign({}, this.state);
-    this.props.updateTask(this.props.match.params.listId, task);
+  updateTaskName(){
 
   }
 
@@ -58,7 +56,7 @@ class TaskDetail extends React.Component {
   render(){
 
     // console.log(this.props.location.pathname)
-    
+    console.log(this.props)
     const { task, list } = this.props;
     // const noteItems = task.notes.map(note => this.noteItem(note))
     
@@ -67,13 +65,16 @@ class TaskDetail extends React.Component {
     
     return (
       <div className='task-detail-container'>
-        <div>
+        <div className=''>
           <h2 className='task-detail-header'>{task.task_name}</h2>
-          {/* <input 
-            className='task-detail-header'
-            value={this.props.task_name}
-            onChange={this.update('task_name')}
-          /><i className="fas fa-pencil-alt" onClick={this.updateTaskName}></i> */}
+          
+            <input
+              className='task-detail-header-edit'
+              value={this.state.task_name}
+              placeholder='Edit Task Name'
+              onChange={this.update('task_name')}
+          /><i className="fas fa-pencil-alt" onClick={this.handleSubmit}></i>
+          
         </div>
         <ul>
           <li>due: <input 
@@ -83,10 +84,15 @@ class TaskDetail extends React.Component {
             />
             <button onClick={this.handleSubmit}>OK</button>
           </li> 
-          <li>List: {list.title}</li>
-          {/* <Link to={`/list/${list.id}/tasks`}></Link> */}
+          <li>List: 
+            <Link to={`/lists/${task.list_id}/tasks`}> {list.title}</Link>
+          </li>
           <li>Notes <br/>
-            <input type="text" placeholder='Add Notes'/>
+            <input 
+              type="text" 
+              placeholder='Add Notes'
+              value={this.state.notes}
+            />
             <button onClick={this.handleSubmit}>Add</button>
           </li>
           { task.notes }

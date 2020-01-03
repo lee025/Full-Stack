@@ -60,5 +60,5 @@ export const updateTask = (listId, task) => dispatch => {
 
 export const deleteTask = (listId, id) => dispatch => {
   return TaskApiUtil.deleteTask(listId, id)
-    .then((task) => dispatch(removeTask(task.id)))
+    .then((task) => dispatch(removeTask(id)))
 }

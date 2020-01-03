@@ -30,7 +30,7 @@ class ListSummary extends React.Component {
   }
 
   render(){
-    console.log(this.props.tasks)
+    // console.log(this.props.tasks)
     const { list, tasks } = this.props;    
 
     if(!list){ return null; }

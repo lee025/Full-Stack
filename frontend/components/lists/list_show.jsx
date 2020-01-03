@@ -8,44 +8,34 @@ class ListShow extends React.Component {
 
     this.state = {
       ...props,
-      // listSummary: true,
-      // taskDetail: false,
     }
-
-    // this.toggleSummaryDetail = this.toggleSummaryDetail.bind(this)
   }
 
   componentDidMount() {
     this.props.fetchList(this.props.match.params.listId);
     this.props.fetchListTasks(this.props.match.params.listId);
+    // 
+    // const listId = this.props.match.params.listId;
+    // if (this.props.match.taskId) {
+    //   this.props.fetchTask(listId, this.props.match.params.taskId)
+    // } else {
+    //   this.props.fetchListTasks(this.props.match.params.listId)
+    // }
   }
 
   componentDidUpdate(prevProps) {
     // debugger
     if (prevProps.match.params.listId !== this.props.match.params.listId){
+    // if (prevProps.match.url !== this.props.match.url){
       this.props.fetchList(this.props.match.params.listId);
       this.props.fetchListTasks(this.props.match.params.listId);
     }
   }
 
-  // toggleSummaryDetail(e){
-  //   e.preventDefault();
-  //   this.setState({ listSummary: false, taskDetail: true });
-  // }
-
-  // renderSummaryDetail(){
-  //   if (this.state.listSummary && !this.state.taskDetail){
-  //     <Route path='/lists/:listId' component={ListSummaryContainer} /> 
-  //   } else {
-  //     <Route path='/lists/:listId/tasks/:taskId' component={TaskDetailContainer} />
-  //   }
-  // }
-
   taskListItem(task){
     const list = this.props.list;
     return (
       <li key={task.id}>
-        {/* onClick={toggleSummaryDetail} */}
         <Link to={`/lists/${list.id}/tasks/${task.id}`}>{task.task_name}</Link>
       </li>
     )
@@ -54,16 +44,13 @@ class ListShow extends React.Component {
   render() {
     const { list, tasks } = this.props;
     const listTasks = tasks.map(task => this.taskListItem(task))
-    // console.log(this.props.tasks)
+    console.log(this.props)
     return (
-      // <div>
         <div className='list-tasks-container'>
           <ul>
             { listTasks }
           </ul>
         </div>
-        /* {this.renderSummaryDetail}
-      </div> */
     );
   }
 }

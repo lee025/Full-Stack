@@ -66,7 +66,7 @@ class ListIndexItem extends React.Component {
   }
 
   updateCurrentList() {
-      this.props.updateList( this.state.list )
+      this.props.updateList(this.state.list)
   }
 
   deleteCurrentList() {
@@ -133,7 +133,7 @@ class ListIndexItem extends React.Component {
 
     return (
       <label className="nav-dropdown">
-        <div className="dd-button">+</div>
+        <div className="main-dd-button">+</div>
         
         <span className='nav-list-title'>
           <Link to={`/lists/${list.id}/tasks`}>{list.title}</Link>
