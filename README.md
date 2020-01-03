@@ -40,3 +40,4 @@ Users also are able to create, edit and delete tasks. Added features include mar
 - [ ] Tags for tasks
 - [ ] Search functionality
 - [ ] Attachments for tasks
+- [ ]
