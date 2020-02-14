@@ -5,10 +5,22 @@ import { fetchList } from '../../actions/list_actions';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = ( {entities}, ownProps ) => {
-  // console.log(entities)
-  return {
-    list: entities.lists[ownProps.match.params.listId],
-    task: entities.tasks[ownProps.match.params.taskId],
+  // console.log("MSTP:", entities)
+  
+  let tasks = entities.tasks
+  let lists = entities.lists
+
+  if(!lists || !tasks) {
+    return {}
+  } else {
+
+    return {
+      // list: ownProps.match.params.listId,
+      // task: ownProps.match.params.taskId,
+      list: lists[ownProps.match.params.listId],
+      task: tasks[ownProps.match.params.taskId],
+      
+    }
   }
 };
 

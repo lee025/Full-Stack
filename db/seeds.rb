@@ -22,15 +22,15 @@ l3 = List.create!({title: 'fruits', user_id: u2.id})
 l4 = List.create!({title: 'ONE FISH', user_id: u2.id})
 
 # Work List Tasks
-t1 = Task.create!(task_name: 'MVP 1', list_id: l1.id, start: nil, due: nil, notes: 'UserAuth', completed: false)
-t2 = Task.create!(task_name: 'MVP 2', list_id: l1.id, start: nil, due: nil, notes: 'Lists', completed: false)
-t3 = Task.create!(task_name: 'MVP 3', list_id: l1.id, start: nil, due: nil, notes: 'Tasks', completed: false)
+t1 = Task.create!(task_name: 'MVP 1', list_id: l1.id, start: nil, due: nil, notes: ['UserAuth'], completed: false)
+t2 = Task.create!(task_name: 'MVP 2', list_id: l1.id, start: nil, due: nil, notes: ['Lists'], completed: false)
+t3 = Task.create!(task_name: 'MVP 3', list_id: l1.id, start: nil, due: nil, notes: ['Tasks'], completed: false)
 # Play List Tasks
-t4 = Task.create!(task_name: 'boulder', list_id: l2.id, start: nil, due: nil, notes: 'EarthTrek', completed: false)
-t5 = Task.create!(task_name: 'hike', list_id: l2.id, start: nil, due: nil, notes: 'Billy Goat', completed: false)
+t4 = Task.create!(task_name: 'boulder', list_id: l2.id, start: nil, due: nil, notes: ['EarthTrek'], completed: false)
+t5 = Task.create!(task_name: 'hike', list_id: l2.id, start: nil, due: nil, notes: ['Billy Goat'], completed: false)
 
 
-t5 = Task.create!(task_name: 'apple', list_id: l3.id, start: nil, due: nil, notes: 'fuji', completed: false)
-t5 = Task.create!(task_name: 'banana', list_id: l3.id, start: nil, due: nil, notes: 'yellow', completed: false)
-t5 = Task.create!(task_name: 'two fish', list_id: l4.id, start: nil, due: nil, notes: 'red fish, blue fish', completed: false)
+t5 = Task.create!(task_name: 'apple', list_id: l3.id, start: nil, due: nil, notes: ['fuji'], completed: false)
+t5 = Task.create!(task_name: 'banana', list_id: l3.id, start: nil, due: nil, notes: ['yellow'], completed: false)
+t5 = Task.create!(task_name: 'two fish', list_id: l4.id, start: nil, due: nil, notes: ['red fish, blue fish'], completed: false)
 

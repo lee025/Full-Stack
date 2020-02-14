@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Redirect, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 class TaskDetail extends React.Component {
@@ -10,16 +10,22 @@ class TaskDetail extends React.Component {
       list_id: this.props.match.params.listId,
       due: new Date(),
       task_name: '',
+      notes: []
     }
 
+    console.log("constructor state:", this.state)
+
+    // console.log("constructor props:", this.props)
+
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.updateTaskName = this.updateTaskName.bind(this);
+    this.updateNotes = this.updateNotes.bind(this);
   }
 
   componentDidMount(){
     // this.props.fetchList(this.props.match.params.listId);
     const listId = this.props.match.params.listId;
-    this.props.fetchTask(listId, this.props.match.params.taskId);
+    this.props.fetchTask(listId, this.props.match.params.taskId)
+      .then(() => this.state.notes.push(this.props.task.notes))
   }
 
   componentDidUpdate(prevProps){
@@ -27,10 +33,6 @@ class TaskDetail extends React.Component {
     if (prevProps.match.params.taskId !== this.props.match.params.taskId){
       this.props.fetchTask(listId, this.props.match.params.taskId);
     }
-  }
-
-  updateTaskName(){
-
   }
 
   handleSubmit(e) {
@@ -45,23 +47,33 @@ class TaskDetail extends React.Component {
     return e => this.setState({ [field]: e.currentTarget.value })
   }
 
-  noteItem(note){
+  updateNotes(e) {
+    // debugger
+    return e => this.setState({ notes: this.state.notes.concat(e.target.value)})
+    // return e => this.setState({ notes: [...this.state.notes.concat(e.target.value) ]})
+    // this.setState({
+    //   notes: Object.assign({}, this.state.notes, {
+    //     [e.target.id]: e.target.value
+    //   })
+    // });
+
+  }
+
+  noteItem(note, idx){
     return(
-      <li>
+      <li key={idx}>
         {note}
       </li>
     )
   }
 
   render(){
-
-    // console.log(this.props.location.pathname)
-    console.log(this.props)
     const { task, list } = this.props;
-    // const noteItems = task.notes.map(note => this.noteItem(note))
-    
+    console.log(task)
     if(!task){ return null; }
     if(!list){ return null; }
+    
+    const noteItems = task.notes.map((note, idx) => this.noteItem(note, idx))
     
     return (
       <div className='task-detail-container'>
@@ -70,7 +82,7 @@ class TaskDetail extends React.Component {
           
             <input
               className='task-detail-header-edit'
-              value={this.state.task_name}
+              value={this.state.task_name || this.props.task.task_name}
               placeholder='Edit Task Name'
               onChange={this.update('task_name')}
           /><i className="fas fa-pencil-alt" onClick={this.handleSubmit}></i>
@@ -91,11 +103,11 @@ class TaskDetail extends React.Component {
             <input 
               type="text" 
               placeholder='Add Notes'
-              value={this.state.notes}
+              onChange={this.updateNotes("notes")}
             />
             <button onClick={this.handleSubmit}>Add</button>
           </li>
-          { task.notes }
+          { noteItems }
         </ul>
       </div>
     )

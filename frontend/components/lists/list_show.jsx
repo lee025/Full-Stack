@@ -44,7 +44,7 @@ class ListShow extends React.Component {
   render() {
     const { list, tasks } = this.props;
     const listTasks = tasks.map(task => this.taskListItem(task))
-    console.log(this.props)
+    // console.log(this.props)
     return (
         <div className='list-tasks-container'>
           <ul>

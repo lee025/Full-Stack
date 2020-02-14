@@ -1415,8 +1415,8 @@ function (_React$Component) {
           tasks = _this$props.tasks;
       var listTasks = tasks.map(function (task) {
         return _this2.taskListItem(task);
-      });
-      console.log(this.props);
+      }); // console.log(this.props)
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "list-tasks-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, listTasks));
@@ -2268,19 +2268,26 @@ function (_React$Component) {
     _this.state = {
       list_id: _this.props.match.params.listId,
       due: new Date(),
-      task_name: ''
+      task_name: '',
+      notes: []
     };
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this)); // this.updateTaskName = this.updateTaskName.bind(this);
+    console.log("constructor state:", _this.state); // console.log("constructor props:", this.props)
 
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.updateNotes = _this.updateNotes.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(TaskDetail, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      var _this2 = this;
+
       // this.props.fetchList(this.props.match.params.listId);
       var listId = this.props.match.params.listId;
-      this.props.fetchTask(listId, this.props.match.params.taskId);
+      this.props.fetchTask(listId, this.props.match.params.taskId).then(function () {
+        return _this2.state.notes.push(_this2.props.task.notes);
+      });
     }
   }, {
     key: "componentDidUpdate",
@@ -2291,9 +2298,6 @@ function (_React$Component) {
         this.props.fetchTask(listId, this.props.match.params.taskId);
       }
     }
-  }, {
-    key: "updateTaskName",
-    value: function updateTaskName() {}
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
@@ -2307,25 +2311,45 @@ function (_React$Component) {
   }, {
     key: "update",
     value: function update(field) {
-      var _this2 = this;
+      var _this3 = this;
 
       return function (e) {
-        return _this2.setState(_defineProperty({}, field, e.currentTarget.value));
+        return _this3.setState(_defineProperty({}, field, e.currentTarget.value));
       };
     }
   }, {
+    key: "updateNotes",
+    value: function updateNotes(e) {
+      var _this4 = this;
+
+      // debugger
+      return function (e) {
+        return _this4.setState({
+          notes: _this4.state.notes.concat(e.target.value)
+        });
+      }; // return e => this.setState({ notes: [...this.state.notes.concat(e.target.value) ]})
+      // this.setState({
+      //   notes: Object.assign({}, this.state.notes, {
+      //     [e.target.id]: e.target.value
+      //   })
+      // });
+    }
+  }, {
     key: "noteItem",
-    value: function noteItem(note) {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, note);
+    value: function noteItem(note, idx) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        key: idx
+      }, note);
     }
   }, {
     key: "render",
     value: function render() {
-      // console.log(this.props.location.pathname)
-      console.log(this.props);
+      var _this5 = this;
+
       var _this$props = this.props,
           task = _this$props.task,
-          list = _this$props.list; // const noteItems = task.notes.map(note => this.noteItem(note))
+          list = _this$props.list;
+      console.log(task);
 
       if (!task) {
         return null;
@@ -2335,6 +2359,9 @@ function (_React$Component) {
         return null;
       }
 
+      var noteItems = task.notes.map(function (note, idx) {
+        return _this5.noteItem(note, idx);
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "task-detail-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2343,7 +2370,7 @@ function (_React$Component) {
         className: "task-detail-header"
       }, task.task_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "task-detail-header-edit",
-        value: this.state.task_name,
+        value: this.state.task_name || this.props.task.task_name,
         placeholder: "Edit Task Name",
         onChange: this.update('task_name')
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -2360,10 +2387,10 @@ function (_React$Component) {
       }, " ", list.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Notes ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "Add Notes",
-        value: this.state.notes
+        onChange: this.updateNotes("notes")
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleSubmit
-      }, "Add")), task.notes));
+      }, "Add")), noteItems));
     }
   }]);
 
@@ -2396,11 +2423,20 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(_ref, ownProps) {
   var entities = _ref.entities;
-  // console.log(entities)
-  return {
-    list: entities.lists[ownProps.match.params.listId],
-    task: entities.tasks[ownProps.match.params.taskId]
-  };
+  // console.log("MSTP:", entities)
+  var tasks = entities.tasks;
+  var lists = entities.lists;
+
+  if (!lists || !tasks) {
+    return {};
+  } else {
+    return {
+      // list: ownProps.match.params.listId,
+      // task: ownProps.match.params.taskId,
+      list: lists[ownProps.match.params.listId],
+      task: tasks[ownProps.match.params.taskId]
+    };
+  }
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
@@ -3301,6 +3337,9 @@ var fetchListTasks = function fetchListTasks(listId) {
   });
 };
 var createTask = function createTask(listId, task) {
+  task.notes = Object.keys(task.notes).map(function (note) {
+    return task.notes[note];
+  });
   return $.ajax({
     method: 'POST',
     url: "api/lists/".concat(listId, "/tasks"),
