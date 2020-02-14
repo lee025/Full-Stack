@@ -7,16 +7,16 @@ class TaskDetail extends React.Component {
     super(props);
 
     this.state = {
-      list_id: this.props.match.params.listId,
+      // list_id: this.props.match.params.listId,
       due: new Date(),
       task_name: '',
-      notes: []
+      note: ""
     }
 
-    console.log("constructor state:", this.state)
+    console.log("constructor state:", this.props)
 
     // console.log("constructor props:", this.props)
-
+    this.handleNoteSubmit = this.handleNoteSubmit.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateNotes = this.updateNotes.bind(this);
   }
@@ -25,7 +25,7 @@ class TaskDetail extends React.Component {
     // this.props.fetchList(this.props.match.params.listId);
     const listId = this.props.match.params.listId;
     this.props.fetchTask(listId, this.props.match.params.taskId)
-      .then(() => this.state.notes.push(this.props.task.notes))
+      // .then(() => this.state.notes.push(this.props.task.notes))
   }
 
   componentDidUpdate(prevProps){
@@ -38,8 +38,7 @@ class TaskDetail extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const task = Object.assign({}, this.props.task)
-    const listId = this.props.match.params.listId
-
+    const listId = this.props.match.params.listId;
     this.props.updateTask(listId, { ...this.state, id: task.id } );
   }
 
@@ -47,9 +46,27 @@ class TaskDetail extends React.Component {
     return e => this.setState({ [field]: e.currentTarget.value })
   }
 
+  handleNoteSubmit(e){
+    e.preventDefault();
+    const task = Object.assign({}, this.props.task);
+    task.notes.push(this.state.notes);
+    this.setState({ note: "" });
+    const listId = this.props.match.params.listId;
+    this.props.updateTask(listId, task)
+  }
+
   updateNotes(e) {
     // debugger
-    return e => this.setState({ notes: this.state.notes.concat(e.target.value)})
+    // return e => this.setState({ notes: this.state.notes.concat(e.currentTarget.value)})
+
+    this.setState({ notes: [...this.state.notes, e.target.value] })
+
+    // this.setState({ notes: this.state.notes.concat([e.target.value])})
+    
+    // return e => this.setState(prevState => ({
+    //   notes: [...prevState.notes, e.target.value]
+    // }))
+
     // return e => this.setState({ notes: [...this.state.notes.concat(e.target.value) ]})
     // this.setState({
     //   notes: Object.assign({}, this.state.notes, {
@@ -103,9 +120,10 @@ class TaskDetail extends React.Component {
             <input 
               type="text" 
               placeholder='Add Notes'
-              onChange={this.updateNotes("notes")}
+              // value={this.state.notes}
+              onChange={this.update("notes")}
             />
-            <button onClick={this.handleSubmit}>Add</button>
+            <button onClick={this.handleNoteSubmit}>Add</button>
           </li>
           { noteItems }
         </ul>

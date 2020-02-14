@@ -2229,6 +2229,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -2266,13 +2274,14 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(TaskDetail).call(this, props));
     _this.state = {
-      list_id: _this.props.match.params.listId,
+      // list_id: this.props.match.params.listId,
       due: new Date(),
       task_name: '',
-      notes: []
+      note: ""
     };
-    console.log("constructor state:", _this.state); // console.log("constructor props:", this.props)
+    console.log("constructor state:", _this.props); // console.log("constructor props:", this.props)
 
+    _this.handleNoteSubmit = _this.handleNoteSubmit.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.updateNotes = _this.updateNotes.bind(_assertThisInitialized(_this));
     return _this;
@@ -2281,13 +2290,9 @@ function (_React$Component) {
   _createClass(TaskDetail, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this2 = this;
-
       // this.props.fetchList(this.props.match.params.listId);
       var listId = this.props.match.params.listId;
-      this.props.fetchTask(listId, this.props.match.params.taskId).then(function () {
-        return _this2.state.notes.push(_this2.props.task.notes);
-      });
+      this.props.fetchTask(listId, this.props.match.params.taskId); // .then(() => this.state.notes.push(this.props.task.notes))
     }
   }, {
     key: "componentDidUpdate",
@@ -2311,23 +2316,36 @@ function (_React$Component) {
   }, {
     key: "update",
     value: function update(field) {
-      var _this3 = this;
+      var _this2 = this;
 
       return function (e) {
-        return _this3.setState(_defineProperty({}, field, e.currentTarget.value));
+        return _this2.setState(_defineProperty({}, field, e.currentTarget.value));
       };
+    }
+  }, {
+    key: "handleNoteSubmit",
+    value: function handleNoteSubmit(e) {
+      e.preventDefault();
+      var task = Object.assign({}, this.props.task);
+      task.notes.push(this.state.notes);
+      this.setState({
+        note: ""
+      });
+      var listId = this.props.match.params.listId;
+      this.props.updateTask(listId, task);
     }
   }, {
     key: "updateNotes",
     value: function updateNotes(e) {
-      var _this4 = this;
-
       // debugger
-      return function (e) {
-        return _this4.setState({
-          notes: _this4.state.notes.concat(e.target.value)
-        });
-      }; // return e => this.setState({ notes: [...this.state.notes.concat(e.target.value) ]})
+      // return e => this.setState({ notes: this.state.notes.concat(e.currentTarget.value)})
+      this.setState({
+        notes: [].concat(_toConsumableArray(this.state.notes), [e.target.value])
+      }); // this.setState({ notes: this.state.notes.concat([e.target.value])})
+      // return e => this.setState(prevState => ({
+      //   notes: [...prevState.notes, e.target.value]
+      // }))
+      // return e => this.setState({ notes: [...this.state.notes.concat(e.target.value) ]})
       // this.setState({
       //   notes: Object.assign({}, this.state.notes, {
       //     [e.target.id]: e.target.value
@@ -2344,7 +2362,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this5 = this;
+      var _this3 = this;
 
       var _this$props = this.props,
           task = _this$props.task,
@@ -2360,7 +2378,7 @@ function (_React$Component) {
       }
 
       var noteItems = task.notes.map(function (note, idx) {
-        return _this5.noteItem(note, idx);
+        return _this3.noteItem(note, idx);
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "task-detail-container"
@@ -2386,10 +2404,11 @@ function (_React$Component) {
         to: "/lists/".concat(task.list_id, "/tasks")
       }, " ", list.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Notes ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
-        placeholder: "Add Notes",
-        onChange: this.updateNotes("notes")
+        placeholder: "Add Notes" // value={this.state.notes}
+        ,
+        onChange: this.update("notes")
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.handleSubmit
+        onClick: this.handleNoteSubmit
       }, "Add")), noteItems));
     }
   }]);
@@ -2424,17 +2443,17 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(_ref, ownProps) {
   var entities = _ref.entities;
   // console.log("MSTP:", entities)
-  var tasks = entities.tasks;
-  var lists = entities.lists;
+  var list = entities.lists[ownProps.match.params.listId];
+  var task = entities.tasks[ownProps.match.params.taskId];
 
-  if (!lists || !tasks) {
+  if (!list || !task) {
     return {};
   } else {
     return {
       // list: ownProps.match.params.listId,
       // task: ownProps.match.params.taskId,
-      list: lists[ownProps.match.params.listId],
-      task: tasks[ownProps.match.params.taskId]
+      list: list,
+      task: task
     };
   }
 };
@@ -3337,9 +3356,7 @@ var fetchListTasks = function fetchListTasks(listId) {
   });
 };
 var createTask = function createTask(listId, task) {
-  task.notes = Object.keys(task.notes).map(function (note) {
-    return task.notes[note];
-  });
+  // task.notes = Object.keys(task.notes).map(note => task.notes[note]);
   return $.ajax({
     method: 'POST',
     url: "api/lists/".concat(listId, "/tasks"),
@@ -3349,7 +3366,7 @@ var createTask = function createTask(listId, task) {
   });
 };
 var updateTask = function updateTask(listId, task) {
-  console.log(task);
+  // console.log("task api util:", task)
   return $.ajax({
     method: 'PATCH',
     url: "api/lists/".concat(listId, "/tasks/").concat(task.id),

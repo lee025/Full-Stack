@@ -7,18 +7,18 @@ import { withRouter } from 'react-router-dom';
 const mapStateToProps = ( {entities}, ownProps ) => {
   // console.log("MSTP:", entities)
   
-  let tasks = entities.tasks
-  let lists = entities.lists
+  let list = entities.lists[ownProps.match.params.listId];
+  let task = entities.tasks[ownProps.match.params.taskId];
 
-  if(!lists || !tasks) {
+  if(!list || !task) {
     return {}
   } else {
 
     return {
       // list: ownProps.match.params.listId,
       // task: ownProps.match.params.taskId,
-      list: lists[ownProps.match.params.listId],
-      task: tasks[ownProps.match.params.taskId],
+      list,
+      task
       
     }
   }

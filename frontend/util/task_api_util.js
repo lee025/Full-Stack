@@ -21,7 +21,7 @@ export const fetchListTasks = listId => { // verified working
 }
 
 export const createTask = (listId, task) => {
-  task.notes = Object.keys(task.notes).map(note => task.notes[note]);
+  // task.notes = Object.keys(task.notes).map(note => task.notes[note]);
 
   return $.ajax({
     method: 'POST',
@@ -31,7 +31,7 @@ export const createTask = (listId, task) => {
 }
 
 export const updateTask = (listId, task) => {
-  console.log(task)
+  // console.log("task api util:", task)
   return $.ajax({
     method: 'PATCH',
     url: `api/lists/${listId}/tasks/${task.id}`,
