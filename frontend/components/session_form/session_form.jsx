@@ -1,13 +1,15 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 
+
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       username: "",
       password: "",
-      email: ""
+      email: "",
+      // errors: [],
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     // this.refresh = this.refresh.bind(this);
@@ -23,7 +25,15 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user).then(() => this.props.history.push("/lists"));
+    this.props.processForm(user)
+      .then(() => this.props.history.push("/lists"))
+      .then(() => this.props.clearErrors());
+
+    // if(this.props.processForm(user)){
+    //   return this.props.history.push('/lists')
+    // } else {
+    //   return this.props.history.push('/')
+    // }
   }
 
   renderErrors() {
@@ -41,7 +51,8 @@ class SessionForm extends React.Component {
     // console.log(this.props.formType);
     var errors = this.props.errors;
     var form = this.props.formType;
-    // if (prevState.formType !== nextState.formType){
+    // if (prevState.props.formType !== this.props.formType){
+
     // }
   }
 
@@ -50,6 +61,7 @@ class SessionForm extends React.Component {
   // }
 
   render() {
+    console.log(this.props)
     return (
       <section className="login-main" id='wrapper'>
         <article className="login-left split">
@@ -73,7 +85,7 @@ class SessionForm extends React.Component {
                 <img className="calvin-box" src={window.calvin_boxURL} />
               </div>
               <div className="calvin-box-text">
-                Quotes curated by Bob T. Monkey, renowned productivity expert
+                Quotes curated by John Calvin and Thomas Hobbes, renowned productivity experts
               </div>
             </div>
           </div>

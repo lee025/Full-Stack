@@ -202,7 +202,7 @@ var deleteList = function deleteList(listId) {
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_SESSION_ERRORS, receiveCurrentUser, logoutCurrentUser, receiveErrors, login, logout, signup */
+/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_SESSION_ERRORS, REMOVE_SESSION_ERRORS, receiveCurrentUser, logoutCurrentUser, receiveErrors, removeSessionErrors, login, logout, signup */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -210,9 +210,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CURRENT_USER", function() { return RECEIVE_CURRENT_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOGOUT_CURRENT_USER", function() { return LOGOUT_CURRENT_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_SESSION_ERRORS", function() { return RECEIVE_SESSION_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_SESSION_ERRORS", function() { return REMOVE_SESSION_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveCurrentUser", function() { return receiveCurrentUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logoutCurrentUser", function() { return logoutCurrentUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveErrors", function() { return receiveErrors; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeSessionErrors", function() { return removeSessionErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login", function() { return login; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signup", function() { return signup; });
@@ -221,6 +223,7 @@ __webpack_require__.r(__webpack_exports__);
 var RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 var LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 var RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
+var REMOVE_SESSION_ERRORS = 'REMOVE_SESSION_ERRORS';
 var receiveCurrentUser = function receiveCurrentUser(currentUser) {
   return {
     type: RECEIVE_CURRENT_USER,
@@ -236,6 +239,11 @@ var receiveErrors = function receiveErrors(errors) {
   return {
     type: RECEIVE_SESSION_ERRORS,
     errors: errors
+  };
+};
+var removeSessionErrors = function removeSessionErrors() {
+  return {
+    type: REMOVE_SESSION_ERRORS
   };
 };
 var login = function login(user) {
@@ -1836,6 +1844,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
   return {
     processForm: function processForm(formUser) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["login"])(formUser));
+    },
+    clearErrors: function clearErrors() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["removeSessionErrors"])());
     }
   };
 };
@@ -1893,7 +1904,8 @@ function (_React$Component) {
     _this.state = {
       username: "",
       password: "",
-      email: ""
+      email: "" // errors: [],
+
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this)); // this.refresh = this.refresh.bind(this);
 
@@ -1918,7 +1930,13 @@ function (_React$Component) {
       var user = Object.assign({}, this.state);
       this.props.processForm(user).then(function () {
         return _this3.props.history.push("/lists");
-      });
+      }).then(function () {
+        return _this3.props.clearErrors();
+      }); // if(this.props.processForm(user)){
+      //   return this.props.history.push('/lists')
+      // } else {
+      //   return this.props.history.push('/')
+      // }
     }
   }, {
     key: "renderErrors",
@@ -1935,7 +1953,7 @@ function (_React$Component) {
       // console.log(this.props.errors);
       // console.log(this.props.formType);
       var errors = this.props.errors;
-      var form = this.props.formType; // if (prevState.formType !== nextState.formType){
+      var form = this.props.formType; // if (prevState.props.formType !== this.props.formType){
       // }
     } // refresh() {
     //   window.location.reload(false);
@@ -1944,6 +1962,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      console.log(this.props);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "login-main",
         id: "wrapper"
@@ -1965,7 +1984,7 @@ function (_React$Component) {
         src: window.calvin_boxURL
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "calvin-box-text"
-      }, "Quotes curated by Bob T. Monkey, renowned productivity expert")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("article", {
+      }, "Quotes curated by John Calvin and Thomas Hobbes, renowned productivity experts")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("article", {
         className: "login-right"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit,
@@ -2047,6 +2066,9 @@ var mdtp = function mdtp(dispatch) {
   return {
     processForm: function processForm(user) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["signup"])(user));
+    },
+    clearErrors: function clearErrors() {
+      return dispatch(removeSessionErrors());
     }
   };
 };
@@ -3012,6 +3034,7 @@ __webpack_require__.r(__webpack_exports__);
       return action.errors;
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
+      // case REMOVE_SESSION_ERRORS:
       return [];
 
     default:
