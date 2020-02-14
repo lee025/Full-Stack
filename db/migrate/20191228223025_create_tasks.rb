@@ -5,7 +5,7 @@ class CreateTasks < ActiveRecord::Migration[5.2]
       t.integer :list_id, null: false
       t.date :start
       t.date :due
-      t.string :notes
+      t.string :notes, null: false, array: true, default: []
       t.boolean :completed, null: false, default: false
 
       t.timestamps

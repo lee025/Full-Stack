@@ -23,7 +23,7 @@ class ListForm extends React.Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <label className='add-list-label'>
-            Add a List 
+            Add a List  
             <input
               className='add-list-input'
               type="text"
