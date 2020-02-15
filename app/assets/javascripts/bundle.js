@@ -2251,14 +2251,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -2296,16 +2288,14 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(TaskDetail).call(this, props));
     _this.state = {
-      // list_id: this.props.match.params.listId,
       due: new Date(),
       task_name: '',
-      note: ""
+      notes: ""
     };
     console.log("constructor state:", _this.props); // console.log("constructor props:", this.props)
 
     _this.handleNoteSubmit = _this.handleNoteSubmit.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.updateNotes = _this.updateNotes.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2314,7 +2304,7 @@ function (_React$Component) {
     value: function componentDidMount() {
       // this.props.fetchList(this.props.match.params.listId);
       var listId = this.props.match.params.listId;
-      this.props.fetchTask(listId, this.props.match.params.taskId); // .then(() => this.state.notes.push(this.props.task.notes))
+      this.props.fetchTask(listId, this.props.match.params.taskId);
     }
   }, {
     key: "componentDidUpdate",
@@ -2351,28 +2341,10 @@ function (_React$Component) {
       var task = Object.assign({}, this.props.task);
       task.notes.push(this.state.notes);
       this.setState({
-        note: ""
+        notes: ""
       });
       var listId = this.props.match.params.listId;
       this.props.updateTask(listId, task);
-    }
-  }, {
-    key: "updateNotes",
-    value: function updateNotes(e) {
-      // debugger
-      // return e => this.setState({ notes: this.state.notes.concat(e.currentTarget.value)})
-      this.setState({
-        notes: [].concat(_toConsumableArray(this.state.notes), [e.target.value])
-      }); // this.setState({ notes: this.state.notes.concat([e.target.value])})
-      // return e => this.setState(prevState => ({
-      //   notes: [...prevState.notes, e.target.value]
-      // }))
-      // return e => this.setState({ notes: [...this.state.notes.concat(e.target.value) ]})
-      // this.setState({
-      //   notes: Object.assign({}, this.state.notes, {
-      //     [e.target.id]: e.target.value
-      //   })
-      // });
     }
   }, {
     key: "noteItem",
