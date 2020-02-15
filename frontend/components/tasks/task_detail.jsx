@@ -84,13 +84,13 @@ class TaskDetail extends React.Component {
           
         </div>
         <ul>
-          <li>due: <input 
+          {/* <li>due: <input 
               type="date" 
               value={task.due || undefined}
               onChange={this.update('due')}
             />
             <button onClick={this.handleSubmit}>OK</button>
-          </li> 
+          </li>  */}
           <li>List: 
             <Link to={`/lists/${task.list_id}/tasks`}> {list.title}</Link>
           </li>
