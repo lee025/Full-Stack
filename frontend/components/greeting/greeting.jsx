@@ -8,11 +8,12 @@ class Greeting extends React.Component {
 
     this.state = {
       ...props,
-      showListDD: true,
+      showListDD: false,
     }
     
     this.onClick = this.onClick.bind(this);
-    // this.toggleListDD = this.toggleListDD.bind(this);
+    this.toggleBarsDD = this.toggleBarsDD.bind(this);
+    this.renderBarsDD = this.renderBarsDD.bind(this);
   }
 
   onClick(e){
@@ -20,19 +21,31 @@ class Greeting extends React.Component {
     this.state.logout();
   }
 
-  toggleListDD(e) {
+  toggleBarsDD(e) {
     e.preventDefault();
-    if (this.state.showListDD) {
-      this.setState({showListDD: false})
-    } else {
+    if (!this.state.showListDD) {
       this.setState({showListDD: true})
+    } else {
+      this.setState({showListDD: false})
+    }
+  }
+
+  renderBarsDD(){
+    if(!this.state.showListDD){
+      return(
+        <div className="bars-cont">
+          {/* <div className="bars-opt"><Link to="/lists">Your Lists</Link></div> */}
+          <div className="bars-opt"><Link to="/lists">Your Tasks</Link></div>
+        </div>
+      )
+    } else {
+      return null
     }
   }
 
   sessionLinks() {
     return (
       <div>
-        {/* <Redirect to='/' /> */}
         <article className={this.props.currentUser ? "hidden" : ""}>
             <nav className="greeting-navbar">
               <h1 className="greeting-header-logo">All the Things!</h1>
@@ -52,12 +65,13 @@ class Greeting extends React.Component {
 
 
   userHome() {
+    console.log(this.state.showListDD)
     return (
       <section>
         <header className="header-group">
 
-          <i className="fas fa-bars" onClick={this.toggleListDD}></i> 
-
+          <i className="fas fa-bars" onClick={this.toggleBarsDD}></i> 
+          {this.renderBarsDD()}
           <p className="header-name">Hi, {this.props.currentUser.username}!</p>
           <button className="header-logout-button" onClick={this.onClick}>
             Log Out
