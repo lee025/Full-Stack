@@ -8,8 +8,10 @@ class TaskDetail extends React.Component {
 
     this.state = {
       due: new Date(),
+      // due: "",
       task_name: '',
-      notes: ""
+      notes: "",
+      // taskId: this.props.match.params.taskId
     }
 
     console.log("constructor state:", this.props)
@@ -17,6 +19,7 @@ class TaskDetail extends React.Component {
     // console.log("constructor props:", this.props)
     this.handleNoteSubmit = this.handleNoteSubmit.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDueSubmit = this.handleDueSubmit.bind(this);
   }
 
   componentDidMount(){
@@ -41,6 +44,15 @@ class TaskDetail extends React.Component {
 
   update(field) {
     return e => this.setState({ [field]: e.currentTarget.value })
+  }
+
+  handleDueSubmit(e){
+    e.preventDefault();
+    const task = Object.assign({}, this.props.task)
+    this.setState({ due: this.state.due });
+    debugger
+    const listId = this.props.match.params.listId;
+    this.props.updateTask(listId, task);
   }
 
   handleNoteSubmit(e){
@@ -73,23 +85,26 @@ class TaskDetail extends React.Component {
     return (
       <div className='task-detail-container'>
         <div className=''>
-          <h2 className='task-detail-header'>{task.task_name}</h2>
-          
+          <h2 className='task-detail-header' onClick={this.updateName}>
+            {task.task_name}
+          </h2>
+      
             <input
               className='task-detail-header-edit'
               value={this.state.task_name || this.props.task.task_name}
               placeholder='Edit Task Name'
               onChange={this.update('task_name')}
-          /><i className="fas fa-pencil-alt" onClick={this.handleSubmit}></i>
+            /><i className="fas fa-pencil-alt" onClick={this.handleSubmit}></i>
           
         </div>
         <ul>
           {/* <li>due: <input 
               type="date" 
               value={task.due || undefined}
+              // value={task.due}
               onChange={this.update('due')}
             />
-            <button onClick={this.handleSubmit}>OK</button>
+            <button onClick={this.handleDueSubmit}>OK</button>
           </li>  */}
           <li>List: 
             <Link to={`/lists/${task.list_id}/tasks`}> {list.title}</Link>

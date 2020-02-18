@@ -502,10 +502,11 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Greeting).call(this, props));
     _this.state = _objectSpread({}, props, {
-      showListDD: true
+      showListDD: false
     });
-    _this.onClick = _this.onClick.bind(_assertThisInitialized(_this)); // this.toggleListDD = this.toggleListDD.bind(this);
-
+    _this.onClick = _this.onClick.bind(_assertThisInitialized(_this));
+    _this.toggleBarsDD = _this.toggleBarsDD.bind(_assertThisInitialized(_this));
+    _this.renderBarsDD = _this.renderBarsDD.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -516,18 +517,33 @@ function (_React$Component) {
       this.state.logout();
     }
   }, {
-    key: "toggleListDD",
-    value: function toggleListDD(e) {
+    key: "toggleBarsDD",
+    value: function toggleBarsDD(e) {
       e.preventDefault();
 
-      if (this.state.showListDD) {
-        this.setState({
-          showListDD: false
-        });
-      } else {
+      if (!this.state.showListDD) {
         this.setState({
           showListDD: true
         });
+      } else {
+        this.setState({
+          showListDD: false
+        });
+      }
+    }
+  }, {
+    key: "renderBarsDD",
+    value: function renderBarsDD() {
+      if (!this.state.showListDD) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "bars-cont"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "bars-opt"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+          to: "/lists"
+        }, "Your Tasks")));
+      } else {
+        return null;
       }
     }
   }, {
@@ -550,12 +566,13 @@ function (_React$Component) {
   }, {
     key: "userHome",
     value: function userHome() {
+      console.log(this.state.showListDD);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
         className: "header-group"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-bars",
-        onClick: this.toggleListDD
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        onClick: this.toggleBarsDD
+      }), this.renderBarsDD(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "header-name"
       }, "Hi, ", this.props.currentUser.username, "!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "header-logout-button",
@@ -2289,13 +2306,16 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(TaskDetail).call(this, props));
     _this.state = {
       due: new Date(),
+      // due: "",
       task_name: '',
-      notes: ""
+      notes: "" // taskId: this.props.match.params.taskId
+
     };
     console.log("constructor state:", _this.props); // console.log("constructor props:", this.props)
 
     _this.handleNoteSubmit = _this.handleNoteSubmit.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleDueSubmit = _this.handleDueSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2333,6 +2353,18 @@ function (_React$Component) {
       return function (e) {
         return _this2.setState(_defineProperty({}, field, e.currentTarget.value));
       };
+    }
+  }, {
+    key: "handleDueSubmit",
+    value: function handleDueSubmit(e) {
+      e.preventDefault();
+      var task = Object.assign({}, this.props.task);
+      this.setState({
+        due: this.state.due
+      });
+      debugger;
+      var listId = this.props.match.params.listId;
+      this.props.updateTask(listId, task);
     }
   }, {
     key: "handleNoteSubmit",
@@ -2379,7 +2411,8 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: ""
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-        className: "task-detail-header"
+        className: "task-detail-header",
+        onClick: this.updateName
       }, task.task_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "task-detail-header-edit",
         value: this.state.task_name || this.props.task.task_name,
