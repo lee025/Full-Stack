@@ -10,13 +10,14 @@ class TaskDetail extends React.Component {
       due: new Date(),
       // due: "",
       task_name: '',
-      notes: "",
+      notes: new Array()
       // taskId: this.props.match.params.taskId
     }
 
     console.log("constructor state:", this.props)
 
     // console.log("constructor props:", this.props)
+    this.deleteNote = this.deleteNote.bind(this);
     this.handleNoteSubmit = this.handleNoteSubmit.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDueSubmit = this.handleDueSubmit.bind(this);
@@ -50,7 +51,6 @@ class TaskDetail extends React.Component {
     e.preventDefault();
     const task = Object.assign({}, this.props.task)
     this.setState({ due: this.state.due });
-    debugger
     const listId = this.props.match.params.listId;
     this.props.updateTask(listId, task);
   }
@@ -64,11 +64,24 @@ class TaskDetail extends React.Component {
     this.props.updateTask(listId, task)
   }
 
+  deleteNote(e){
+    e.preventDefault();
+    const notes = this.props.task.notes;
+    const task = Object.assign({}, this.props.task);
+    const listId = this.props.match.params.listId;
+    // console.log(task, listId)
+    console.log(notes[e.currentTarget.getAttribute('value')])
+    // this.setState({ notes: notes.delete_at(e.currentTarget.getAttribute('value')) })
+    // this.props.updateTask(listId, task)
+    // console.log(e.currentTarget.getAttribute('value'))
+  }
+
 
   noteItem(note, idx){
+    // console.log(note, idx)
     return(
       <li key={idx}>
-        {note}
+        {note} <span value={idx} onClick={this.deleteNote}>Delete</span>
         {/* <i className="fas fa-pencil-alt" onClick={this.handleNoteSubmit}></i> */}
       </li>
     )

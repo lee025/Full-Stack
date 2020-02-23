@@ -23,15 +23,15 @@ class Greeting extends React.Component {
 
   toggleBarsDD(e) {
     e.preventDefault();
-    if (!this.state.showListDD) {
-      this.setState({showListDD: true})
-    } else {
+    if (this.state.showListDD) {
       this.setState({showListDD: false})
+    } else {
+      this.setState({showListDD: true})
     }
   }
 
   renderBarsDD(){
-    if(!this.state.showListDD){
+    if(this.state.showListDD){
       return(
         <div className="bars-cont">
           {/* <div className="bars-opt"><Link to="/lists">Your Lists</Link></div> */}
@@ -65,7 +65,7 @@ class Greeting extends React.Component {
 
 
   userHome() {
-    console.log(this.state.showListDD)
+    // console.log(this.state.showListDD)
     return (
       <section>
         <header className="header-group">
