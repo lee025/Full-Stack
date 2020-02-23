@@ -521,20 +521,20 @@ function (_React$Component) {
     value: function toggleBarsDD(e) {
       e.preventDefault();
 
-      if (!this.state.showListDD) {
+      if (this.state.showListDD) {
         this.setState({
-          showListDD: true
+          showListDD: false
         });
       } else {
         this.setState({
-          showListDD: false
+          showListDD: true
         });
       }
     }
   }, {
     key: "renderBarsDD",
     value: function renderBarsDD() {
-      if (!this.state.showListDD) {
+      if (this.state.showListDD) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "bars-cont"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -566,7 +566,7 @@ function (_React$Component) {
   }, {
     key: "userHome",
     value: function userHome() {
-      console.log(this.state.showListDD);
+      // console.log(this.state.showListDD)
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
         className: "header-group"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -2308,11 +2308,12 @@ function (_React$Component) {
       due: new Date(),
       // due: "",
       task_name: '',
-      notes: "" // taskId: this.props.match.params.taskId
+      notes: new Array() // taskId: this.props.match.params.taskId
 
     };
     console.log("constructor state:", _this.props); // console.log("constructor props:", this.props)
 
+    _this.deleteNote = _this.deleteNote.bind(_assertThisInitialized(_this));
     _this.handleNoteSubmit = _this.handleNoteSubmit.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleDueSubmit = _this.handleDueSubmit.bind(_assertThisInitialized(_this));
@@ -2362,7 +2363,6 @@ function (_React$Component) {
       this.setState({
         due: this.state.due
       });
-      debugger;
       var listId = this.props.match.params.listId;
       this.props.updateTask(listId, task);
     }
@@ -2379,11 +2379,27 @@ function (_React$Component) {
       this.props.updateTask(listId, task);
     }
   }, {
+    key: "deleteNote",
+    value: function deleteNote(e) {
+      e.preventDefault();
+      var notes = this.props.task.notes;
+      var task = Object.assign({}, this.props.task);
+      var listId = this.props.match.params.listId; // console.log(task, listId)
+
+      console.log(notes[e.currentTarget.getAttribute('value')]); // this.setState({ notes: notes.delete_at(e.currentTarget.getAttribute('value')) })
+      // this.props.updateTask(listId, task)
+      // console.log(e.currentTarget.getAttribute('value'))
+    }
+  }, {
     key: "noteItem",
     value: function noteItem(note, idx) {
+      // console.log(note, idx)
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         key: idx
-      }, note);
+      }, note, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        value: idx,
+        onClick: this.deleteNote
+      }, "Delete"));
     }
   }, {
     key: "render",
