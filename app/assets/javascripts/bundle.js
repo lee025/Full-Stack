@@ -2308,8 +2308,7 @@ function (_React$Component) {
       due: new Date(),
       // due: "",
       task_name: '',
-      notes: new Array() // taskId: this.props.match.params.taskId
-
+      notes: ""
     };
     console.log("constructor state:", _this.props); // console.log("constructor props:", this.props)
 
@@ -2384,11 +2383,16 @@ function (_React$Component) {
       e.preventDefault();
       var notes = this.props.task.notes;
       var task = Object.assign({}, this.props.task);
-      var listId = this.props.match.params.listId; // console.log(task, listId)
+      var listId = this.props.match.params.listId;
+      var idx = e.currentTarget.getAttribute('value');
+      var endIdx = notes.length - 1;
+      var sliced = notes.slice(0, idx).concat(notes.slice(idx, endIdx));
+      task.notes = sliced; // this.setState({ notes: notes.delete_at(e.currentTarget.getAttribute('value')) })
 
-      console.log(notes[e.currentTarget.getAttribute('value')]); // this.setState({ notes: notes.delete_at(e.currentTarget.getAttribute('value')) })
-      // this.props.updateTask(listId, task)
-      // console.log(e.currentTarget.getAttribute('value'))
+      this.setState({
+        notes: ""
+      });
+      this.props.updateTask(listId, task);
     }
   }, {
     key: "noteItem",
@@ -2397,9 +2401,10 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         key: idx
       }, note, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        "class": "far fa-trash-alt",
         value: idx,
         onClick: this.deleteNote
-      }, "Delete"));
+      }));
     }
   }, {
     key: "render",
@@ -2408,8 +2413,7 @@ function (_React$Component) {
 
       var _this$props = this.props,
           task = _this$props.task,
-          list = _this$props.list;
-      console.log(task);
+          list = _this$props.list; // console.log(task)
 
       if (!task) {
         return null;
