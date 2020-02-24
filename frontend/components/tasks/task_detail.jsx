@@ -10,13 +10,12 @@ class TaskDetail extends React.Component {
       due: new Date(),
       // due: "",
       task_name: '',
-      notes: new Array()
-      // taskId: this.props.match.params.taskId
+      notes: "",
     }
 
     console.log("constructor state:", this.props)
-
     // console.log("constructor props:", this.props)
+    
     this.deleteNote = this.deleteNote.bind(this);
     this.handleNoteSubmit = this.handleNoteSubmit.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -69,11 +68,14 @@ class TaskDetail extends React.Component {
     const notes = this.props.task.notes;
     const task = Object.assign({}, this.props.task);
     const listId = this.props.match.params.listId;
-    // console.log(task, listId)
-    console.log(notes[e.currentTarget.getAttribute('value')])
+    const idx = e.currentTarget.getAttribute('value');
+    const endIdx = notes.length - 1;
+    const sliced = notes.slice(0, idx).concat(notes.slice(idx, endIdx));
+    task.notes = sliced;
+    
     // this.setState({ notes: notes.delete_at(e.currentTarget.getAttribute('value')) })
-    // this.props.updateTask(listId, task)
-    // console.log(e.currentTarget.getAttribute('value'))
+    this.setState({ notes: "" })
+    this.props.updateTask(listId, task)
   }
 
 
@@ -81,7 +83,7 @@ class TaskDetail extends React.Component {
     // console.log(note, idx)
     return(
       <li key={idx}>
-        {note} <span value={idx} onClick={this.deleteNote}>Delete</span>
+        {note} <span class="far fa-trash-alt" value={idx} onClick={this.deleteNote}></span>
         {/* <i className="fas fa-pencil-alt" onClick={this.handleNoteSubmit}></i> */}
       </li>
     )
@@ -89,7 +91,7 @@ class TaskDetail extends React.Component {
 
   render(){
     const { task, list } = this.props;
-    console.log(task)
+    // console.log(task)
     if(!task){ return null; }
     if(!list){ return null; }
     
