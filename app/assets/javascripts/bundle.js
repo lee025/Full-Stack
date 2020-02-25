@@ -2401,7 +2401,7 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         key: idx
       }, note, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        "class": "far fa-trash-alt",
+        className: "far fa-trash-alt",
         value: idx,
         onClick: this.deleteNote
       }));
