@@ -72,7 +72,7 @@ class Greeting extends React.Component {
 
           <i className="fas fa-bars" onClick={this.toggleBarsDD}></i> 
           {this.renderBarsDD()}
-          <p className="header-name">Hi, {this.props.currentUser.username}!</p>
+          <p className="header-name">Welcome, {this.props.currentUser.username}!</p>
           <button className="header-logout-button" onClick={this.onClick}>
             Log Out
           </button>

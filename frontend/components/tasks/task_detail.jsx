@@ -10,10 +10,10 @@ class TaskDetail extends React.Component {
       due: new Date(),
       // due: "",
       task_name: '',
-      notes: "",
+      notes: '',
     }
 
-    console.log("constructor state:", this.props)
+    // console.log("constructor state:", this.state)
     // console.log("constructor props:", this.props)
     
     this.deleteNote = this.deleteNote.bind(this);
@@ -70,8 +70,16 @@ class TaskDetail extends React.Component {
     const listId = this.props.match.params.listId;
     const idx = e.currentTarget.getAttribute('value');
     const endIdx = notes.length - 1;
-    const sliced = notes.slice(0, idx).concat(notes.slice(idx, endIdx));
-    task.notes = sliced;
+
+    // if(notes.length === 1 ) {
+    //   // console.log(notes)
+    //   task.notes = []
+    // } else {
+      const sliced = notes.slice(0, idx).concat(notes.slice(idx, endIdx));
+      // console.log(sliced)
+      // debugger
+      task.notes = sliced;
+    // }
     
     // this.setState({ notes: notes.delete_at(e.currentTarget.getAttribute('value')) })
     this.setState({ notes: "" })
@@ -130,7 +138,7 @@ class TaskDetail extends React.Component {
            <input 
               type="text" 
               placeholder='Add Notes'
-              // value={this.state.notes}
+              value={this.state.notes}
               onChange={this.update("notes")}
             />
             <button onClick={this.handleNoteSubmit}>Add</button>
