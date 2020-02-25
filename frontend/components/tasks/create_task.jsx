@@ -25,6 +25,7 @@ class CreateTask extends React.Component {
     e.preventDefault();
     const listId = this.props.match.params.listId;
     const task = Object.assign({}, this.state);
+    this.setState({ task_name: '' })
     this.props.createTask(listId, task)
   }
 

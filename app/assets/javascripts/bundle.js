@@ -574,7 +574,7 @@ function (_React$Component) {
         onClick: this.toggleBarsDD
       }), this.renderBarsDD(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "header-name"
-      }, "Hi, ", this.props.currentUser.username, "!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "Welcome, ", this.props.currentUser.username, "!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "header-logout-button",
         onClick: this.onClick
       }, "Log Out")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1859,6 +1859,9 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
   return {
+    login: function login(user) {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["login"])(user));
+    },
     processForm: function processForm(formUser) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["login"])(formUser));
     },
@@ -1924,7 +1927,8 @@ function (_React$Component) {
       email: "" // errors: [],
 
     };
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this)); // this.refresh = this.refresh.bind(this);
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleDemoUserLogin = _this.handleDemoUserLogin.bind(_assertThisInitialized(_this)); // this.refresh = this.refresh.bind(this);
 
     return _this;
   }
@@ -1949,12 +1953,29 @@ function (_React$Component) {
         return _this3.props.history.push("/lists");
       }).then(function () {
         return _this3.props.clearErrors();
-      }); // if(this.props.processForm(user)){
-      //   return this.props.history.push('/lists')
-      // } else {
-      //   return this.props.history.push('/')
-      // }
+      });
     }
+  }, {
+    key: "handleDemoUserLogin",
+    value: function handleDemoUserLogin(e) {
+      e.preventDefault(); // this.setState({ username: "Demo User", email: "demo@demo.com", password: "123123" })
+
+      var user = Object.assign({}, this.state);
+      this.setState({
+        username: "Demo User",
+        password: "123123"
+      }, function () {
+        // this.forceUpdate();
+        console.log(user); // console.log(this.shouldComponentUpdate(this.state))
+        // this.props.processForm(user)
+      }); // console.log(user)
+      // this.props.processForm(user)
+      // .then(() => this.props.history.push("/lists"))
+      // .then(() => this.props.clearErrors());
+    } // shouldComponentUpdate(nextProps, nextState){
+    //   if(nextState !== this.state) return true
+    // }
+
   }, {
     key: "renderErrors",
     value: function renderErrors() {
@@ -1966,20 +1987,20 @@ function (_React$Component) {
     }
   }, {
     key: "componentDidUpdate",
-    value: function componentDidUpdate(prevState) {
-      // console.log(this.props.errors);
-      // console.log(this.props.formType);
-      var errors = this.props.errors;
-      var form = this.props.formType; // if (prevState.props.formType !== this.props.formType){
-      // }
-    } // refresh() {
+    value: function componentDidUpdate(prevProps) {} // console.log(this.props.errors);
+    // console.log(this.props.formType);
+    // var errors = this.props.errors;
+    // var form = this.props.formType;
+    // if (prevState.props.formType !== this.props.formType){
+    // }
+    // refresh() {
     //   window.location.reload(false);
     // }
 
   }, {
     key: "render",
     value: function render() {
-      console.log(this.props);
+      // console.log(this.props)
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "login-main",
         id: "wrapper"
@@ -2036,7 +2057,10 @@ function (_React$Component) {
         className: "session-button",
         onClick: this.handleSubmit,
         value: this.props.formType
-      }, this.props.formType)))));
+      }, this.props.formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: this.props.formType === "Sign Up" ? "hidden" : "session-button",
+        onClick: this.handleDemoUserLogin
+      }, "Demo!")))));
     }
   }]);
 
@@ -2081,6 +2105,19 @@ var mstp = function mstp(_ref) {
 
 var mdtp = function mdtp(dispatch) {
   return {
+    login: function (_login) {
+      function login(_x) {
+        return _login.apply(this, arguments);
+      }
+
+      login.toString = function () {
+        return _login.toString();
+      };
+
+      return login;
+    }(function (user) {
+      return dispatch(login(user));
+    }),
     processForm: function processForm(user) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_3__["signup"])(user));
     },
@@ -2164,6 +2201,9 @@ function (_React$Component) {
       e.preventDefault();
       var listId = this.props.match.params.listId;
       var task = Object.assign({}, this.state);
+      this.setState({
+        task_name: ''
+      });
       this.props.createTask(listId, task);
     }
   }, {
@@ -2308,9 +2348,9 @@ function (_React$Component) {
       due: new Date(),
       // due: "",
       task_name: '',
-      notes: ""
-    };
-    console.log("constructor state:", _this.props); // console.log("constructor props:", this.props)
+      notes: ''
+    }; // console.log("constructor state:", this.state)
+    // console.log("constructor props:", this.props)
 
     _this.deleteNote = _this.deleteNote.bind(_assertThisInitialized(_this));
     _this.handleNoteSubmit = _this.handleNoteSubmit.bind(_assertThisInitialized(_this));
@@ -2385,9 +2425,16 @@ function (_React$Component) {
       var task = Object.assign({}, this.props.task);
       var listId = this.props.match.params.listId;
       var idx = e.currentTarget.getAttribute('value');
-      var endIdx = notes.length - 1;
-      var sliced = notes.slice(0, idx).concat(notes.slice(idx, endIdx));
-      task.notes = sliced; // this.setState({ notes: notes.delete_at(e.currentTarget.getAttribute('value')) })
+      var endIdx = notes.length - 1; // if(notes.length === 1 ) {
+      //   // console.log(notes)
+      //   task.notes = []
+      // } else {
+
+      var sliced = notes.slice(0, idx).concat(notes.slice(idx, endIdx)); // console.log(sliced)
+      // debugger
+
+      task.notes = sliced; // }
+      // this.setState({ notes: notes.delete_at(e.currentTarget.getAttribute('value')) })
 
       this.setState({
         notes: ""
@@ -2445,8 +2492,8 @@ function (_React$Component) {
         to: "/lists/".concat(task.list_id, "/tasks")
       }, " ", list.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Notes ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
-        placeholder: "Add Notes" // value={this.state.notes}
-        ,
+        placeholder: "Add Notes",
+        value: this.state.notes,
         onChange: this.update("notes")
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.handleNoteSubmit

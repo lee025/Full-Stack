@@ -14,6 +14,7 @@ const mstp = ({ errors }) => {
 
 const mdtp = dispatch => {
   return {
+    login: user => dispatch(login(user)),
     processForm: user => dispatch(signup(user)),
     clearErrors: () => dispatch(removeSessionErrors())
   };

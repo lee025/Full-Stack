@@ -10,7 +10,7 @@ User.destroy_all
 List.destroy_all
 Task.destroy_all
 
-u0 = User.create!({username: 'demo', email: 'demo@demo.com', password: 'demo'})
+u0 = User.create!({username: 'Demo User', email: 'demo@demo.com', password: '123123'})
 u1 = User.create!({username: '123', email: '123@123.com', password: '123123'})
 u2 = User.create!({username: '1', email: '1@1.com', password: '123123'})
 
@@ -46,4 +46,4 @@ t9 = Task.create!({task_name: "cereal", list_id: l5.id, start: nil, due: nil, no
 t10 = Task.create!({task_name: "Trash", list_id: l6.id, start: nil, due: nil, notes: ['Mondays & Thursdays'], completed: false})
 t11 = Task.create!({task_name: "Walk the dog", list_id: l6.id, start: nil, due: nil, notes: ['goPup! app'], completed: false})
 t12 = Task.create!({task_name: "workout", list_id: l6.id, start: nil, due: nil, notes: ['[SolidCore]'], completed: false})
-t13 = Task.create!({task_name: "laundry", list_id: l6.id, start: nil, due: nil, notes: ['Clothes and Sheets'], completed: false})
+t13 = Task.create!({task_name: "laundry", list_id: l6.id, start: nil, due: nil, notes: ['Clothes', 'Sheets', 'Towels'], completed: false})

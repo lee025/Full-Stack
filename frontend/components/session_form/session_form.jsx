@@ -12,6 +12,7 @@ class SessionForm extends React.Component {
       // errors: [],
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemoUserLogin = this.handleDemoUserLogin.bind(this);
     // this.refresh = this.refresh.bind(this);
   }
 
@@ -28,13 +29,33 @@ class SessionForm extends React.Component {
     this.props.processForm(user)
       .then(() => this.props.history.push("/lists"))
       .then(() => this.props.clearErrors());
-
-    // if(this.props.processForm(user)){
-    //   return this.props.history.push('/lists')
-    // } else {
-    //   return this.props.history.push('/')
-    // }
   }
+
+
+  handleDemoUserLogin(e){
+    e.preventDefault();
+    // this.setState({ username: "Demo User", email: "demo@demo.com", password: "123123" })
+    const user = Object.assign({}, this.state)
+    this.setState({
+      username: "Demo User", 
+      password: "123123"
+      }, () => { 
+        // this.forceUpdate();
+        console.log(user)
+        // console.log(this.shouldComponentUpdate(this.state))
+        // this.props.processForm(user)
+    })
+
+    // console.log(user)
+    // this.props.processForm(user)
+    // .then(() => this.props.history.push("/lists"))
+    // .then(() => this.props.clearErrors());
+  }
+
+  // shouldComponentUpdate(nextProps, nextState){
+  //   if(nextState !== this.state) return true
+  // }
+
 
   renderErrors() {
     return (
@@ -46,13 +67,12 @@ class SessionForm extends React.Component {
     );
   }
 
-  componentDidUpdate(prevState) {
+  componentDidUpdate(prevProps) {
     // console.log(this.props.errors);
     // console.log(this.props.formType);
-    var errors = this.props.errors;
-    var form = this.props.formType;
+    // var errors = this.props.errors;
+    // var form = this.props.formType;
     // if (prevState.props.formType !== this.props.formType){
-
     // }
   }
 
@@ -61,7 +81,7 @@ class SessionForm extends React.Component {
   // }
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <section className="login-main" id='wrapper'>
         <article className="login-left split">
@@ -141,6 +161,12 @@ class SessionForm extends React.Component {
                 value={this.props.formType}
               >
                 {this.props.formType}
+              </button>
+              <button
+                className={this.props.formType === "Sign Up" ? "hidden" : "session-button"}
+                onClick={this.handleDemoUserLogin}
+                >
+                  Demo!
               </button>
             </div>
           </form>
