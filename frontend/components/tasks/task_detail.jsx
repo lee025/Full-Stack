@@ -83,7 +83,7 @@ class TaskDetail extends React.Component {
     // console.log(note, idx)
     return(
       <li key={idx}>
-        {note} <span class="far fa-trash-alt" value={idx} onClick={this.deleteNote}></span>
+        {note} <span className="far fa-trash-alt" value={idx} onClick={this.deleteNote}></span>
         {/* <i className="fas fa-pencil-alt" onClick={this.handleNoteSubmit}></i> */}
       </li>
     )
