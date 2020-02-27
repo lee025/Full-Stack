@@ -34,16 +34,16 @@ t4 = Task.create!(task_name: 'boulder', list_id: l2.id, start: nil, due: nil, no
 t5 = Task.create!(task_name: 'hike', list_id: l2.id, start: nil, due: nil, notes: ['Billy Goat'], completed: false)
 
 
-t5 = Task.create!(task_name: 'apple', list_id: l3.id, start: nil, due: nil, notes: ['fuji'], completed: false)
-t5 = Task.create!(task_name: 'banana', list_id: l3.id, start: nil, due: nil, notes: ['yellow'], completed: false)
-t5 = Task.create!(task_name: 'two fish', list_id: l4.id, start: nil, due: nil, notes: ['red fish, blue fish'], completed: false)
+t6 = Task.create!(task_name: 'apple', list_id: l3.id, start: nil, due: nil, notes: ['fuji'], completed: false)
+t7 = Task.create!(task_name: 'banana', list_id: l3.id, start: nil, due: nil, notes: ['yellow'], completed: false)
+t8 = Task.create!(task_name: 'two fish', list_id: l4.id, start: nil, due: nil, notes: ['red fish, blue fish'], completed: false)
 
-t6 = Task.create!({task_name: "milk", list_id: l5.id, start: nil, due: nil, notes: ['Almond Milk'], completed: false})
-t7 = Task.create!({task_name: "eggs", list_id: l5.id, start: nil, due: nil, notes: ['A dozen large'], completed: false})
-t8 = Task.create!({task_name: "butter", list_id: l5.id, start: nil, due: nil, notes: ['Unsalted'], completed: false})
-t9 = Task.create!({task_name: "cereal", list_id: l5.id, start: nil, due: nil, notes: ['Cheerios'], completed: false})
+t9 = Task.create!({task_name: "milk", list_id: l5.id, start: nil, due: nil, notes: ['Almond Milk'], completed: false})
+t10 = Task.create!({task_name: "eggs", list_id: l5.id, start: nil, due: nil, notes: ['A dozen large'], completed: false})
+t11 = Task.create!({task_name: "butter", list_id: l5.id, start: nil, due: nil, notes: ['Unsalted'], completed: false})
+t12 = Task.create!({task_name: "cereal", list_id: l5.id, start: nil, due: nil, notes: ['Cheerios'], completed: false})
 
-t10 = Task.create!({task_name: "Trash", list_id: l6.id, start: nil, due: nil, notes: ['Mondays & Thursdays'], completed: false})
-t11 = Task.create!({task_name: "Walk the dog", list_id: l6.id, start: nil, due: nil, notes: ['goPup! app'], completed: false})
-t12 = Task.create!({task_name: "workout", list_id: l6.id, start: nil, due: nil, notes: ['[SolidCore]'], completed: false})
-t13 = Task.create!({task_name: "laundry", list_id: l6.id, start: nil, due: nil, notes: ['Clothes', 'Sheets', 'Towels'], completed: false})
+t13 = Task.create!({task_name: "Trash", list_id: l6.id, start: nil, due: nil, notes: ['Mondays & Thursdays'], completed: false})
+t14 = Task.create!({task_name: "Walk the dog", list_id: l6.id, start: nil, due: nil, notes: ['goPup! app'], completed: false})
+t15 = Task.create!({task_name: "workout", list_id: l6.id, start: nil, due: nil, notes: ['[SolidCore]'], completed: false})
+t16 = Task.create!({task_name: "laundry", list_id: l6.id, start: nil, due: nil, notes: ['Clothes', 'Sheets', 'Towels'], completed: false})

@@ -71,19 +71,21 @@ class TaskDetail extends React.Component {
     const idx = e.currentTarget.getAttribute('value');
     const endIdx = notes.length - 1;
 
-    // if(notes.length === 1 ) {
-    //   // console.log(notes)
-    //   task.notes = []
-    // } else {
-      const sliced = notes.slice(0, idx).concat(notes.slice(idx, endIdx));
-      // console.log(sliced)
+    // task.notes = notes.filter(note => note !== notes[idx])
+      // console.log("index:",idx)
+      // console.log("end index:",endIdx)
+      // const sliced = notes.slice(0, idx).concat(notes.slice(idx, endIdx));
+      // console.log("start:", notes.slice(0, idx))
+      // console.log("end:", notes.slice(idx+1, endIdx))
+      
+      const spliced = notes.splice(idx, 1)
+      task.notes = spliced;
+      
       // debugger
-      task.notes = sliced;
-    // }
-    
-    // this.setState({ notes: notes.delete_at(e.currentTarget.getAttribute('value')) })
-    this.setState({ notes: "" })
-    this.props.updateTask(listId, task)
+      // console.log("Notes:", notes)
+      
+      this.setState({ notes: "" })
+    // this.props.updateTask(listId, task)
   }
 
 

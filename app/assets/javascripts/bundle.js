@@ -2425,21 +2425,20 @@ function (_React$Component) {
       var task = Object.assign({}, this.props.task);
       var listId = this.props.match.params.listId;
       var idx = e.currentTarget.getAttribute('value');
-      var endIdx = notes.length - 1; // if(notes.length === 1 ) {
-      //   // console.log(notes)
-      //   task.notes = []
-      // } else {
+      var endIdx = notes.length - 1; // task.notes = notes.filter(note => note !== notes[idx])
+      // console.log("index:",idx)
+      // console.log("end index:",endIdx)
+      // const sliced = notes.slice(0, idx).concat(notes.slice(idx, endIdx));
+      // console.log("start:", notes.slice(0, idx))
+      // console.log("end:", notes.slice(idx+1, endIdx))
 
-      var sliced = notes.slice(0, idx).concat(notes.slice(idx, endIdx)); // console.log(sliced)
-      // debugger
-
-      task.notes = sliced; // }
-      // this.setState({ notes: notes.delete_at(e.currentTarget.getAttribute('value')) })
+      var spliced = notes.splice(idx, 1);
+      task.notes = spliced; // debugger
+      // console.log("Notes:", notes)
 
       this.setState({
         notes: ""
-      });
-      this.props.updateTask(listId, task);
+      }); // this.props.updateTask(listId, task)
     }
   }, {
     key: "noteItem",
