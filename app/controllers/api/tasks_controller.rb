@@ -32,12 +32,7 @@ class Api::TasksController < ApplicationController
     debugger
     # @task.due = Date.parse(task_params[:due])
 
-      task_params[:notes] = task_params[:notes] ||= []
-
-      # if @task.notes.nil?
-      #   @task.notes = []
-      #   @task.save
-      # end
+    task_params[:notes] = task_params[:notes] ||= []
       
     if @task.update(task_params)
       render :show
