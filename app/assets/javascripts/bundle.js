@@ -2426,19 +2426,17 @@ function (_React$Component) {
       var listId = this.props.match.params.listId;
       var idx = e.currentTarget.getAttribute('value');
       var endIdx = notes.length - 1; // task.notes = notes.filter(note => note !== notes[idx])
-      // console.log("index:",idx)
-      // console.log("end index:",endIdx)
       // const sliced = notes.slice(0, idx).concat(notes.slice(idx, endIdx));
-      // console.log("start:", notes.slice(0, idx))
-      // console.log("end:", notes.slice(idx+1, endIdx))
 
-      var spliced = notes.splice(idx, 1);
-      task.notes = spliced; // debugger
+      notes.splice(idx, 1);
+      task.notes = notes;
+      console.log("=========", task); // debugger
       // console.log("Notes:", notes)
 
       this.setState({
         notes: ""
-      }); // this.props.updateTask(listId, task)
+      });
+      this.props.updateTask(listId, task);
     }
   }, {
     key: "noteItem",
@@ -2472,6 +2470,7 @@ function (_React$Component) {
       var noteItems = task.notes.map(function (note, idx) {
         return _this3.noteItem(note, idx);
       });
+      console.log("NOTEITEMS:", noteItems);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "task-detail-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2529,16 +2528,13 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(_ref, ownProps) {
   var entities = _ref.entities;
-  // console.log("MSTP:", entities)
   var list = entities.lists[ownProps.match.params.listId];
-  var task = entities.tasks[ownProps.match.params.taskId];
+  var task = entities.tasks[ownProps.match.params.taskId]; // console.log("MSTP:", task)
 
   if (!list || !task) {
     return {};
   } else {
     return {
-      // list: ownProps.match.params.listId,
-      // task: ownProps.match.params.taskId,
       list: list,
       task: task
     };
@@ -3174,6 +3170,7 @@ var TasksReducer = function TasksReducer() {
       return Object.assign({}, state, action.tasks);
 
     case _actions_task_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_TASK"]:
+      console.log("Reducer:", action.task);
       return Object.assign({}, state, _defineProperty({}, action.task.id, action.task));
 
     case _actions_task_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_TASK"]:
@@ -3454,7 +3451,7 @@ var createTask = function createTask(listId, task) {
   });
 };
 var updateTask = function updateTask(listId, task) {
-  // console.log("task api util:", task)
+  console.log("task api util:", task);
   return $.ajax({
     method: 'PATCH',
     url: "api/lists/".concat(listId, "/tasks/").concat(task.id),
