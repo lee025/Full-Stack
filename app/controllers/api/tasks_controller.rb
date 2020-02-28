@@ -29,7 +29,6 @@ class Api::TasksController < ApplicationController
 
   def update
     @task = List.find(params[:list_id]).tasks.find(params[:id])
-    debugger
     # @task.due = Date.parse(task_params[:due])
 
     task_params[:notes] = task_params[:notes] ||= []
