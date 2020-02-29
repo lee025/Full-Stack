@@ -54,6 +54,7 @@ export const createTask = (listId, task) => dispatch => {
 }
 
 export const updateTask = (listId, task) => dispatch => {
+  // console.log("Actions:", task)
   return TaskApiUtil.updateTask(listId, task)
     .then(task => dispatch(receiveTask(task)))
 }

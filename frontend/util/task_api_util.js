@@ -31,11 +31,18 @@ export const createTask = (listId, task) => {
 }
 
 export const updateTask = (listId, task) => {
-  console.log("task api util:", task)
+  // console.log("task api util:", task)
   return $.ajax({
     method: 'PATCH',
+    // contentType: "application/json",
+    // contentType: '',
     url: `api/lists/${listId}/tasks/${task.id}`,
-    data: { task }
+    data: { task },
+    // headers: {
+    //   'Accept' : 'application/json',
+    //   'Content-Type': 'text/plain'
+    // }
+    // dataType: "json"
   });
 }
 

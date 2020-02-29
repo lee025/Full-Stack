@@ -366,6 +366,7 @@ var createTask = function createTask(listId, task) {
 };
 var updateTask = function updateTask(listId, task) {
   return function (dispatch) {
+    // console.log("Actions:", task)
     return _util_task_api_util__WEBPACK_IMPORTED_MODULE_0__["updateTask"](listId, task).then(function (task) {
       return dispatch(receiveTask(task));
     });
@@ -2429,8 +2430,8 @@ function (_React$Component) {
       // const sliced = notes.slice(0, idx).concat(notes.slice(idx, endIdx));
 
       notes.splice(idx, 1);
-      task.notes = notes;
-      console.log("=========", task); // debugger
+      task.notes = notes; // console.log("====deleteNote=====", task)
+      // debugger
       // console.log("Notes:", notes)
 
       this.setState({
@@ -2469,8 +2470,8 @@ function (_React$Component) {
 
       var noteItems = task.notes.map(function (note, idx) {
         return _this3.noteItem(note, idx);
-      });
-      console.log("NOTEITEMS:", noteItems);
+      }); // console.log("Render-NOTEITEMS:",noteItems)
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "task-detail-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3170,7 +3171,7 @@ var TasksReducer = function TasksReducer() {
       return Object.assign({}, state, action.tasks);
 
     case _actions_task_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_TASK"]:
-      console.log("Reducer:", action.task);
+      // console.log("Reducer:", action.task)
       return Object.assign({}, state, _defineProperty({}, action.task.id, action.task));
 
     case _actions_task_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_TASK"]:
@@ -3451,13 +3452,20 @@ var createTask = function createTask(listId, task) {
   });
 };
 var updateTask = function updateTask(listId, task) {
-  console.log("task api util:", task);
+  // console.log("task api util:", task)
   return $.ajax({
     method: 'PATCH',
+    // contentType: "application/json",
+    // contentType: '',
     url: "api/lists/".concat(listId, "/tasks/").concat(task.id),
     data: {
       task: task
-    }
+    } // headers: {
+    //   'Accept' : 'application/json',
+    //   'Content-Type': 'text/plain'
+    // }
+    // dataType: "json"
+
   });
 };
 var deleteTask = function deleteTask(listId, id) {
@@ -35926,7 +35934,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

@@ -1,5 +1,6 @@
 class Api::TasksController < ApplicationController 
   before_action :require_user
+  # before_action :require_notes
 
   def index
     if params[:list_id]
@@ -29,12 +30,13 @@ class Api::TasksController < ApplicationController
 
   def update
     @task = List.find(params[:list_id]).tasks.find(params[:id])
-    debugger
     # @task.due = Date.parse(task_params[:due])
-
-    task_params[:notes] = task_params[:notes] ||= []
-      
+    
+    params[:task][:notes] ||= []
+    
     if @task.update(task_params)
+      # task_params[:notes] = task_params[:notes] ||= []
+      # debugger
       render :show
     else
       render json: @task.errors.full_messages
@@ -51,5 +53,9 @@ class Api::TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:id, :task_name, :list_id, :start, :due, :completed, notes: [])
   end
+
+  # def require_notes
+  #   task_params[:notes] = task_params[:notes] ||= []  
+  # end
 
 end
