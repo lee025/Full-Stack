@@ -77,7 +77,7 @@ class TaskDetail extends React.Component {
       notes.splice(idx, 1)
       
       task.notes = notes;
-      console.log("=========", task)
+      // console.log("====deleteNote=====", task)
       // debugger
       // console.log("Notes:", notes)
       
@@ -103,7 +103,7 @@ class TaskDetail extends React.Component {
     if(!list){ return null; }
     
     const noteItems = task.notes.map((note, idx) => this.noteItem(note, idx))
-    console.log("NOTEITEMS:",noteItems)
+    // console.log("Render-NOTEITEMS:",noteItems)
     return (
       <div className='task-detail-container'>
         <div className=''>

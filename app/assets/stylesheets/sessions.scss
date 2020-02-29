@@ -233,7 +233,6 @@ input[type="submit"] {
 
 .login-left {
   position: relative;
-  // border: 1px solid black;
   width: 50%;
   height: 100%;
   // display: flex;
@@ -243,7 +242,6 @@ input[type="submit"] {
 }
 
 .login-calvin-div {
-  // border: 2px solid green;
   display: flex;
   justify-content: center;
   margin: 20px 0 0 5px;
@@ -256,7 +254,6 @@ input[type="submit"] {
 }
 
 .blockquote-main {
-  // border: 1px solid red;
   box-sizing: border-box;
   margin-left: 25%;
   display: block;
@@ -303,7 +300,6 @@ input[type="submit"] {
 }
 
 .calvin-box-text {
-  // border: 1px solid black;
   display: block;
   padding: 15px 0 0 0;
   max-width: 360px;
@@ -434,7 +430,6 @@ footer a:hover {
 .add-task-form{
   padding: 10px;
   font-size: 15px;
-  // background: rgb(34, 34, 37);
   // border-bottom: 1px solid #ccc ;
   border-bottom: 1px solid whitesmoke ;
 }
@@ -551,7 +546,8 @@ footer a:hover {
 .user-main-right {
   height: calc(100% - 109px);
   width: 100%;
-  background: rgb(34, 34, 37);
+  background: rgb(34, 34, 37); 
+  // #222225
   display: flex;
   flex-direction: row;
 }
@@ -577,6 +573,7 @@ footer a:hover {
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 50%;
 }
 
 .task-index-container li{
@@ -720,7 +717,7 @@ footer a:hover {
 .sidenav {
   border-right: 1px solid white;
   // min-height: calc(100vh - 70px);
-  height: 800px;
+  min-height: 500px;
   width: 25%; // change with JS
   // position: fixed;
   position: relative; // stay in place
@@ -1001,10 +998,17 @@ footer a:hover {
 
 .user-main-container {
   width: 75%;
+  float: right;
+  height: 100vh;
+  min-height: 500px;
+  background-color: #222225;
+  overflow: scroll;
   // position: relative;
   // display: flex;;
-  float: right;
-  height: 800px;
+}
+
+.user-main-container::-webkit-scrollbar{
+  display:none;
 }
 
 
