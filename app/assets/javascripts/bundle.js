@@ -2802,12 +2802,14 @@ function (_React$Component) {
       if (completed) {
         this.props.updateTask(listId, {
           completed: false,
-          id: task.id
+          id: task.id,
+          notes: task.notes
         });
       } else {
         this.props.updateTask(listId, {
           completed: true,
-          id: task.id
+          id: task.id,
+          notes: task.notes
         });
       }
     }
