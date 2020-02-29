@@ -2794,20 +2794,21 @@ function (_React$Component) {
     key: "toggleTaskComplete",
     value: function toggleTaskComplete() {
       // debugger
-      var task = this.props.task; // console.log(this.props.task)
-
+      var task = this.props.task;
       var listId = this.props.match.params.listId;
       var completed = this.props.task.completed;
 
       if (completed) {
         this.props.updateTask(listId, {
           completed: false,
-          id: task.id
+          id: task.id,
+          notes: task.notes
         });
       } else {
         this.props.updateTask(listId, {
           completed: true,
-          id: task.id
+          id: task.id,
+          notes: task.notes
         });
       }
     }
@@ -35934,7 +35935,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

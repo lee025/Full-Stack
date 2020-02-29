@@ -35,14 +35,14 @@ class TaskNav extends React.Component{
   toggleTaskComplete(){
     // debugger
     const task = this.props.task;
-    // console.log(this.props.task)
     const listId = this.props.match.params.listId;
     const completed = this.props.task.completed;
+    
 
     if (completed) {
-      this.props.updateTask(listId, { completed: false, id: task.id })
+      this.props.updateTask(listId, { completed: false, id: task.id, notes: task.notes })
     } else {
-      this.props.updateTask(listId, { completed: true, id: task.id })
+      this.props.updateTask(listId, { completed: true, id: task.id, notes: task.notes })
     }
   }
 
