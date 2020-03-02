@@ -36,11 +36,6 @@ import HomePage from './home_page';
               </li>
               <li className="far fa-folder"> | <a href="https://deblee.dev">Portfolio</a>
               </li>
-              {/* <li>
-                <a href="https://github.com/lee025/All-the-Things/wiki/Backend-Routes">
-                  Backend Routes
-                </a>
-              </li> */}
             </ul>
           </div>
         </div>
