@@ -433,17 +433,23 @@ var App = function App() {
     className: "footer-input"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "footer-list"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "https://github.com/lee025/All-the-Things/wiki/MVP-List"
-  }, "MVP List")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "https://github.com/lee025/All-the-Things/wiki/Schema"
-  }, "Schema")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "https://github.com/lee025/All-the-Things/wiki/Sample-State"
-  }, "Sample State")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "https://github.com/lee025/All-the-Things/wiki/Frontend-Routes"
-  }, "Frontend Routes")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "https://github.com/lee025/All-the-Things/wiki/Backend-Routes"
-  }, "Backend Routes"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "fab fa-github"
+  }, " |  ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://github.com/lee025"
+  }, "GitHub")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "fab fa-linkedin-in"
+  }, " | ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://www.linkedin.com/in/deborah-lee-5a7a4828/"
+  }, "LinkedIn")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "fab fa-angellist"
+  }, "  | ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://angel.co/deborah-lee-27"
+  }, "AngelList")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "far fa-folder"
+  }, " | ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://deblee.dev"
+  }, "Portfolio"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
     className: "footer-copy"
   }, "\xA9 2019 All the Things. All rights reserved.")));
 };
@@ -2794,8 +2800,7 @@ function (_React$Component) {
     key: "toggleTaskComplete",
     value: function toggleTaskComplete() {
       // debugger
-      var task = this.props.task; // console.log(this.props.task)
-
+      var task = this.props.task;
       var listId = this.props.match.params.listId;
       var completed = this.props.task.completed;
 
@@ -35936,7 +35941,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
