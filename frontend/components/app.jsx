@@ -28,31 +28,19 @@ import HomePage from './home_page';
           <div className="footer-img">{/* insert image */}</div>
           <div className="footer-input">
             <ul className="footer-list">
-              <li>
-                <a href="https://github.com/lee025/All-the-Things/wiki/MVP-List">
-                  MVP List
-                </a>
+              <li className="fab fa-github"> |  <a href="https://github.com/lee025">GitHub</a>
               </li>
-              <li>
-                <a href="https://github.com/lee025/All-the-Things/wiki/Schema">
-                  Schema
-                </a>
+              <li className="fab fa-linkedin-in"> | <a href="https://www.linkedin.com/in/deborah-lee-5a7a4828/">LinkedIn</a>
               </li>
-              <li>
-                <a href="https://github.com/lee025/All-the-Things/wiki/Sample-State">
-                  Sample State
-                </a>
+              <li className="fab fa-angellist">  | <a href="https://angel.co/deborah-lee-27">AngelList</a>
               </li>
-              <li>
-                <a href="https://github.com/lee025/All-the-Things/wiki/Frontend-Routes">
-                  Frontend Routes
-                </a>
+              <li className="far fa-folder"> | <a href="https://deblee.dev">Portfolio</a>
               </li>
-              <li>
+              {/* <li>
                 <a href="https://github.com/lee025/All-the-Things/wiki/Backend-Routes">
                   Backend Routes
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
