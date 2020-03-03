@@ -547,7 +547,8 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "bars-cont"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "bars-opt"
+          className: "bars-opt",
+          onClick: this.toggleBarsDD
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           to: "/lists"
         }, "Your Tasks")));
@@ -1891,6 +1892,7 @@ function (_React$Component) {
       search: ''
     };
     _this.updateSearch = _this.updateSearch.bind(_assertThisInitialized(_this));
+    _this.resetSearch = _this.resetSearch.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -1909,11 +1911,17 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "resetSearch",
+    value: function resetSearch(e) {
+      this.setState({
+        search: ''
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
-      // console.log("Search render", this.props)
       var filteredSearch;
 
       if (this.state.search == '') {
@@ -1922,8 +1930,7 @@ function (_React$Component) {
         filteredSearch = this.props.tasks.filter(function (search) {
           return search.task_name.toLowerCase().indexOf(_this2.state.search.toLowerCase()) !== -1;
         });
-      } // console.log("filteredSearch", filteredSearch)
-
+      }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-cont"
@@ -1940,7 +1947,8 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: task.id
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-          to: "/lists/".concat(task.list_id, "/tasks/").concat(task.id)
+          to: "/lists/".concat(task.list_id, "/tasks/").concat(task.id),
+          onClick: _this2.resetSearch
         }, task.task_name));
       }))));
     }
@@ -1974,19 +1982,15 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   console.log("Search Container:", state);
   return {
-    tasks: Object.values(state.entities.tasks) // listId: ownProps.match.params.listId,
-    // task: state.entities.tasks[ownProps.match.params.taskId],
-
+    tasks: Object.values(state.entities.tasks)
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    // fetchList: listId => dispatch(fetchList(listId)),
     fetchTasks: function fetchTasks() {
       return dispatch(Object(_actions_task_actions__WEBPACK_IMPORTED_MODULE_3__["fetchTasks"])());
-    } // fetchTask: (listId, id) => dispatch(fetchTask(listId, id)),
-
+    }
   };
 };
 

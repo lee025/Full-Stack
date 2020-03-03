@@ -8,17 +8,13 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     tasks: Object.values(state.entities.tasks),
-    // listId: ownProps.match.params.listId,
-    // task: state.entities.tasks[ownProps.match.params.taskId],
   }
 };
 
 const mapDispatchToProps = ( dispatch ) => {
 
   return {
-    // fetchList: listId => dispatch(fetchList(listId)),
     fetchTasks: () => dispatch(fetchTasks()),
-    // fetchTask: (listId, id) => dispatch(fetchTask(listId, id)),
   }
 }
 

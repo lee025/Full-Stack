@@ -34,8 +34,9 @@ class Greeting extends React.Component {
     if(this.state.showListDD){
       return(
         <div className="bars-cont">
-          {/* <div className="bars-opt"><Link to="/lists">Your Lists</Link></div> */}
-          <div className="bars-opt"><Link to="/lists">Your Tasks</Link></div>
+          <div className="bars-opt" onClick={this.toggleBarsDD}>
+            <Link to="/lists" >Your Tasks</Link>
+          </div>
         </div>
       )
     } else {
@@ -72,12 +73,15 @@ class Greeting extends React.Component {
 
           <i className="fas fa-bars" onClick={this.toggleBarsDD}></i> 
           {this.renderBarsDD()}
+
           <SearchContainer />
-          {/* <input type="text" placeholder="Search Tasks"/> */}
+
           <p className="header-name">Welcome, {this.props.currentUser.username}!</p>
+          
           <button className="header-logout-button" onClick={this.onClick}>
             Log Out
           </button>
+
         </header>
         <div className="group"></div>
       </section>

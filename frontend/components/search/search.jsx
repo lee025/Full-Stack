@@ -10,6 +10,7 @@ class Search extends React.Component {
     }
 
     this.updateSearch = this.updateSearch.bind(this)
+    this.resetSearch = this.resetSearch.bind(this);
   }
 
   componentDidMount() {
@@ -23,20 +24,23 @@ class Search extends React.Component {
     this.setState({ search: e.target.value.substr(0, 20) })
   }
 
+  resetSearch(e){
+    this.setState({ search: '' })
+  }
+
   render(){
-    // console.log("Search render", this.props)
     let filteredSearch;
+
     if(this.state.search == ''){
        filteredSearch = []
     } else {
        filteredSearch = this.props.tasks.filter(
         (search) => {
-          return search.task_name.toLowerCase().indexOf(
-            this.state.search.toLowerCase()) !== -1
+          return search.task_name
+            .toLowerCase()
+            .indexOf(this.state.search.toLowerCase()) !== -1
         }
       )}
-
-    // console.log("filteredSearch", filteredSearch)
 
     return (
       <div>
@@ -55,7 +59,7 @@ class Search extends React.Component {
               {filteredSearch.map((task) => {
                 return (
                 <li key={task.id}>
-                  <Link to={`/lists/${task.list_id}/tasks/${task.id}`}>
+                  <Link to={`/lists/${task.list_id}/tasks/${task.id}`} onClick={this.resetSearch}>
                     {task.task_name}
                   </Link>
                 </li>
