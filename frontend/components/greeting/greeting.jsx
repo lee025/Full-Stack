@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, Redirect, Route, withRouter } from "react-router-dom";
-
+import SearchContainer from "../search/search_container";
 
 class Greeting extends React.Component {
   constructor(props){
@@ -72,6 +72,8 @@ class Greeting extends React.Component {
 
           <i className="fas fa-bars" onClick={this.toggleBarsDD}></i> 
           {this.renderBarsDD()}
+          <SearchContainer />
+          {/* <input type="text" placeholder="Search Tasks"/> */}
           <p className="header-name">Welcome, {this.props.currentUser.username}!</p>
           <button className="header-logout-button" onClick={this.onClick}>
             Log Out

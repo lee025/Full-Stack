@@ -30,7 +30,7 @@ class TaskIndex extends React.Component {
   }
 
   render(){
-    console.log(this.props)
+    // console.log(this.props)
     // console.log(this.props.tasks)
 
     const { list, tasks } = this.props;
